@@ -10,7 +10,7 @@ jobs:
       pull-requests: write
       deployments: write
     steps:
-    - uses: Hofmanninger-Florian/3CAndroidProjekt@1.0.0
+    - uses: Hofmanninger-Florian/3CAndroidProjekt@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: 'U did it my boy, i am proud of u'
