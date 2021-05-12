@@ -12,4 +12,7 @@ erhalten kannst du dich mit den besten am Berg (mit bester Routenzeit) messen. W
 Restaurants in der nähe direkt auf deinem Smartphone anzeigen und dir Rezensionen von anderen als Entscheidungshilfe geben.
 
 Team Mitglieder: • Florian Hofmanninger • Leonhard Panic • Lucas Kronlachner
+```
+
+[HTL-Grieskirchen](http://www.htl-grieskirchen.net/index.php?id=4)
 
