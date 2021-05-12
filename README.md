@@ -1,4 +1,4 @@
-# 3CHikingApp
+# 3CHikingApp 🥾 🗻
 
 This Project was created by students of HTL-Grieskirchen
 
