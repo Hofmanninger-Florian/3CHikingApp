@@ -10,6 +10,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/Button_Color"
         app:icon="@drawable/ic_baseline_nights_stay_24"
         app:rippleColor="#FFFFFF" />
 
@@ -25,5 +26,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/Button_Color"
         app:icon="@drawable/ic_baseline_wb_sunny_24" />
 </LinearLayout>

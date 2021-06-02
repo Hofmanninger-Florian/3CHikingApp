@@ -1,2 +1,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.grouphiking.project.a3chikingapp.Preferences.daynightswitch
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:key="mode"
+        android:title="Mode" />
+
+</PreferenceScreen>
