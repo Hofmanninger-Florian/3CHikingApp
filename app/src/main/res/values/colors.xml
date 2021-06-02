@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    //Our Colors:
+    <!--Main-Colors-->
     <color name="Green_Dark">#4B8654</color>
     <color name="Brown_Light">#DED5C4</color>
     <color name="UI_Back">#AEEBCB</color>

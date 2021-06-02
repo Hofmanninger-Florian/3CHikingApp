@@ -1,10 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape android:shape="rectangle">
+        <shape android:shape="rectangle"
+            xmlns:android="http://schemas.android.com/apk/res/android">
             <corners android:radius="10dp"/>
             <solid android:color="@color/Button_Color"/>
             <size android:width="100dp" android:height="50dp"/>
         </shape>
     </item>
-</selector>
+    <item android:height="45dp" android:width="45dp" android:gravity="end" android:top="3dp">
+        <selector>
+            <item android:drawable="@drawable/ic_baseline_arrow_drop_up_24" android:state_pressed="false"/>
+            <item android:drawable="@drawable/ic_baseline_arrow_drop_down_24" android:state_pressed="true"/>
+        </selector>
+    </item>
+</layer-list>
+
+

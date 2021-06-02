@@ -30,6 +30,11 @@ public class Settings extends AppCompatActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
+            setPrefrences();
+        }
+
+        public void setPrefrences(){
+            //set Preference-Listeners
         }
     }
 }

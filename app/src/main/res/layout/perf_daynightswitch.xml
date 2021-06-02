@@ -7,10 +7,14 @@
 
     <Button
         android:id="@+id/pref_button_night"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        app:icon="@drawable/ic_baseline_nights_stay_24"
+        android:backgroundTint="@color/Button_Color"
+        app:icon="@drawable/ic_moon"
+        app:iconGravity="textEnd"
+        app:iconSize="30dp"
+        app:iconTintMode="multiply"
         app:rippleColor="#FFFFFF" />
 
     <View
@@ -22,8 +26,12 @@
 
     <Button
         android:id="@+id/pref_button_day"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        app:icon="@drawable/ic_baseline_wb_sunny_24" />
+        android:backgroundTint="@color/Button_Color"
+        app:icon="@drawable/ic_sun"
+        app:iconGravity="textEnd"
+        app:iconSize="30dp"
+        app:iconTintMode="multiply" />
 </LinearLayout>
