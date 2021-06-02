@@ -4,6 +4,8 @@
     android:layout_height="match_parent">
 
     <Spinner
+        android:id="@+id/prefs_language_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/pref_spinner_background" />
 </LinearLayout>
