@@ -18,4 +18,11 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
     <string name="SwitchKey">SwitchKey</string>
+
+    <!-- Color for the Main Backgrounds-->
+    <color name="brown1">#81E3A6</color>
+    <color name="brown2">#DED5C4</color>
+    <color name="brown3">#1DB372</color>
+    <color name="brown4">#736759</color>
+
 </resources>
