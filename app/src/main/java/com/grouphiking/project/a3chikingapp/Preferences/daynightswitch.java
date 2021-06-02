@@ -23,7 +23,6 @@ public class daynightswitch extends Preference {
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
-        holder.itemView.setClickable(false);
         //Set Buttonfunktions
     }
 
