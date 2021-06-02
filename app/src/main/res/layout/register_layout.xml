@@ -8,19 +8,19 @@
 
 
     <TextView
-        android:id="@+id/login_text"
+        android:id="@+id/register_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:text="Login"
+        android:text="Register"
         android:textSize="50dp"
         android:fontFamily="@font/fredoka_one"
         android:textColor="#736759"
         />
 
     <EditText
-        android:id="@+id/username_textField"
+        android:id="@+id/username_textField_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,7 +34,7 @@
         />
 
     <EditText
-        android:id="@+id/password_textField"
+        android:id="@+id/password_textField_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -47,27 +47,40 @@
         android:textColorHint="#736759"
         />
 
+    <EditText
+        android:id="@+id/reenter_password_textField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:fontFamily="@font/fredoka_one"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginTop="340dp"
+        android:hint="reenter password"
+        android:textColorHint="#736759"
+        />
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/button_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="420dp"
         android:backgroundTint="#736759"
         android:fontFamily="@font/fredoka_one"
-        android:text="login."
+        android:text="register."
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="20dp"
         />
 
     <TextView
-        android:id="@+id/no_account"
+        android:id="@+id/already_have_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="320dp"
-        android:text="no account? register."
+        android:layout_marginTop="390dp"
+        android:text="already have an account? login."
         android:textSize="15dp"
         android:fontFamily="@font/fredoka_one"
         android:textColor="#736759"
