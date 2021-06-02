@@ -1,10 +1,12 @@
-package com.grouphiking.project.a3chikingapp;
+package com.grouphiking.project.a3chikingapp.Preferences;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+
+import com.grouphiking.project.a3chikingapp.R;
 
 public class Settings extends AppCompatActivity {
 
