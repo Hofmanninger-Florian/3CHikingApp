@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DialogTextEditStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/Brown_Light</item>
+        <item name="paddingStart">5dp</item>
+        <item name="paddingEnd">5dp</item>
+        <item name="boxBackgroundColor">@color/Brown_Light_Dark</item>
+        <item name="boxStrokeColor">@color/dialog_boxstroke_et</item>
+    </style>
+</resources>

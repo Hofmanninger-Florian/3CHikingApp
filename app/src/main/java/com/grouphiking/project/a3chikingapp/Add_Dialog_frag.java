@@ -8,12 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Add_Dialog_frag extends Fragment {
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+public class Add_Dialog_frag extends BottomSheetDialogFragment {
 
     public Add_Dialog_frag() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,7 @@ public class Add_Dialog_frag extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add__dialog_frag, container, false);
     }
