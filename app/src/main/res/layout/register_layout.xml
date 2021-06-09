@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/handybackround"
+    >
 
 
     <TextView
@@ -11,50 +13,53 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:fontFamily="@font/fredoka_one"
         android:text="Register"
+        android:textSize="50dp"
+        android:fontFamily="@font/fredoka_one"
         android:textColor="#736759"
-        android:textSize="50dp" />
+        />
 
     <EditText
         android:id="@+id/username_textField_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
         android:ems="10"
-        android:fontFamily="@font/fredoka_one"
-        android:hint="username"
         android:inputType="textPersonName"
+        android:hint="username"
+        android:fontFamily="@font/fredoka_one"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginTop="200dp"
         android:textColorHint="#736759"
-        android:textSize="20dp" />
+        />
 
     <EditText
         android:id="@+id/password_textField_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="270dp"
         android:ems="10"
-        android:fontFamily="@font/fredoka_one"
-        android:hint="password"
         android:inputType="textPassword"
+        android:fontFamily="@font/fredoka_one"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginTop="270dp"
+        android:hint="password"
         android:textColorHint="#736759"
-        android:textSize="20dp" />
+        />
 
     <EditText
         android:id="@+id/reenter_password_textField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="340dp"
         android:ems="10"
-        android:fontFamily="@font/fredoka_one"
-        android:hint="reenter password"
         android:inputType="textPassword"
+        android:fontFamily="@font/fredoka_one"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginTop="340dp"
+        android:hint="reenter password"
         android:textColorHint="#736759"
-        android:textSize="20dp" />
-
+        />
     <Button
         android:id="@+id/button_register"
         android:layout_width="wrap_content"
@@ -66,7 +71,8 @@
         android:text="register."
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        />
 
     <TextView
         android:id="@+id/already_have_account"
@@ -74,10 +80,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="390dp"
-        android:fontFamily="@font/fredoka_one"
         android:text="already have an account? login."
-        android:textColor="#736759"
         android:textSize="15dp"
+        android:fontFamily="@font/fredoka_one"
+        android:textColor="#736759"
         tools:ignore="DuplicateIds"
 
         />
