@@ -44,14 +44,15 @@ public class MainActivity extends AppCompatActivity {
         buttonSettings.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent settings = new Intent(getApplicationContext(), SettingsActivity.class);
+                startSettings();
             }
         });
     }
 
     //Settings start
     private void startSettings(){
-
+        Intent settings = new Intent(this, SettingsActivity.class);
+        startActivity(settings);
     }
 
     private void setAdapters(){
