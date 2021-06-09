@@ -2,12 +2,15 @@ package com.grouphiking.project.a3chikingapp.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grouphiking.project.a3chikingapp.Adapters.Main_listAdapter;
+import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
 import com.grouphiking.project.a3chikingapp.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +41,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void setListeners(){
         if(buttonSettings == null || list == null || floatingButton == null)throw new NullPointerException();
+        buttonSettings.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent settings = new Intent(getApplicationContext(), SettingsActivity.class);
+            }
+        });
+    }
+
+    //Settings start
+    private void startSettings(){
+
     }
 
     private void setAdapters(){
