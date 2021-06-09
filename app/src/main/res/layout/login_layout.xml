@@ -61,7 +61,8 @@
         android:fontFamily="@font/fredoka_one"
         android:textColor="#736759"
         tools:ignore="DuplicateIds"
-
+        android:focusable="true"
+        android:clickable="true"
         />
     <Button
         android:focusable="true"
