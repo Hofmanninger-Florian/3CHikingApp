@@ -34,5 +34,7 @@
     <string name="sprache_English">English</string>
     <string name="add_newtrip">New Trip</string>
     <string name="add_hint_from">From</string>
+    <string name="login_snackbarLabel">Invalid Password or Username</string>
+    <string name="title_activity_Main" translatable="false">Main</string>
 
 </resources>
