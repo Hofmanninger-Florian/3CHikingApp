@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         userList.add(new User("testUser","test"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-        getSupportActionBar().hide();
         TextView textView = (TextView) findViewById(R.id.no_account);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

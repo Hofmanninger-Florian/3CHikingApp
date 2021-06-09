@@ -57,7 +57,9 @@
         android:hint="reenter password"
         android:inputType="textPassword"
         android:textColorHint="#736759"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#736759"
+        />
 
     <Button
         android:id="@+id/button_register"
@@ -83,7 +85,8 @@
         android:textColor="#736759"
         android:textSize="15dp"
         tools:ignore="DuplicateIds"
-
+        android:clickable="true"
+        android:focusable="true"
         />
 
 
