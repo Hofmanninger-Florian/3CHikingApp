@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">3CHikingApp</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="messages_header">Nachricht</string>
+    <string name="sync_header">Syncronisieren</string>
+    <string name="signature_title">Deine Unterschrift</string>
+    <string name="pw">passwort</string>
+</resources>
