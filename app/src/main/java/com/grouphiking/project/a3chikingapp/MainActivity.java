@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-        Button loginButton = (Button)setContentView(R.id.button_login);
+        //Button loginButton = (Button)setContentView(R.id.button_login);
     }
 
     public void onClickListenerSettings1(View view) {
