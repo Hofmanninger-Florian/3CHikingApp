@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="370dp"
-        android:onClick="onClickListenerSettings1"
         app:srcCompat="@drawable/ic_action_settings1"
+        android:backgroundTint="#00FFFFFF"
         android:contentDescription="Button that leads to the settings" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
