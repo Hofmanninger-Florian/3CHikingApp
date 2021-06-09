@@ -20,6 +20,7 @@
         />
 
     <EditText
+        android:textColor="#736759"
         android:id="@+id/username_textField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,6 +35,7 @@
         />
 
     <EditText
+
         android:id="@+id/password_textField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +47,7 @@
         android:layout_marginTop="270dp"
         android:hint="password"
         android:textColorHint="#736759"
+        android:textColor="#736759"
         />
 
     <TextView
@@ -61,6 +64,8 @@
 
         />
     <Button
+        android:focusable="true"
+        android:clickable="true"
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
