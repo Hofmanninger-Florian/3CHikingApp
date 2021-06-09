@@ -1,6 +1,7 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Activitys.MainActivity;
+import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.R;
 
@@ -47,6 +49,17 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    //On-Functions
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(Constants.loggedIn) {
+            intentMain();
+        }
+    }
+
     private void checkLogin(){
         System.out.println("in method");
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.login_contextlayout);
@@ -64,14 +77,18 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
             if(b){
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(intent);
+                intentMain();
             }
         }
     }
 
-
+    private void intentMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        ActivityCompat.finishAffinity(this);
+        Constants.setLoggedIn(true);
+    }
 
     public boolean wrongUser(String name, String pwd){
         boolean result = false;

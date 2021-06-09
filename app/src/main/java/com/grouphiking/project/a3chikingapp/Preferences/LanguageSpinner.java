@@ -46,6 +46,7 @@ public class LanguageSpinner extends Preference {
     private void setAdapter() {
         if(spinner != null) {
             LanguageSpinnerAdapter adapter = new LanguageSpinnerAdapter(getContext(), R.layout.spinner_item, languages);
+            adapter.setDropDownViewResource(R.layout.spinner_item);
             spinner.setAdapter(adapter);
         }
     }

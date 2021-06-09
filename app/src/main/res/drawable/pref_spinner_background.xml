@@ -8,9 +8,15 @@
         </shape>
     </item>
     <item android:height="45dp" android:width="45dp" android:gravity="end" android:top="3dp">
-        <selector>
-            <item android:drawable="@drawable/ic_baseline_arrow_drop_up_24" android:state_pressed="false"/>
-            <item android:drawable="@drawable/ic_baseline_arrow_drop_down_24" android:state_pressed="true"/>
+        <selector android:layout_width="match_parent">
+            <item
+                android:drawable="@drawable/ic_baseline_arrow_drop_up_24"
+                android:state_focused="false"
+                android:state_pressed="false" />
+            <item
+                android:drawable="@drawable/ic_baseline_arrow_drop_down_24"
+                android:state_focused="true"
+                android:state_pressed="true" />
         </selector>
     </item>
 </layer-list>

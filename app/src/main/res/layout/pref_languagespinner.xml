@@ -9,5 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/pref_spinner_background"
-        android:minWidth="160dp" />
+        android:minWidth="160dp"
+        android:paddingVertical="5dp"
+        android:textAlignment="center" />
 </LinearLayout>
