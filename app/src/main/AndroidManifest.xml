@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.3CHikingApp">
+        <activity android:name=".Activitys.MainActivity"
+                  android:label="@string/title_activity_Main"/>
         <activity
             android:name=".Preferences.SettingsActivity"
-            android:label="@string/title_activity_settings"/>
-        <activity android:name=".LoginActivity">
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".Activitys.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
