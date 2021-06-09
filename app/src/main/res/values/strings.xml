@@ -37,4 +37,5 @@
     <string name="login_snackbarLabel">Invalid Password or Username</string>
     <string name="title_activity_Main" translatable="false">Main</string>
     <string name="register_snackbarLabel">Wrong password</string>
+    <string name="login_snackbarLabel_noUser">User not yet created</string>
 </resources>

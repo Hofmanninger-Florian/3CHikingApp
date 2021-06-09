@@ -13,4 +13,5 @@
     <string name="add_hint_from">Von</string>
     <string name="login_snackbarLabel">Falsches Passwort oder Username</string>
     <string name="register_snackbarLabel">Passwort stimmt nicht überein</string>
+    <string name="login_snackbarLabel_noUser">Benutzer würde noch nicht erstellt</string>
 </resources>

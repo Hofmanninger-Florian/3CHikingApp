@@ -52,10 +52,11 @@ public class LoginActivity extends AppCompatActivity {
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.login_contextlayout);
         EditText editText_username = (EditText) findViewById(R.id.username_textField);
         EditText editText_password = (EditText) findViewById(R.id.password_textField);
-        if(editText_username.getText().toString().equals("") || editText_password.getText().toString().equals("")
-                || wrongUser(editText_username.getText().toString(), editText_password.getText().toString())){
+        if(editText_username.getText().toString().equals("") || editText_password.getText().toString().equals("")){
             Snackbar.make(layout, R.string.login_snackbarLabel, Snackbar.LENGTH_SHORT).show();
-        } else {
+        }else if(wrongUser(editText_username.getText().toString(), editText_password.getText().toString())){
+            Snackbar.make(layout, R.string.login_snackbarLabel_noUser, Snackbar.LENGTH_SHORT).show();
+        }else {
             boolean b = false;
             for(User u : userList){
                 if(editText_username.getText().toString().equals(u.getUsername()) && editText_password.getText().toString().equals(u.getPassword())){
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             if(b){
                 Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
         }
