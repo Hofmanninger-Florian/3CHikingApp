@@ -1,4 +1,4 @@
-package com.grouphiking.project.a3chikingapp;
+package com.grouphiking.project.a3chikingapp.Data;
 
 public class User {
 

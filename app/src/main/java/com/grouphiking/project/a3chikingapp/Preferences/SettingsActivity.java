@@ -8,7 +8,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.grouphiking.project.a3chikingapp.R;
 
-public class Settings extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

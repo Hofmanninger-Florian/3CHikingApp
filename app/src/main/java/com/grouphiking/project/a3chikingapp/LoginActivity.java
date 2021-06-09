@@ -3,13 +3,14 @@ package com.grouphiking.project.a3chikingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.grouphiking.project.a3chikingapp.Data.User;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     ArrayList<User> userList = new ArrayList<User>();
 
@@ -18,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
         Button loginButton = (Button)findViewById(R.id.button_login);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Hallo");
+            }
+        });
 
     }
 

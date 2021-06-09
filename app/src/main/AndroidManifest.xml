@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.3CHikingApp">
         <activity
-            android:name=".Preferences.Settings"
+            android:name=".Preferences.SettingsActivity"
             android:label="@string/title_activity_settings"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
