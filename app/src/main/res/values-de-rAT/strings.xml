@@ -12,4 +12,5 @@
     <string name="add_newtrip">Neuer Trip</string>
     <string name="add_hint_from">Von</string>
     <string name="login_snackbarLabel">Falsches Passwort oder Username</string>
+    <string name="register_snackbarLabel">Passwort stimmt nicht überein</string>
 </resources>

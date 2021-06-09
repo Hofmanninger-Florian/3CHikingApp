@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-    ArrayList<User> userList = new ArrayList<User>();
+    public static ArrayList<User> userList = new ArrayList<User>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("aaa");
-                checkRegister();
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
             }
         });
         Button loginButton = (Button)findViewById(R.id.button_login);
@@ -69,22 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void checkRegister(){
-        //add
-        /*String username = editText_username.getText().toString();
-        String password = editText_password.getText().toString();
-        userList.add(new User(username, password));*/
-        RelativeLayout layout = (RelativeLayout)findViewById(R.id.register_contextlayout);
-        EditText editText_username_register = (EditText) findViewById(R.id.username_textField_register);
-        EditText editText_password_register = (EditText) findViewById(R.id.password_textField_register);
-        if(editText_username_register.getText().toString().equals("") || editText_password_register.getText().toString().equals("")){
-            Snackbar.make(layout, R.string.login_snackbarLabel, Snackbar.LENGTH_SHORT).show();
-        } else {
-            String username = editText_username_register.getText().toString();
-            String password = editText_password_register.getText().toString();
-            userList.add(new User(username, password));
-        }
-    }
+
 
     public boolean wrongUser(String name, String pwd){
         boolean result = false;
