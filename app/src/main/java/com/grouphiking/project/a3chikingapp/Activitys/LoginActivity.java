@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        userList.add(new User("testUser","test"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
         getSupportActionBar().hide();
@@ -51,7 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.login_contextlayout);
         EditText editText_username = (EditText) findViewById(R.id.username_textField);
         EditText editText_password = (EditText) findViewById(R.id.password_textField);
-        if(editText_username.getText().toString().equals("") || editText_password.getText().toString().equals("")){
+        if(editText_username.getText().toString().equals("") || editText_password.getText().toString().equals("")
+                || wrongUser(editText_username.getText().toString(), editText_password.getText().toString())){
             Snackbar.make(layout, R.string.login_snackbarLabel, Snackbar.LENGTH_SHORT).show();
         } else {
             boolean b = false;
@@ -82,5 +84,17 @@ public class LoginActivity extends AppCompatActivity {
             String password = editText_password_register.getText().toString();
             userList.add(new User(username, password));
         }
+    }
+
+    public boolean wrongUser(String name, String pwd){
+        boolean result = false;
+        for(User u : userList){
+            if(name.equals(u.getUsername()) && pwd.equals(u.getPassword())){
+                result = false;
+            } else{
+                result = true;
+            }
+        }
+        return result;
     }
 }
