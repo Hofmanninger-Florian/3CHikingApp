@@ -3,6 +3,7 @@ package com.grouphiking.project.a3chikingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-        //Button loginButton = (Button)setContentView(R.id.button_login);
+        Button loginButton = (Button)findViewById(R.id.button_login);
+
     }
 
     public void onClickListenerSettings1(View view) {
