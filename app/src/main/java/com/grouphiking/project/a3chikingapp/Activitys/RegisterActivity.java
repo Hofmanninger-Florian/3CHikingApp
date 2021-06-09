@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Data.User;
@@ -20,6 +21,14 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_layout);
         Button registerButton = (Button)findViewById(R.id.button_register);
+        TextView textView = (TextView)findViewById(R.id.already_have_account);
+        textView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
