@@ -35,7 +35,7 @@
         />
 
     <EditText
-        colo
+
         android:id="@+id/password_textField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,6 +64,8 @@
 
         />
     <Button
+        android:focusable="true"
+        android:clickable="true"
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
