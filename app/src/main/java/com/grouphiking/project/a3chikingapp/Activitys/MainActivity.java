@@ -10,13 +10,17 @@ import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grouphiking.project.a3chikingapp.Adapters.Main_listAdapter;
+import com.grouphiking.project.a3chikingapp.Add_Dialog_frag;
 import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
 import com.grouphiking.project.a3chikingapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Views
+    //Main Activity Variables
+    private ImageButton buttonNewDialog;
     private ImageButton buttonSettings;
+
+    //Views
     private ListView list;
     private FloatingActionButton floatingButton;
 
@@ -31,10 +35,16 @@ public class MainActivity extends AppCompatActivity {
         setViews();
         setListeners();
         setAdapters();
+
+
+
+
     }
 
     private void setViews() {
         buttonSettings = (ImageButton)findViewById(R.id.imageButtonSettings);
+        buttonNewDialog = (ImageButton)findViewById(R.id.main_addnew_button);
+
         list = (ListView)findViewById(R.id.listView_recent);
         floatingButton = (FloatingActionButton)findViewById(R.id.main_addnew_button);
     }
@@ -47,12 +57,27 @@ public class MainActivity extends AppCompatActivity {
                 startSettings();
             }
         });
+
+        buttonNewDialog.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                OpenAddDialog();
+            }
+        });
+
     }
+
 
     //Settings start
     private void startSettings(){
         Intent settings = new Intent(this, SettingsActivity.class);
         startActivity(settings);
+    }
+
+    //Go To Add Dialog
+    private void OpenAddDialog(){
+        Intent Add_Dialog = new Intent(this, Add_Dialog_frag.class);
+        startActivity(Add_Dialog);
     }
 
     private void setAdapters(){
