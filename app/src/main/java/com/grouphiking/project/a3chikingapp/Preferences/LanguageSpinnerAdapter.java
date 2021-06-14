@@ -50,4 +50,8 @@ public class LanguageSpinnerAdapter extends ArrayAdapter<String> {
         }
         return  view;
     }
+
+    public class ViewHolder{
+        private TextView m_view;
+    }
 }

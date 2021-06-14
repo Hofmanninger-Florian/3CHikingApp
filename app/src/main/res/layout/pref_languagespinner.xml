@@ -11,5 +11,7 @@
         android:background="@drawable/pref_spinner_background"
         android:minWidth="160dp"
         android:paddingVertical="5dp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:focusable="true"
+        android:spinnerMode="dropdown"/>
 </LinearLayout>
