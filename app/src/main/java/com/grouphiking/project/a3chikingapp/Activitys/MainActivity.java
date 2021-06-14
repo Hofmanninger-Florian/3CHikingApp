@@ -76,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Go To Add Dialog
     private void OpenAddDialog(){
-        Intent Add_Dialog = new Intent(this, Add_Dialog_frag.class);
-        startActivity(Add_Dialog);
+        Add_Dialog_frag fragment = new Add_Dialog_frag();
+        fragment.show(getSupportFragmentManager(),
+                fragment.getTag());
+
     }
 
     private void setAdapters(){

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/roundstyle"
+    android:background="@android:color/transparent"
     android:elevation="10dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/roundstyle"
         android:orientation="vertical">
 
         <TextView
@@ -107,9 +108,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/DialogTextEditStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="103dp"
                 android:layout_marginTop="46dp"
-                android:layout_marginBottom="10dp"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
@@ -120,8 +120,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_edit_tripDesc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
+                    android:layout_height="86dp"
+                    android:layout_marginHorizontal="30dp"
                     android:fontFamily="@font/fredoka_one"
                     android:hint="Description"
                     android:includeFontPadding="true"
@@ -137,18 +137,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_button_add_background_ripple"
                 android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/bg_button_add_background_ripple">
+                android:focusable="true">
+
                 <Button
                     android:id="@+id/add_notbutton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#00FFFDFB"
                     android:clickable="false"
                     android:fontFamily="@font/fredoka_one"
-                    android:text="Button"
-                    android:background="#00FFFDFB"/>
+                    android:text="Add"
+                    app:rippleColor="@color/Brown_Light_Dark" />
             </FrameLayout>
         </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
+</LinearLayout>
