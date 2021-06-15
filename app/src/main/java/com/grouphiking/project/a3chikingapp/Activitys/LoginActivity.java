@@ -3,6 +3,7 @@ package com.grouphiking.project.a3chikingapp.Activitys;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,18 +25,21 @@ public class LoginActivity extends AppCompatActivity {
 
     public static ArrayList<User> userList = new ArrayList<User>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         userList.add(new User("testUser","test"));
         super.onCreate(savedInstanceState);
+        Constants.setTransition(this);
         setContentView(R.layout.login_layout);
         TextView textView = (TextView) findViewById(R.id.no_account);
+        LoginActivity act = this;
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("aaa");
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intent);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(act).toBundle());
             }
         });
         Button loginButton = (Button)findViewById(R.id.button_login);

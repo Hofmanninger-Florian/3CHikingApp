@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.R;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -20,7 +21,7 @@ public class MapActionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Constants.setTransition(this);
         Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
         setContentView(R.layout.activity_map);
 
