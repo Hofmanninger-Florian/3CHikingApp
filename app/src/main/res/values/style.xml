@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DialogTextEditStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/Brown_Light</item>
+        <item name="paddingStart">5dp</item>
+        <item name="paddingEnd">5dp</item>
+        <item name="boxBackgroundColor">@color/Brown_Light_Dark</item>
+        <item name="boxStrokeColor">@color/dialog_boxstroke_et</item>
+    </style>
+
+    <style name="Anim">
+        <item name="android:activityOpenEnterAnimation">@anim/openanimation_general</item>
+        <item name="android:activityOpenExitAnimation">@anim/exitanimation_general</item>
+        <item name="android:activityCloseEnterAnimation">@anim/openanimation_general</item>
+        <item name="android:activityCloseExitAnimation">@anim/exitanimation_general</item>
+    </style>
+</resources>

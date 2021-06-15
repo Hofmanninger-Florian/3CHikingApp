@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_contextlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/handybackround">
+
+
+    <TextView
+        android:id="@+id/login_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Login"
+        android:textColor="#736759"
+        android:textSize="50dp" />
+
+    <EditText
+        android:id="@+id/username_textField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:ems="10"
+        android:fontFamily="@font/fredoka_one"
+        android:hint="username"
+        android:inputType="textPersonName"
+        android:textColor="#736759"
+        android:textColorHint="#736759"
+        android:textSize="20dp" />
+
+    <EditText
+
+        android:id="@+id/password_textField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="270dp"
+        android:ems="10"
+        android:fontFamily="@font/fredoka_one"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:textColor="#736759"
+        android:textColorHint="#736759"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/no_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="320dp"
+        android:fontFamily="@font/fredoka_one"
+        android:text="no account? register."
+        android:textColor="#736759"
+        android:textSize="15dp"
+        tools:ignore="DuplicateIds"
+        android:focusable="true"
+        android:clickable="true"
+        />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="340dp"
+        android:backgroundTint="#736759"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/fredoka_one"
+        android:text="login."
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>
+
+
+

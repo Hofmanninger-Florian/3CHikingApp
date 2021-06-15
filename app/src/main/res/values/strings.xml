@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">3CHikingApp</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
+
+    <string name="SwitchKey" translatable="false">SwitchKey</string>
+    <string name="SpinnerKey" translatable="false">Spinnerkey</string>
+
+
+    <!--Register-->
+    <string name="pw">password</string>
+
+    <!-- Color for the Main Backgrounds-->
+    <color name="brown1">#81E3A6</color>
+    <color name="brown2">#DED5C4</color>
+    <color name="brown3">#1DB372</color>
+    <color name="brown4">#736759</color>
+    <string name="recent">Recent Trips</string>
+    <string name="sprache_German">German</string>
+    <string name="sprache_English">English</string>
+    <string name="add_newtrip">New Trip</string>
+    <string name="add_hint_from">From</string>
+    <string name="login_snackbarLabel">Invalid Password or Username</string>
+    <string name="title_activity_Main" translatable="false">Main</string>
+    <string name="register_snackbarLabel">Wrong password</string>
+    <string name="login_snackbarLabel_noUser">User not yet created</string>
 </resources>

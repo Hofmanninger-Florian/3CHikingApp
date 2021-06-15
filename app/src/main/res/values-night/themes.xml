@@ -1,14 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.3CHikingApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.3CHikingApp" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/Dark_main</item>
+        <item name="colorPrimaryVariant">@color/Dark_main_var</item>
+        <item name="colorOnPrimary">@color/Green_Dark</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/Button_Color_Dark</item>
+        <item name="colorSecondaryVariant">@color/Brown_Light_Dark</item>
+        <item name="colorOnSecondary">@color/Yellow_Brown_Dark</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

@@ -1,0 +1,18 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:title="Settings"
+        app:icon="@drawable/ic_action_settings1">
+
+        <com.grouphiking.project.a3chikingapp.Preferences.LanguageSpinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:key="@string/SpinnerKey"
+            android:title="Language" />
+        <com.grouphiking.project.a3chikingapp.Preferences.daynightswitch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:key="@string/SwitchKey"
+            android:title="Mode" />
+    </PreferenceCategory>
+</PreferenceScreen>

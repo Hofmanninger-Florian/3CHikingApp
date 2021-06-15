@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">3CHikingApp</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="messages_header">Nachricht</string>
+    <string name="sync_header">Syncronisieren</string>
+    <string name="signature_title">Deine Unterschrift</string>
+    <string name="pw">passwort</string>
+    <string name="recent">Trip Verlauf</string>
+    <string name="sprache_German">Deutsch</string>
+    <string name="sprache_English">Englisch</string>
+    <string name="add_newtrip">Neuer Trip</string>
+    <string name="add_hint_from">Von</string>
+    <string name="login_snackbarLabel">Falsches Passwort oder Username</string>
+    <string name="register_snackbarLabel">Passwort stimmt nicht überein</string>
+    <string name="login_snackbarLabel_noUser">Benutzer würde noch nicht erstellt</string>
+</resources>
