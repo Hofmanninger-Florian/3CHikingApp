@@ -1,5 +1,6 @@
 package com.grouphiking.project.a3chikingapp;
 
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.FrameLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
+import com.grouphiking.project.a3chikingapp.Activitys.MapActionActivity;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
 
 import org.w3c.dom.Text;
@@ -103,6 +105,14 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
             t = new Trip(FROM, TO, mt_tripName.getText().toString(), mt_description.getText().toString());
             //Store internal and on Firebase
         }
+        launchNewAct();
+
+    }
+
+    private void launchNewAct(){
+        this.dismiss();
+        Intent actionAct = new Intent(getActivity().getApplicationContext(), MapActionActivity.class);
+        startActivity(actionAct);
     }
 
     public void setLayout(View layout) {

@@ -20,4 +20,7 @@
     <color name="Button_Color_Dark">#504538</color>
     <color name="Brown_Light_Dark">#B7A99A</color>
     <color name="Yellow_Brown_Dark">#AF8F37</color>
+    <!--Day/Night_Button-->
+    <color name="Night">#2F4858</color>
+    <color name="Day">#CAA407</color>
 </resources>

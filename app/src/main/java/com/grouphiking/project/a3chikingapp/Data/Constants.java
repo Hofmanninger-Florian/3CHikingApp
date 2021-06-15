@@ -12,4 +12,7 @@ public class Constants {
     public static void setLoggedIn(boolean loggedIn) {
         Constants.loggedIn = loggedIn;
     }
+
+    //Set to false for day and true for night
+    public static final boolean DEF_MODE = false;
 }

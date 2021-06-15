@@ -1,10 +1,10 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.PersistableBundle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.grouphiking.project.a3chikingapp.R;
 import com.mapbox.mapboxsdk.Mapbox;
