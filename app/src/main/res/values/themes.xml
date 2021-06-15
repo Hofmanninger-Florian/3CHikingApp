@@ -14,4 +14,11 @@
         <!-- Customize your theme here. -->
         <item name="android:windowAnimationStyle">@style/Anim</item>
     </style>
+
+    <style name="Anim" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/openanimation_left</item>
+        <item name="android:activityOpenExitAnimation">@anim/exitanimation_general</item>
+        <item name="android:activityCloseEnterAnimation">@anim/openanimation_general</item>
+        <item name="android:activityCloseExitAnimation">@anim/exitanimation_left</item>
+    </style>
 </resources>

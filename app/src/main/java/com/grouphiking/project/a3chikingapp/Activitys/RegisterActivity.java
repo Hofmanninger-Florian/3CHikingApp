@@ -29,8 +29,8 @@ public class RegisterActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                onBackPressed();
+                finish();
             }
         });
         registerButton.setOnClickListener(new View.OnClickListener() {

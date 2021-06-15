@@ -8,10 +8,11 @@
         <item name="boxStrokeColor">@color/dialog_boxstroke_et</item>
     </style>
 
-    <style name="Anim">
-        <item name="android:activityOpenEnterAnimation">@anim/openanimation_general</item>
-        <item name="android:activityOpenExitAnimation">@anim/exitanimation_general</item>
-        <item name="android:activityCloseEnterAnimation">@anim/openanimation_general</item>
-        <item name="android:activityCloseExitAnimation">@anim/exitanimation_general</item>
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>
