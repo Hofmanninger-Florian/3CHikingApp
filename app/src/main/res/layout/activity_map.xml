@@ -32,7 +32,6 @@
         />
     </androidx.cardview.widget.CardView>
 
-
     <ImageButton
         android:id="@+id/imageButtonSettings"
         android:layout_width="wrap_content"
