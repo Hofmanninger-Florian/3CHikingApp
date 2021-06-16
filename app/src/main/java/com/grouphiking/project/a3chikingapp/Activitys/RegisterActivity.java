@@ -1,5 +1,6 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -7,6 +8,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnticipateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -23,9 +25,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Constants.setTransition(this);
+        Constants.setTransition(this, new AnticipateInterpolator());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_layout);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         supportStartPostponedEnterTransition();
         Button registerButton = (Button)findViewById(R.id.button_register);
         TextView textView = (TextView)findViewById(R.id.already_have_account);
@@ -35,7 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(act).toBundle());
-                supportFinishAfterTransition();
             }
         });
         registerButton.setOnClickListener(new View.OnClickListener() {

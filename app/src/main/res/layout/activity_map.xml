@@ -38,9 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="370dp"
+        android:background="@drawable/ic_action_settings1"
+        android:contentDescription="Button that leads to the settings"
         android:onClick="onClickListenerSettings1"
-        app:srcCompat="@drawable/ic_action_settings1"
-        android:contentDescription="Button that leads to the settings" />
+        app:srcCompat="@drawable/ic_action_settings1" />
 <!--
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"

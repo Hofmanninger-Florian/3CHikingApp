@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    android:elevation="10dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -39,98 +38,97 @@
                 style="@style/DialogTextEditStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="35dp"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeWidthFocused="4dp">
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_edit_fromtrip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
                     android:fontFamily="@font/fredoka_one"
                     android:hint="Trip-Name"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/Brown_Light_Dark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/DialogTextEditStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="46dp"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeWidthFocused="4dp">
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_edit_tripname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
                     android:fontFamily="@font/fredoka_one"
                     android:hint="To"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/Brown_Light" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/DialogTextEditStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="46dp"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeWidthFocused="4dp">
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_edit_tripto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
                     android:fontFamily="@font/fredoka_one"
                     android:hint="From"
                     android:includeFontPadding="true"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/Brown_Light" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/DialogTextEditStyle"
-                android:layout_width="match_parent"
-                android:layout_height="103dp"
-                android:layout_marginTop="46dp"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeWidthFocused="4dp">
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/bg_button_add_dialog"
+                android:backgroundTint="@color/Brown_Light_Dark"
+                android:elevation="5dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_edit_tripDesc"
-                    android:layout_width="match_parent"
-                    android:layout_height="86dp"
-                    android:layout_marginHorizontal="30dp"
+                <RadioButton
+                    android:id="@+id/add_radioBike"
+                    style="@style/Widget.App.RadioButton"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/fredoka_one"
-                    android:hint="Description"
-                    android:includeFontPadding="true"
-                    android:lines="3"
-                    android:maxLines="4"
-                    android:minLines="3"
-                    android:singleLine="false" />
+                    android:text="@string/add_Bike"
+                    android:textSize="16sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    style="@style/Widget.App.RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/fredoka_one"
+                    android:text="@string/add_Hike"
+                    android:textSize="16sp" />
+
+            </RadioGroup>
 
             <FrameLayout
                 android:id="@+id/add_button_ok"
@@ -138,6 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/bg_button_add_background_ripple"
                 android:clickable="true"
                 android:focusable="true">
@@ -150,7 +149,9 @@
                     android:clickable="false"
                     android:fontFamily="@font/fredoka_one"
                     android:text="Add"
+                    app:icon="@drawable/ic_baseline_add_24"
                     app:rippleColor="@color/Brown_Light_Dark" />
+
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>

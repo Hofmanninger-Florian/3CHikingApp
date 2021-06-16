@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <!--Main-Colors-->
     <color name="Green_Dark">#4B8654</color>
+    <color name="Light">#EEEEEE</color>
     <color name="Brown_Light">#DED5C4</color>
     <color name="UI_Back">#AEEBCB</color>
     <color name="Button_Color">#736759</color>

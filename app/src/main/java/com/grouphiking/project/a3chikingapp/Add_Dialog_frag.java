@@ -29,7 +29,6 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private TextInputEditText mt_tripName;
     private TextInputEditText mt_fromPlace;
     private TextInputEditText mt_toPlace;
-    private TextInputEditText mt_description;
     private FrameLayout mt_add_Button;
 
     //Values
@@ -60,7 +59,6 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
             mt_tripName = (TextInputEditText) layout.findViewById(R.id.add_edit_tripname);
             mt_fromPlace = (TextInputEditText) layout.findViewById(R.id.add_edit_fromtrip);
             mt_toPlace = (TextInputEditText) layout.findViewById(R.id.add_edit_tripto);
-            mt_description = (TextInputEditText) layout.findViewById(R.id.add_edit_tripDesc);
             return true;
         }else{
             throw new NullPointerException("View not loaded");
@@ -102,7 +100,7 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private void add(boolean exe){
         Trip t = null;
         if(exe){
-            t = new Trip(FROM, TO, mt_tripName.getText().toString(), mt_description.getText().toString());
+            t = new Trip(FROM, TO, mt_tripName.getText().toString());
             //Store internal and on Firebase
         }
         launchNewAct();

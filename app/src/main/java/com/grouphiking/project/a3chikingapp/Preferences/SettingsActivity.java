@@ -1,14 +1,20 @@
 package com.grouphiking.project.a3chikingapp.Preferences;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.app.ActivityOptions;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -26,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Constants.setTransition(this);
+        Constants.setTransition(this, new LinearInterpolator());
         setContentView(R.layout.settings_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
@@ -37,7 +43,17 @@ public class SettingsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {

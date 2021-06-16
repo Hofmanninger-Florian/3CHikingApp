@@ -2,8 +2,10 @@ package com.grouphiking.project.a3chikingapp.Activitys;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.animation.LinearInterpolator;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.grouphiking.project.a3chikingapp.Data.Constants;
@@ -21,10 +23,11 @@ public class MapActionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Constants.setTransition(this);
+        Constants.setTransition(this, new LinearInterpolator());
         Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
         setContentView(R.layout.activity_map);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {

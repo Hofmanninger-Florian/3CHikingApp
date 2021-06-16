@@ -14,4 +14,6 @@
     <string name="login_snackbarLabel">Falsches Passwort oder Username</string>
     <string name="register_snackbarLabel">Passwort stimmt nicht überein</string>
     <string name="login_snackbarLabel_noUser">Benutzer würde noch nicht erstellt</string>
+    <string name="add_Bike">Fahrrad</string>
+    <string name="add_Hike">Wandern</string>
 </resources>

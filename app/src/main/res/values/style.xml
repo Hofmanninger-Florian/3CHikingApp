@@ -2,9 +2,11 @@
 <resources>
     <style name="DialogTextEditStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:textColorHint">@color/Button_Color</item>
-        <item name="paddingEnd">5dp</item>
-        <item name="boxBackgroundColor">@color/Brown_Light_Dark</item>
         <item name="boxStrokeColor">@color/dialog_boxstroke_et</item>
+        <item name="boxBackgroundColor">@color/color_textinputs_add</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">4dp</item>
+        <item name="android:textColor">@color/Button_Color</item>
     </style>
 
     <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
@@ -14,4 +16,21 @@
     <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="Widget.MyApp.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="behavior_skipCollapsed">true</item>
+        <item name="behavior_fitToContents">true</item>
+        <item name="behavior_peekHeight">1000dp</item>
+        <item name="behavior_hideable">true</item>
+    </style>
+
+    <style name="Theme.MyApp.BottomSheetDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.MyApp.BottomSheet.Modal</item>
+    </style>
+
+    <style name="Widget.App.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="buttonTint">@color/color_radio</item>
+        <item name="android:textColor">@color/Button_Color</item>
+    </style>
+
 </resources>

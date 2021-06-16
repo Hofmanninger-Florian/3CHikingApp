@@ -1,5 +1,6 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -7,6 +8,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -30,8 +32,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         userList.add(new User("testUser","test"));
         super.onCreate(savedInstanceState);
-        Constants.setTransition(this);
+        Constants.setTransition(this, new AccelerateInterpolator());
         setContentView(R.layout.login_layout);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         TextView textView = (TextView) findViewById(R.id.no_account);
         LoginActivity act = this;
         textView.setOnClickListener(new View.OnClickListener() {

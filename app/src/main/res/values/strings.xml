@@ -39,7 +39,10 @@
     <string name="register_snackbarLabel">Wrong password</string>
     <string name="login_snackbarLabel_noUser">User not yet created</string>
 
+
     <!--Mapbox Stuff-->
-    <string name="mapbox_access_token">pk.eyJ1IjoiZmxvcmlhbi1ob2ZtYW5uaW5nZXIiLCJhIjoiY2tweTV2eHJ0MWQ4bzJxcDk0eWxxb3Q1OSJ9.FHsWoC6Ik2VLIJhLPfeExg</string>
+    <string name="mapbox_access_token" translatable="false">pk.eyJ1IjoiZmxvcmlhbi1ob2ZtYW5uaW5nZXIiLCJhIjoiY2tweTV2eHJ0MWQ4bzJxcDk0eWxxb3Q1OSJ9.FHsWoC6Ik2VLIJhLPfeExg</string>
+    <string name="add_Bike">Bike</string>
+    <string name="add_Hike">Hike</string>
 
 </resources>
