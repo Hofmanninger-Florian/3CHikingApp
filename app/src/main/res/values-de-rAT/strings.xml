@@ -16,4 +16,5 @@
     <string name="login_snackbarLabel_noUser">Benutzer würde noch nicht erstellt</string>
     <string name="add_Bike">Fahrrad</string>
     <string name="add_Hike">Wandern</string>
+    <string name="location_explain">Wir wollen ihre Position bestimmen um ihre App-Erlebnis zu besser</string>
 </resources>

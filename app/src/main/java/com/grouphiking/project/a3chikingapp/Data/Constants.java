@@ -43,4 +43,9 @@ public class Constants {
         activity.getWindow().setAllowEnterTransitionOverlap(true);
         activity.getWindow().setAllowReturnTransitionOverlap(true);
     }
+
+    //For Location
+    public static final int LOCATION_REQUEST = "Location".hashCode();
+    public static final int TIME_REQUEST_UPDATE = 5000;
+    public static final int DIST_REQUEST_UPDATE = 50;
 }

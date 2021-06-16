@@ -1,16 +1,28 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
+import android.view.animation.LinearInterpolator;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.PermissionChecker;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.R;
 import com.mapbox.android.core.location.LocationEngine;
@@ -20,6 +32,8 @@ import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
+import com.mapbox.mapboxsdk.location.modes.CameraMode;
+import com.mapbox.mapboxsdk.location.modes.RenderMode;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -28,14 +42,15 @@ import com.mapbox.mapboxsdk.maps.Style;
 import java.security.Permission;
 import java.util.List;
 
-public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, PermissionsListener {
+public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback{
 
     private MapView mapView;
     private MapboxMap map;
-    private PermissionsManager permissionsManager;
-    private LocationEngine locationEngine;
+    private LocationManager manager;
+    private LocationListener listener;
     private LocationComponent locationComponent;
     private Location originLocation;
+    private RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,95 +60,64 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         setContentView(R.layout.activity_map);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        layout = (RelativeLayout)findViewById(R.id.layout_Map);
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
-                mapboxMap.setStyle(Style.OUTDOORS, new Style.OnStyleLoaded(){
-                    public void onStyleLoaded(@NonNull Style style){
-
+                mapboxMap.setStyle(Style.OUTDOORS, new Style.OnStyleLoaded() {
+                    public void onStyleLoaded(@NonNull Style style) {
+                        enableLocationComponent(style);
                     }
                 });
+                map = mapboxMap;
             }
         });
 
     }
 
-
-/*
-    @Override
-    public void onMapReady(@NonNull final MapboxMap mapboxMap) {
-        map = mapboxMap;
-        enableLocation();
-    }
-
-
-
-    private void enableLocation(){
-        if(permissionsManager.areLocationPermissionsGranted(this)){
-            initializeLocationEngine();
-            initializeLocationLayer();
-        }
-        else{
-            permissionsManager = new PermissionsManager(this);
-            permissionsManager.requestLocationPermissions(this);
-        }
-    }
-    private void enableLocationComponent(@NonNull Style loadedMapStyle){
+    private void enableLocationComponent(@NonNull Style loadedMapStyle) {
         //checking if permissions are enabled --> if not request them
-        if(PermissionsManager.areLocationPermissionsGranted(this)){
-            LocationComponent locationComponent = map.getLocationComponent();
-
-            LocationComponentActivationOptions locationComponentActivationOptions = LocationComponentActivationOptions.builder(this, loadedMapStyle).useDefaultLocationEngine(false).build();
-
-            locationComponent.activateLocationComponent(location);
-
-
-
-        }
+        locationComponent = map.getLocationComponent();
+        locationComponent.activateLocationComponent(LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
+           if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+               System.out.println("No");
+               requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, Constants.LOCATION_REQUEST);
+           }else{
+               setLocationTracking();
+           }
     }
 
 
-
-    @Override
-    public void onLocationChanged(@NonNull Location location) {
-
-    }
-
-    @Override
-    public void onExplanationNeeded(List<String> permissionsToExplain) {
-        //present dialog why Permision should be granted
-        Toast.makeText(this, "We need your Permission, so we can show your Location on the Map!", Toast.LENGTH_SHORT).show();
-    }
-
-    //Have to work over it!!!!!!!!!
-    @Override
-    public void onPermissionResult(boolean granted) {
-        if(granted){
-            if(map.getStyle() != null){
-                enableLocation();
-            }
-        } else{
-            Toast.makeText(this, "We need your Permission, so we can show your Location on the Map!", Toast.LENGTH_LONG).show();
-            finish();
-        }
-    }
-
+    @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == Constants.LOCATION_REQUEST){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                setLocationTracking();
+            }else{
+                Snackbar.make(layout, "You Diened the Permission", BaseTransientBottomBar.LENGTH_LONG);
+            }
+        }
+
     }
 
-    private void initializeLocationEngine(){
-       // locationEngine = new LocationEngineProvider(this);
-
+    @SuppressLint("MissingPermission")
+    private void setLocationTracking(){
+        listener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                Log.d("Location", "Location Changed");
+            }
+        };
+        locationComponent.setLocationComponentEnabled(true);
+        locationComponent.setCameraMode(CameraMode.TRACKING);
+        locationComponent.setRenderMode(RenderMode.COMPASS);
+        manager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Constants.TIME_REQUEST_UPDATE, Constants.DIST_REQUEST_UPDATE, listener);
     }
-
-    private void initializeLocationLayer(){
-
-    }
-*/
 
     //------------------------- "on..." Standart Methods --------------------------------------
     protected void onStart(){
@@ -145,6 +129,13 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     protected void onResume() {
         super.onResume();
         mapView.onResume();
+        if(manager != null) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Constants.TIME_REQUEST_UPDATE, Constants.DIST_REQUEST_UPDATE, listener);
+            } else {
+                enableLocationComponent(map.getStyle());
+            }
+        }
     }
 
     @Override
@@ -177,10 +168,8 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         mapView.onDestroy();
     }
 
-
-
-
-
-
+    @Override
+    public void onMapReady(@NonNull MapboxMap mapboxMap) {
+    }
 
 }

@@ -38,7 +38,7 @@
     <string name="title_activity_Main" translatable="false">Main</string>
     <string name="register_snackbarLabel">Wrong password</string>
     <string name="login_snackbarLabel_noUser">User not yet created</string>
-
+    <string name="location_explain">We want to get your location in order to make your App-Experience much better</string>
 
     <!--Mapbox Stuff-->
     <string name="mapbox_access_token" translatable="false">pk.eyJ1IjoiZmxvcmlhbi1ob2ZtYW5uaW5nZXIiLCJhIjoiY2tweTV2eHJ0MWQ4bzJxcDk0eWxxb3Q1OSJ9.FHsWoC6Ik2VLIJhLPfeExg</string>
