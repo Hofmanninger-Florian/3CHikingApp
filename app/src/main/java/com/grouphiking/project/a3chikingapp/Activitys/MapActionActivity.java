@@ -1,6 +1,7 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
 import android.app.Activity;
+import android.graphics.Point;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -19,17 +20,19 @@ import com.mapbox.android.core.location.LocationEngineProvider;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.navigation.ui.route.NavigationMapRoute;
 
 import java.security.Permission;
 import java.util.List;
 
-public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, PermissionsListener {
+public class MapActionActivity extends AppCompatActivity /*implements OnMapReadyCallback, LocationListener, PermissionsListener */{
 
     private MapView mapView;
     private MapboxMap map;
@@ -37,6 +40,8 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     private LocationEngine locationEngine;
     private LocationComponent locationComponent;
     private Location originLocation;
+    private NavigationMapRoute navigationMapRoute;
+    private static final String TAG = "MainMapActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +61,15 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                     }
                 });
             }
+
         });
 
     }
+//
+  //  private void getRoute(Point point., Point destination){
+//
+    //}
+
 
 
 /*
