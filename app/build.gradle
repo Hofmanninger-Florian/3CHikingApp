@@ -45,5 +45,5 @@ dependencies {
 
     //Mapbox Stuff
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1'
-
+    implementation "com.mapbox.navigation:ui:1.5.1"
 }
