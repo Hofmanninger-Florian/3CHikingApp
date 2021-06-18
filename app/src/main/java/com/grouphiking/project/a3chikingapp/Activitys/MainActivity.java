@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grouphiking.project.a3chikingapp.Adapters.Main_listAdapter;
 import com.grouphiking.project.a3chikingapp.Add_Dialog_frag;
@@ -88,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
         Add_Dialog_frag fragment = new Add_Dialog_frag();
         fragment.show(getSupportFragmentManager(),
                 fragment.getTag());
-
     }
 
     private void setAdapters(){

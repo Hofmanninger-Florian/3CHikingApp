@@ -17,4 +17,7 @@
     <string name="add_Bike">Fahrrad</string>
     <string name="add_Hike">Wandern</string>
     <string name="location_explain">Wir wollen ihre Position bestimmen um ihre App-Erlebnis zu besser</string>
+    <string name="add_hint_to">Nach</string>
+    <string name="add_hint_tripname">Name</string>
+    <string name="add_addButton">OK</string>
 </resources>

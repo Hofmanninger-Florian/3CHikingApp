@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_outerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
@@ -24,7 +25,7 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="New Trip"
+            android:text="@string/add_newtrip"
             android:textColor="@color/white"
             android:textSize="40sp" />
 
@@ -50,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fredoka_one"
-                    android:hint="Trip-Name"
+                    android:hint="@string/add_hint_tripname"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/Brown_Light_Dark" />
@@ -72,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fredoka_one"
-                    android:hint="To"
+                    android:hint="@string/add_hint_to"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/Brown_Light" />
@@ -94,8 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fredoka_one"
-                    android:hint="From"
-                    android:includeFontPadding="true"
+                    android:hint="@string/add_hint_from"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/Brown_Light" />
@@ -148,7 +148,7 @@
                     android:background="#00FFFDFB"
                     android:clickable="false"
                     android:fontFamily="@font/fredoka_one"
-                    android:text="Add"
+                    android:text="@string/add_addButton"
                     app:icon="@drawable/ic_baseline_add_24"
                     app:rippleColor="@color/Brown_Light_Dark" />
 
