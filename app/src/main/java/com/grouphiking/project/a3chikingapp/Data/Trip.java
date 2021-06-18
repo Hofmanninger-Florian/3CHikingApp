@@ -4,6 +4,8 @@ import android.location.Location;
 
 import androidx.annotation.NonNull;
 
+import com.mapbox.geojson.Point;
+
 public class Trip {
 
     //Location

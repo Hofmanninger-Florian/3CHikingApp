@@ -100,7 +100,7 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private void add(boolean exe){
         Trip t = null;
         if(exe){
-            t = new Trip(FROM, TO, mt_tripName.getText().toString());
+            //t = new Trip(FROM, TO, mt_tripName.getText().toString());
             //Store internal and on Firebase
         }
         launchNewAct();
