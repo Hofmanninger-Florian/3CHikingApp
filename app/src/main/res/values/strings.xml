@@ -44,6 +44,8 @@
     <string name="mapbox_access_token" translatable="false">pk.eyJ1IjoiZmxvcmlhbi1ob2ZtYW5uaW5nZXIiLCJhIjoiY2tweTV2eHJ0MWQ4bzJxcDk0eWxxb3Q1OSJ9.FHsWoC6Ik2VLIJhLPfeExg</string>
     <string name="add_Bike">Bike</string>
     <string name="add_Hike">Hike</string>
+    <string name="router_can_not_be_displayed" translatable="false">The Route can\'t be Displayed. Something went wrong! :/</string>
+    <string name="route_call_failure" translatable="false">"he Route call failed! :(</string>
     <string name="add_hint_to">To</string>
     <string name="add_hint_tripname">Trip-Name</string>
     <string name="add_addButton">Add</string>
