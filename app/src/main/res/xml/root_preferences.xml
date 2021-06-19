@@ -5,10 +5,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:key="@string/SpinnerKey"
-        android:title="Language" />
+        android:title="@string/prefs_title_language" />
     <com.grouphiking.project.a3chikingapp.Preferences.daynightswitch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:key="@string/SwitchKey"
-        android:title="Mode" />
+        android:title="@string/prefs_title_Mode" />
 </PreferenceScreen>

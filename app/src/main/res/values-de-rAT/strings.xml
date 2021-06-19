@@ -5,8 +5,6 @@
     <string name="messages_header">Nachricht</string>
     <string name="sync_header">Syncronisieren</string>
     <string name="signature_title">Deine Unterschrift</string>
-    <string name="pw">passwort</string>
-    <string name="recent">Trip Verlauf</string>
     <string name="sprache_German">Deutsch</string>
     <string name="sprache_English">Englisch</string>
     <string name="add_newtrip">Neuer Trip</string>
@@ -20,4 +18,18 @@
     <string name="add_hint_to">Nach</string>
     <string name="add_hint_tripname">Name</string>
     <string name="add_addButton">OK</string>
+    <string name="main_settingsBut_desc">Knopf der zu den Einstellungen führt</string>
+    <string name="main_textview_Recent">Letzte Trips</string>
+    <string name="map_tripText">Dein Trip:</string>
+    <string name="map_distance">Distanz:</string>
+    <string name="map_time">Zeit:</string>
+    <string name="map_altimeter">Höchenmeter:</string>
+    <string name="map_Type">Typ:</string>
+    <string name="listItem_defaultText">Dein Trip</string>
+    <string name="Register_Login_pw">passwort</string>
+    <string name="login_toRegister">noch keinen Account? register.</string>
+    <string name="register_pw_again">passwort wiederholen</string>
+    <string name="register_toLogin">Du hast schon einen Account? login.</string>
+    <string name="prefs_title_language">Sprache</string>
+    <string name="prefs_title_Mode">Modus</string>
 </resources>

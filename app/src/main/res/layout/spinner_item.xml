@@ -15,7 +15,7 @@
         android:shadowDx="3"
         android:shadowDy="3"
         android:shadowRadius="4"
-        android:text="Default Language"
+        android:text="@string/languageSpinner_Default"
         android:textAppearance="?android:attr/textAppearanceListItem"
         android:textSize="18sp" />
 </FrameLayout>
