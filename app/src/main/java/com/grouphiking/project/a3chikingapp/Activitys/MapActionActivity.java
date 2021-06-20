@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -25,7 +26,6 @@ import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.R;
 import com.mapbox.api.directions.v5.DirectionsCriteria;
-import com.mapbox.api.directions.v5.MapboxDirections;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
 import com.mapbox.geojson.Feature;
@@ -48,13 +48,6 @@ import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.utils.BitmapUtils;
-import com.mapbox.navigation.core.MapboxNavigation;
-import com.mapbox.navigation.ui.route.NavigationMapRoute;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import timber.log.Timber;
 
 import static android.graphics.Color.parseColor;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.color;
@@ -74,7 +67,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineGradient;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineJoin;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineWidth;
 
-public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback{
+public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private MapView mapView;
     private MapboxMap map;
@@ -88,9 +81,6 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     private DirectionsRoute currentRoute;
     private Trip trip;
     private Feature directionsRouteFeature;
-    private NavigationMapRoute navigationMapRoute;
-    private MapboxNavigation navigation;
-    private MapboxDirections client;
     private static final String ROUTE_LINE_SOURCE_ID = "route-source-id";
     private static final String ICON_SOURCE_ID = "icon-source-id";
     private static final String ROUTE_LAYER_ID = "route-layer-id";
@@ -118,12 +108,11 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                 MapActionActivity.this.map = mapboxMap;
                 mapboxMap.setStyle(new Style.Builder().fromUri(Style.OUTDOORS).withImage(ORIGIN_ICON_ID, BitmapUtils.getBitmapFromDrawable(getResources().getDrawable(R.drawable.blue_marker_background))).withImage(DESTINATION_ICON_ID, BitmapUtils.getBitmapFromDrawable(getResources()
                                 .getDrawable(R.drawable.red_marker_background))),
-                        new Style.OnStyleLoaded(){
-                            public void onStyleLoaded(@NonNull Style style){
+                        new Style.OnStyleLoaded() {
+                            public void onStyleLoaded(@NonNull Style style) {
                                 initSources(style);
                                 initLayers(style);
                                 enableLocationComponent(style);
-                                getRoute(mapboxMap);
                             }
                         });
                 map = mapboxMap;
@@ -135,21 +124,20 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     //Mapbox Navigation
 
 
-
-    private void initSources(@NonNull Style loadedMapStyle){
+    private void initSources(@NonNull Style loadedMapStyle) {
         loadedMapStyle.addSource(new GeoJsonSource(ROUTE_LINE_SOURCE_ID, new GeoJsonOptions().withLineMetrics(true)));
         loadedMapStyle.addSource(new GeoJsonSource(ICON_SOURCE_ID, getOriginAndDestinationFeatureCollection()));
     }
 
-    private FeatureCollection getOriginAndDestinationFeatureCollection(){
+    private FeatureCollection getOriginAndDestinationFeatureCollection() {
         Feature originFeature = Feature.fromGeometry(origin);
         originFeature.addStringProperty("originDestination", "origin");
         Feature destinationFeature = Feature.fromGeometry(destination);
         destinationFeature.addStringProperty("originDestination", "destination");
-        return FeatureCollection.fromFeatures(new Feature[] {originFeature, destinationFeature});
+        return FeatureCollection.fromFeatures(new Feature[]{originFeature, destinationFeature});
     }
 
-    private void initLayers(@NonNull Style loadedMapStyle){
+    private void initLayers(@NonNull Style loadedMapStyle) {
         loadedMapStyle.addLayer(new LineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID).withProperties(
                 lineCap(Property.LINE_CAP_ROUND),
                 lineJoin(Property.LINE_JOIN_ROUND),
@@ -158,7 +146,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                         linear(), lineProgress(),
                         stop(0f, color(parseColor(ORIGIN_COLOR))),
                         stop(1f, color(parseColor(DESTINATION_COLOR)))
-                        ))));
+                ))));
         loadedMapStyle.addLayer(new SymbolLayer(ICON_LAYER_ID, ICON_SOURCE_ID).withProperties(
                 iconImage(match(get("originDestination"), literal("origin"),
                         stop("origin", ORIGIN_ICON_ID),
@@ -170,9 +158,9 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-    private void getRoute(MapboxMap mapboxMap /*ADD ORIGIN AND DESTINATION IN HERE AFTER TESTING*/){
-        origin = Point.fromLngLat(48.1128647,13.6990269);
-        destination = Point.fromLngLat(48.1683569,13.9918258);
+    /*private void getRoute(MapboxMap mapboxMap *//*ADD ORIGIN AND DESTINATION IN HERE AFTER TESTING*//*) {
+        origin = Point.fromLngLat(48.1128647, 13.6990269);
+        destination = Point.fromLngLat(48.1683569, 13.9918258);
         client = MapboxDirections.builder().origin(origin)
                 .destination(destination)
                 .overview(DirectionsCriteria.OVERVIEW_FULL)
@@ -183,25 +171,24 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
                 Timber.d("Response code: %s", response.code());
-                if(response.body() == null){
+                if (response.body() == null) {
                     Timber.e("No routes foun :(");
                     return;
-                }
-                else if (response.body().routes().size() < 1){
+                } else if (response.body().routes().size() < 1) {
                     Timber.e("No routes found :(");
                     return;
                 }
                 currentRoute = response.body().routes().get(0);
-                if(currentRoute!=null){
-                    if (mapboxMap != null){
-                        mapboxMap.getStyle(new Style.OnStyleLoaded(){
-                            public void onStyleLoaded(@NonNull Style style){
+                if (currentRoute != null) {
+                    if (mapboxMap != null) {
+                        mapboxMap.getStyle(new Style.OnStyleLoaded() {
+                            public void onStyleLoaded(@NonNull Style style) {
                                 GeoJsonSource originalDestinationPointGeoJsonSource = style.getSourceAs(ICON_SOURCE_ID);
-                                if(originalDestinationPointGeoJsonSource != null){
+                                if (originalDestinationPointGeoJsonSource != null) {
                                     originalDestinationPointGeoJsonSource.setGeoJson(getOriginAndDestinationFeatureCollection());
                                 }
                                 GeoJsonSource linearLayerRouteGeoJsonSource = style.getSourceAs(ROUTE_LINE_SOURCE_ID);
-                                if(linearLayerRouteGeoJsonSource != null){
+                                if (linearLayerRouteGeoJsonSource != null) {
                                     LineString lineString = LineString.fromPolyline(currentRoute.geometry(), 6);
                                     linearLayerRouteGeoJsonSource.setGeoJson(Feature.fromGeometry(lineString));
                                 }
@@ -210,25 +197,19 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
 
                         });
                     }
-                }
-                else{
+                } else {
                     Timber.d("Directions route is null :(");
                     Toast.makeText(MapActionActivity.this, getString(R.string.router_can_not_be_displayed), Toast.LENGTH_SHORT).show();
                 }
             }
 
-            @Override
+
             public void onFailure(Call<DirectionsResponse> call, Throwable t) {
                 Toast.makeText(MapActionActivity.this, getString(R.string.route_call_failure), Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 
-    @Override
-    public boolean onMapClick(@NonNull LatLng mapClickPoint) {
-        destination = Point.fromLngLat(mapClickPoint.getLongitude(),mapClickPoint.getLatitude());
-        getRoute(map);
-    }
 
 /*
     private void Route(){
@@ -286,7 +267,9 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         locationComponent.activateLocationComponent(LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
            if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
                System.out.println("No");
-               requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, Constants.LOCATION_REQUEST);
+               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                   requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, Constants.LOCATION_REQUEST);
+               }
            }else{
                setLocationTracking();
            }

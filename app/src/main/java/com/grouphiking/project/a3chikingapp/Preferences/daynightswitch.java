@@ -1,6 +1,7 @@
 package com.grouphiking.project.a3chikingapp.Preferences;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.grouphiking.project.a3chikingapp.Data.Constants;
+import com.grouphiking.project.a3chikingapp.Data.Mode;
 import com.grouphiking.project.a3chikingapp.R;
 
 public class daynightswitch extends Preference {
@@ -26,6 +28,7 @@ public class daynightswitch extends Preference {
     public daynightswitch(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
+
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
@@ -48,6 +51,9 @@ public class daynightswitch extends Preference {
             public void onClick(View v) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 Constants.DEF_MODE = true;
+                SharedPreferences.Editor editor = getSharedPreferences().edit();
+                editor.putString(getContext().getString(R.string.SwitchKey), Mode.NIGHT.toString());
+                editor.apply();
             }
         });
         button_day.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +61,12 @@ public class daynightswitch extends Preference {
             public void onClick(View v) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 Constants.DEF_MODE = false;
+                SharedPreferences.Editor editor = getSharedPreferences().edit();
+                editor.putString(getContext().getString(R.string.SwitchKey), Mode.DAY.toString());
+                editor.apply();
             }
         });
 
     }
+
 }

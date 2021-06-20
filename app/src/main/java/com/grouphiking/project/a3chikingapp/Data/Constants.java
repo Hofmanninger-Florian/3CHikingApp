@@ -14,6 +14,8 @@ import android.view.animation.OvershootInterpolator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
+import java.util.Locale;
+
 
 public class Constants {
 
@@ -48,4 +50,11 @@ public class Constants {
     public static final int LOCATION_REQUEST = "Location".hashCode();
     public static final int TIME_REQUEST_UPDATE = 5000;
     public static final int DIST_REQUEST_UPDATE = 50;
+
+    //For Settings
+    public static Language LANGUAGE = Language.ENGLISH;
+
+    public static void setLANGUAGE(Language LANGUAGE) {
+        Constants.LANGUAGE = LANGUAGE;
+    }
 }
