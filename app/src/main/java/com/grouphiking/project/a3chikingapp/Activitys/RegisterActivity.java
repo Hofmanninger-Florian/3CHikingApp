@@ -79,8 +79,9 @@ public class RegisterActivity extends AppCompatActivity {
             String username = editText_username_register.getText().toString();
             String password = editText_password_register.getText().toString();
             ArrayList<Trip> trips = new ArrayList<>();
+            System.out.println("amk");
             LoginActivity.userList.add(new User(username, password, trips));
-            this.saveData();
+            testsave();
             intentMain();
 
         }
@@ -94,6 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void saveData(){
+        System.out.println("asdfasdf");
         Gson gson = new Gson();
         System.out.println("asdfasdfsadf");
         for(User u: LoginActivity.userList){
@@ -105,5 +107,10 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
+
+    }
+    public void testsave(){
+        System.out.println("yooo");
+        saveData();
     }
 }
