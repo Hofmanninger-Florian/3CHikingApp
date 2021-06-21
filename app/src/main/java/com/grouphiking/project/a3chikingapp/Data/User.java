@@ -1,11 +1,13 @@
 package com.grouphiking.project.a3chikingapp.Data;
 
+import java.util.ArrayList;
+
 public class User {
 
     String username;
     String password;
-    Trip[] trips;
-    public User(String username, String password, Trip[] trips) {
+    ArrayList<Trip> trips;
+    public User(String username, String password, ArrayList<Trip> trips) {
         this.username = username;
         this.password = password;
         this.trips = trips;
@@ -27,11 +29,11 @@ public class User {
         this.password = password;
     }
 
-    public Trip[] getTrips() {
+    public ArrayList<Trip> getTrips() {
         return trips;
     }
 
-    public void setTrips(Trip[] trips) {
+    public void setTrips(ArrayList<Trip> trips) {
         this.trips = trips;
     }
 }

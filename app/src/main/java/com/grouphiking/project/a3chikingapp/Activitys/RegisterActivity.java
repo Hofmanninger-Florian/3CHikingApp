@@ -21,6 +21,9 @@ import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegisterActivity extends AppCompatActivity {
 
 
@@ -75,9 +78,9 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             String username = editText_username_register.getText().toString();
             String password = editText_password_register.getText().toString();
-            Trip[] trips = {};
+            ArrayList<Trip> trips = new ArrayList<>();
             LoginActivity.userList.add(new User(username, password, trips));
-            saveData();
+            this.saveData();
             intentMain();
 
         }
@@ -97,11 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
             String json = gson.toJson(u);
             String name = u.getUsername();
             String pwd = u.getPassword();
-            Trip[] trips = u.getTrips();
-            String allTrips = "";
-            for (Trip t: trips) {
-                allTrips += t.toString() + ";";
-            }
+
             System.out.println(json);
         }
 
