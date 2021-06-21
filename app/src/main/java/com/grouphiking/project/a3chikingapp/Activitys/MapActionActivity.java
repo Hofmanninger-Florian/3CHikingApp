@@ -114,8 +114,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        origin = Point.fromLngLat(48.1128647, 13.6990269);
-        destination = Point.fromLngLat(48.1683569, 13.9918258);
+
 
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new LinearInterpolator());
@@ -130,19 +129,21 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
                 MapActionActivity.this.map = mapboxMap;
-                mapboxMap.setStyle(Style.OUTDOORS, new Style.OnStyleLoaded() {
+                mapboxMap.setStyle(Style.SATELLITE, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull @NotNull Style style) {
+                        origin = Point.fromLngLat(50,50.1);
+                        destination = Point.fromLngLat(50.01,50.02);
                         initLayers(style);
                         initSource(style);
-                        CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(destination.latitude(),destination.longitude()))
+                        @SuppressLint("Range") CameraPosition position = new CameraPosition.Builder()
+                                .target(new LatLng(origin.latitude(),origin.longitude()))
                                 .zoom(18)
-                                .tilt(13)
+                                .tilt(100)
                                 .build();
                         map.animateCamera(CameraUpdateFactory.newCameraPosition(position),1000);
-                        enableLocationComponent(style);
                         getRoute(map, origin, destination);
+
                     }
                 });
                 map = mapboxMap;

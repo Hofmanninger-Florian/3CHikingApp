@@ -58,6 +58,7 @@ public class Constants{
     public static final int TIME_REQUEST_UPDATE = 5000;
     public static final int DIST_REQUEST_UPDATE = 50;
     public static final int PRECISION_6 = 6;
+    public static final String OwnStyle1 = "mapbox://styles/florian-hofmanninger/ckq6wrych2gzz17rrrqiai4j3";
 
     //For Settings
     public static Language LANGUAGE = Language.ENGLISH;
