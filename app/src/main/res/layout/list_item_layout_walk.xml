@@ -10,7 +10,7 @@
         android:id="@+id/textView_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/listItem_defaultText"
         android:textSize="20dp"
         android:fontFamily="@font/fredoka_one"
         android:textColor="@color/Button_Color"

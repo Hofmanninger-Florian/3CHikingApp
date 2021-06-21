@@ -1,11 +1,17 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -15,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Activitys.MainActivity;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
+import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.R;
 
@@ -24,18 +31,34 @@ public class LoginActivity extends AppCompatActivity {
 
     public static ArrayList<User> userList = new ArrayList<User>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        userList.add(new User("testUser","test"));
+        //TestUser
+        Location testLocation = new Location(LocationManager.GPS_PROVIDER);
+        testLocation.setLongitude(13.830268);
+        testLocation.setLatitude(48.230236);
+        Location testLocation2 = new Location(LocationManager.GPS_PROVIDER);
+        testLocation2.setLongitude(13.824666);
+        testLocation2.setLatitude(48.305231);
+        Trip t = new Trip(testLocation, testLocation2, "TestRoute");
+        Trip[] testTrips = {t};
+        userList.add(new User("testUser","test", testTrips));
+
+
         super.onCreate(savedInstanceState);
+        Constants.setTransition(this, new AccelerateInterpolator());
         setContentView(R.layout.login_layout);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         TextView textView = (TextView) findViewById(R.id.no_account);
+        LoginActivity act = this;
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("aaa");
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intent);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(act).toBundle());
             }
         });
         Button loginButton = (Button)findViewById(R.id.button_login);

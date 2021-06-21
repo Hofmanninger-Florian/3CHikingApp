@@ -4,6 +4,8 @@ import android.location.Location;
 
 import androidx.annotation.NonNull;
 
+import com.mapbox.geojson.Point;
+
 public class Trip {
 
     //Location
@@ -12,19 +14,16 @@ public class Trip {
 
     //Strings
     @NonNull  private String NAME;
-    @NonNull private String DESC;
 
-    public Trip(Location FROM, Location TO, @NonNull String NAME, @NonNull String DESC) {
+    public Trip(Location FROM, Location TO, @NonNull String NAME) {
         this.FROM = FROM;
         this.TO = TO;
         this.NAME = NAME;
-        this.DESC = DESC;
     }
 
     public Trip() {
         this.FROM = null;
         this.TO = null;
-        this.DESC = "";
         this.NAME = "";
     }
 
@@ -40,15 +39,7 @@ public class Trip {
         return NAME;
     }
 
-    public String getDESC() {
-        return DESC;
-    }
-
     public void setNAME(String NAME) {
         this.NAME = NAME;
-    }
-
-    public void setDESC(String DESC) {
-        this.DESC = DESC;
     }
 }

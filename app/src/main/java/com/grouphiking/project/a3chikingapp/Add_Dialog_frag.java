@@ -1,9 +1,14 @@
 package com.grouphiking.project.a3chikingapp;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.KeyEvent;
@@ -11,9 +16,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
+import com.grouphiking.project.a3chikingapp.Activitys.MapActionActivity;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
 
 import org.w3c.dom.Text;
@@ -27,7 +36,6 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private TextInputEditText mt_tripName;
     private TextInputEditText mt_fromPlace;
     private TextInputEditText mt_toPlace;
-    private TextInputEditText mt_description;
     private FrameLayout mt_add_Button;
 
     //Values
@@ -41,6 +49,21 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme);
+    }
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        BottomSheetDialog dialog = (BottomSheetDialog)super.onCreateDialog(savedInstanceState);
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                BottomSheetDialog d = (BottomSheetDialog) dialog;
+                ((BottomSheetDialog) dialog).getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
+        return dialog;
     }
 
     @Override
@@ -57,7 +80,6 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
             mt_tripName = (TextInputEditText) layout.findViewById(R.id.add_edit_tripname);
             mt_fromPlace = (TextInputEditText) layout.findViewById(R.id.add_edit_fromtrip);
             mt_toPlace = (TextInputEditText) layout.findViewById(R.id.add_edit_tripto);
-            mt_description = (TextInputEditText) layout.findViewById(R.id.add_edit_tripDesc);
             return true;
         }else{
             throw new NullPointerException("View not loaded");
@@ -99,9 +121,17 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private void add(boolean exe){
         Trip t = null;
         if(exe){
-            t = new Trip(FROM, TO, mt_tripName.getText().toString(), mt_description.getText().toString());
+            //t = new Trip(FROM, TO, mt_tripName.getText().toString());
             //Store internal and on Firebase
         }
+        launchNewAct();
+
+    }
+
+    private void launchNewAct(){
+        this.dismiss();
+        Intent actionAct = new Intent(getActivity().getApplicationContext(), MapActionActivity.class);
+        startActivity(actionAct);
     }
 
     public void setLayout(View layout) {

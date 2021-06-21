@@ -22,14 +22,13 @@
 
 
     <!--Register-->
-    <string name="pw">password</string>
+    <string name="Register_Login_pw">password</string>
 
     <!-- Color for the Main Backgrounds-->
     <color name="brown1">#81E3A6</color>
     <color name="brown2">#DED5C4</color>
     <color name="brown3">#1DB372</color>
     <color name="brown4">#736759</color>
-    <string name="recent">Recent Trips</string>
     <string name="sprache_German">German</string>
     <string name="sprache_English">English</string>
     <string name="add_newtrip">New Trip</string>
@@ -38,4 +37,36 @@
     <string name="title_activity_Main" translatable="false">Main</string>
     <string name="register_snackbarLabel">Wrong password</string>
     <string name="login_snackbarLabel_noUser">User not yet created</string>
+    <string name="location_explain">We want to get your location in order to make your App-Experience much better</string>
+
+    <!--Mapbox Stuff-->
+    <string name="mapbox_access_token" translatable="false">pk.eyJ1IjoibHVjYXNrcm9uIiwiYSI6ImNrb3Nnd3l4NTAxZHEyd2xnbTF0Z2V2ZnAifQ.qdDtw5F5sfvNOfNs5RRF7w</string>
+    <string name="add_Bike">Bike</string>
+    <string name="add_Hike">Hike</string>
+    <string name="router_can_not_be_displayed" translatable="false">The Route can\'t be Displayed. Something went wrong! :/</string>
+    <string name="route_call_failure" translatable="false">The Route call failed! :(</string>
+    <string name="add_hint_to">To</string>
+    <string name="add_hint_tripname">Trip-Name</string>
+    <string name="add_addButton">Add</string>
+    <string name="main_settingsBut_desc">Button that leads to Settings</string>
+    <string name="main_textview_Recent">Recent Trips</string>
+    <string name="map_tripText">Your Trip:</string>
+    <string name="map_distance">Distance:</string>
+    <string name="map_time">Time:</string>
+    <string name="map_altimeter">Altimeter:</string>
+    <string name="map_Type">Type:</string>
+    <string name="map_defaultText" translatable="false">Null</string>
+    <string name="listItem_defaultText">Your Trip</string>
+    <string name="login_title" translatable="false">Login</string>
+    <string name="login_register_username" translatable="false">username</string>
+    <string name="register_title" translatable="false">Register</string>
+    <string name="login_toRegister">no account? register.</string>
+    <string name="login_buttonText" translatable="false">login.</string>
+    <string name="register_buttonText" translatable="false">register.</string>
+    <string name="register_pw_again">reenter password</string>
+    <string name="register_toLogin">already have an account? login.</string>
+    <string name="languageSpinner_Default" translatable="false">Default Language</string>
+    <string name="prefs_title_language">Language</string>
+    <string name="prefs_title_Mode">Mode</string>
+
 </resources>

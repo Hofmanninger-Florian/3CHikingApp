@@ -1,127 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_Map"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/UI_Back">
+    android:background="@color/UI_Back"
+    tools:ignore="ExtraText">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/map_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="230dp"
+        android:foregroundGravity="center"
+        mapbox:cardCornerRadius="10dp">
+
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            mapbox:mapbox_cameraTargetLat="48.1128647"
+            mapbox:mapbox_cameraTargetLng="13.6990269"
+            mapbox:mapbox_cameraZoom="12" />
+    </androidx.cardview.widget.CardView>
 
     <ImageButton
         android:id="@+id/imageButtonSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="370dp"
-        android:onClick="onClickListenerSettings1"
-        app:srcCompat="@drawable/ic_action_settings1"
-        android:contentDescription="Button that leads to the settings" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="266dp"
-        android:layout_height="346dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/roundstyle"
-        android:backgroundTint="@color/black"
-        />
+        android:background="@drawable/ic_action_settings1"
+        android:contentDescription="@string/main_settingsBut_desc"
+        app:srcCompat="@drawable/ic_action_settings1" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Trip:"
-        android:layout_marginTop="440dp"
         android:layout_marginLeft="80dp"
-        android:textSize="20dp"
+        android:layout_marginTop="540dp"
         android:fontFamily="@font/fredoka_one"
+        android:text="@string/map_tripText"
         android:textColor="@color/Button_Color"
-        />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="480dp"
-        android:text="Distance:"
+        android:layout_marginTop="580dp"
         android:fontFamily="@font/fredoka_one"
-        android:textColor="@color/Button_Color"
-        />
+        android:text="@string/map_distance"
+        android:textColor="@color/Button_Color" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="500dp"
-        android:text="Time:"
+        android:layout_marginTop="600dp"
         android:fontFamily="@font/fredoka_one"
-        android:textColor="@color/Button_Color"
-        />
+        android:text="@string/map_time"
+        android:textColor="@color/Button_Color" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="520dp"
-        android:text="Altimeter:"
+        android:layout_marginTop="620dp"
         android:fontFamily="@font/fredoka_one"
-        android:textColor="@color/Button_Color"
-        />
+        android:text="@string/map_altimeter"
+        android:textColor="@color/Button_Color" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="540dp"
-        android:text="Type:"
+        android:layout_marginTop="640dp"
         android:fontFamily="@font/fredoka_one"
-        android:textColor="@color/Button_Color"
-        />
+        android:text="@string/map_Type"
+        android:textColor="@color/Button_Color" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="290dp"
-        android:layout_marginTop="480dp"
-        android:text="Null"
+        android:layout_marginTop="580dp"
         android:fontFamily="@font/fredoka_one"
-        android:textColor="@color/Button_Color"
-        />
+        android:text="@string/map_defaultText"
+        android:textColor="@color/Button_Color" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="290dp"
-        android:layout_marginTop="500dp"
-        android:text="Null"
+        android:layout_marginTop="600dp"
         android:fontFamily="@font/fredoka_one"
-        android:textColor="@color/Button_Color"
-        />
+        android:text="@string/map_defaultText"
+        android:textColor="@color/Button_Color" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="290dp"
-        android:layout_marginTop="520dp"
-        android:text="Null"
+        android:layout_marginTop="620dp"
         android:fontFamily="@font/fredoka_one"
-        android:textColor="@color/Button_Color"
-        />
+        android:text="@string/map_defaultText"
+        android:textColor="@color/Button_Color" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="290dp"
-        android:layout_marginTop="540dp"
-        android:text="Null"
+        android:layout_marginTop="640dp"
         android:fontFamily="@font/fredoka_one"
-        android:textColor="@color/Button_Color"
-        />
+        android:text="@string/map_defaultText"
+        android:textColor="@color/Button_Color" />
+
 </RelativeLayout>

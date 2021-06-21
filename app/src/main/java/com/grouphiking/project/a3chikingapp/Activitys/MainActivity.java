@@ -1,16 +1,24 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grouphiking.project.a3chikingapp.Adapters.Main_listAdapter;
 import com.grouphiking.project.a3chikingapp.Add_Dialog_frag;
+import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
 import com.grouphiking.project.a3chikingapp.R;
 
@@ -30,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Constants.setTransition(this, new LinearInterpolator());
         setContentView(R.layout.activity_main);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         //Setting stuff
         setViews();
         setListeners();
@@ -71,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     //Settings start
     private void startSettings(){
         Intent settings = new Intent(this, SettingsActivity.class);
-        startActivity(settings);
+        startActivity(settings, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     //Go To Add Dialog
@@ -79,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
         Add_Dialog_frag fragment = new Add_Dialog_frag();
         fragment.show(getSupportFragmentManager(),
                 fragment.getTag());
-
     }
 
     private void setAdapters(){

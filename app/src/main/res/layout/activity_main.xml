@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="370dp"
             android:backgroundTint="#00FFFFFF"
-            android:contentDescription="Button that leads to the settings"
+            android:contentDescription="@string/main_settingsBut_desc"
             app:srcCompat="@drawable/ic_action_settings1" />
 
         <TextView
@@ -53,7 +53,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="100dp"
             android:fontFamily="@font/fredoka_one"
-            android:text="Recent Trips:"
+            android:text="@string/main_textview_Recent"
             android:textColor="@color/brown4"
             android:textSize="20dp" />
     </FrameLayout>
