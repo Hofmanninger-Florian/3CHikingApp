@@ -15,14 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
-import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -78,12 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             String username = editText_username_register.getText().toString();
             String password = editText_password_register.getText().toString();
-            ArrayList<Trip> trips = new ArrayList<>();
-            System.out.println("amk");
-            LoginActivity.userList.add(new User(username, password, trips));
-            testsave();
+            //LoginActivity.userList.add(new User(username, password));
             intentMain();
-
         }
     }
 
@@ -92,25 +83,5 @@ public class RegisterActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         Constants.setLoggedIn(true);
-    }
-
-    public void saveData(){
-        System.out.println("asdfasdf");
-        Gson gson = new Gson();
-        System.out.println("asdfasdfsadf");
-        for(User u: LoginActivity.userList){
-            String json = gson.toJson(u);
-            String name = u.getUsername();
-            String pwd = u.getPassword();
-
-            System.out.println(json);
-        }
-
-
-
-    }
-    public void testsave(){
-        System.out.println("yooo");
-        saveData();
     }
 }

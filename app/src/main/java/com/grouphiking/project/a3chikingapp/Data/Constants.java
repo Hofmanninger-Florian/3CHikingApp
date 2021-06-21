@@ -57,6 +57,7 @@ public class Constants{
     public static final int LOCATION_REQUEST = "Location".hashCode();
     public static final int TIME_REQUEST_UPDATE = 5000;
     public static final int DIST_REQUEST_UPDATE = 50;
+    public static final int PRECISION_6 = 6;
 
     //For Settings
     public static Language LANGUAGE = Language.ENGLISH;
@@ -79,6 +80,8 @@ public class Constants{
         this.SPINNER = SPINNER;
         if(LISTENER != null)LISTENER.valueChanged();
     }
+
+
 
     public LanguageSpinner getSPINNER() {
         return SPINNER;

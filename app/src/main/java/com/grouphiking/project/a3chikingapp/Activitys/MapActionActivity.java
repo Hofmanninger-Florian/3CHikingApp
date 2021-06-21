@@ -1,14 +1,17 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
@@ -26,6 +29,7 @@ import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.R;
 import com.mapbox.api.directions.v5.DirectionsCriteria;
+import com.mapbox.api.directions.v5.MapboxDirections;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
 import com.mapbox.geojson.Feature;
@@ -33,6 +37,8 @@ import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
@@ -44,10 +50,20 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.style.layers.LineLayer;
 import com.mapbox.mapboxsdk.style.layers.Property;
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.utils.BitmapUtils;
+import com.mapbox.navigation.core.MapboxNavigation;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.graphics.Color.parseColor;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.color;
@@ -63,11 +79,12 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacem
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineCap;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineColor;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineGradient;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineJoin;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineWidth;
 
-public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback, Callback<DirectionsResponse> {
 
     private MapView mapView;
     private MapboxMap map;
@@ -81,6 +98,8 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     private DirectionsRoute currentRoute;
     private Trip trip;
     private Feature directionsRouteFeature;
+    private MapboxDirections client;
+    private static final String ROUTE_SOURCE_ID = "rout-source-id";
     private static final String ROUTE_LINE_SOURCE_ID = "route-source-id";
     private static final String ICON_SOURCE_ID = "icon-source-id";
     private static final String ROUTE_LAYER_ID = "route-layer-id";
@@ -90,9 +109,14 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     private static final String DESTINATION_COLOR = "#F84D4D";
     private static final String ORIGIN_ICON_ID = "origin-icon-id";
     private static final String DESTINATION_ICON_ID = "destination-icon-id";
+    private static final String RED_PIN_ICON_ID = "red-pin-icon-id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        origin = Point.fromLngLat(48.1128647, 13.6990269);
+        destination = Point.fromLngLat(48.1683569, 13.9918258);
+
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new LinearInterpolator());
         Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
@@ -106,23 +130,101 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
                 MapActionActivity.this.map = mapboxMap;
-                mapboxMap.setStyle(new Style.Builder().fromUri(Style.OUTDOORS).withImage(ORIGIN_ICON_ID, BitmapUtils.getBitmapFromDrawable(getResources().getDrawable(R.drawable.blue_marker_background))).withImage(DESTINATION_ICON_ID, BitmapUtils.getBitmapFromDrawable(getResources()
-                                .getDrawable(R.drawable.red_marker_background))),
-                        new Style.OnStyleLoaded() {
-                            public void onStyleLoaded(@NonNull Style style) {
-                                initSources(style);
-                                initLayers(style);
-                                enableLocationComponent(style);
-                            }
-                        });
+                mapboxMap.setStyle(Style.OUTDOORS, new Style.OnStyleLoaded() {
+                    @Override
+                    public void onStyleLoaded(@NonNull @NotNull Style style) {
+                        initLayers(style);
+                        initSource(style);
+                        CameraPosition position = new CameraPosition.Builder()
+                                .target(new LatLng(destination.latitude(),destination.longitude()))
+                                .zoom(18)
+                                .tilt(13)
+                                .build();
+                        map.animateCamera(CameraUpdateFactory.newCameraPosition(position),1000);
+                        enableLocationComponent(style);
+                        getRoute(map, origin, destination);
+                    }
+                });
                 map = mapboxMap;
             }
         });
 
     }
 
+    private void initSource(@NonNull Style loadedMapStyle){
+        loadedMapStyle.addSource(new GeoJsonSource(ROUTE_SOURCE_ID));
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void initLayers(@NonNull Style loadedMapStyle){
+        LineLayer routeLayer = new LineLayer(ROUTE_LAYER_ID, ROUTE_SOURCE_ID);
+
+        routeLayer.setProperties(
+                PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
+                PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
+                PropertyFactory.lineWidth(5f),
+                PropertyFactory.lineColor(Color.parseColor("#009688"))
+        );
+        loadedMapStyle.addLayer(routeLayer);
+        loadedMapStyle.addImage(RED_PIN_ICON_ID, Objects.requireNonNull(BitmapUtils.getBitmapFromDrawable(
+                getResources().getDrawable(R.drawable.marker)
+        )));
+
+        loadedMapStyle.addLayer(new SymbolLayer(ICON_LAYER_ID, ICON_SOURCE_ID).withProperties(
+                PropertyFactory.iconImage(RED_PIN_ICON_ID),
+                PropertyFactory.iconIgnorePlacement(true),
+                PropertyFactory.iconAllowOverlap(true),
+                PropertyFactory.iconOffset(new Float[]{0f,-9f})
+        ));
+
+    }
+    private void getRoute(MapboxMap mapboxMap, Point origin, Point destination){
+        client = MapboxDirections.builder()
+                .origin(origin)
+                .destination(destination)
+                .overview(DirectionsCriteria.OVERVIEW_FULL)
+                .profile(DirectionsCriteria.PROFILE_WALKING)
+                .accessToken(getString(R.string.mapbox_access_token))
+                .build();
+        client.enqueueCall(this);
+    }
+
+    @Override
+    public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
+        if (response.body() == null){
+            Toast.makeText(this, "No routes found, maybe no Accesstoken", Toast.LENGTH_SHORT);
+            return;
+        }else if(response.body().routes().size() < 1){
+            Toast.makeText(this, "No routes found", Toast.LENGTH_SHORT);
+            return;
+        }
+
+
+        DirectionsRoute currentRoute = response.body().routes().get(0);
+
+        if(map!=null){
+            map.getStyle(new Style.OnStyleLoaded() {
+                @Override
+                public void onStyleLoaded(@NonNull @NotNull Style style) {
+                    GeoJsonSource source = style.getSourceAs(ROUTE_SOURCE_ID);
+                    if(source!= null){
+                        source.setGeoJson(LineString.fromPolyline(currentRoute.geometry(), Constants.PRECISION_6));
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onFailure(Call<DirectionsResponse> call, Throwable t) {
+        Toast.makeText(this,t.getMessage(),Toast.LENGTH_SHORT);
+    }
+
     //Mapbox Navigation
 
+
+
+    /*
 
     private void initSources(@NonNull Style loadedMapStyle) {
         loadedMapStyle.addSource(new GeoJsonSource(ROUTE_LINE_SOURCE_ID, new GeoJsonOptions().withLineMetrics(true)));
@@ -156,7 +258,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                 iconOffset(new Float[]{0f, -4f})
         ));
     }
-
+*/
 
     /*private void getRoute(MapboxMap mapboxMap *//*ADD ORIGIN AND DESTINATION IN HERE AFTER TESTING*//*) {
         origin = Point.fromLngLat(48.1128647, 13.6990269);
@@ -172,7 +274,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
             public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
                 Timber.d("Response code: %s", response.code());
                 if (response.body() == null) {
-                    Timber.e("No routes foun :(");
+                    Timber.e("No routes found :(");
                     return;
                 } else if (response.body().routes().size() < 1) {
                     Timber.e("No routes found :(");
@@ -305,7 +407,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Constants.TIME_REQUEST_UPDATE, Constants.DIST_REQUEST_UPDATE, listener);
     }
 
-    //------------------------- "on..." Standart Methods --------------------------------------
+    //------------------------- "on..." Standard Methods --------------------------------------
     protected void onStart(){
         super.onStart();
         mapView.onStart();
