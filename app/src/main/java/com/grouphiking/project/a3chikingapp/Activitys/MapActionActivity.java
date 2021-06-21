@@ -129,9 +129,9 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
                 MapActionActivity.this.map = mapboxMap;
-                mapboxMap.setStyle(Style.SATELLITE, new Style.OnStyleLoaded() {
+                mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/florian-hofmanninger/ckq6wrych2gzz17rrrqiai4j3"), new Style.OnStyleLoaded() {
                     @Override
-                    public void onStyleLoaded(@NonNull @NotNull Style style) {
+                    public void onStyleLoaded(@NonNull Style style) {
                         origin = Point.fromLngLat(50,50.1);
                         destination = Point.fromLngLat(50.01,50.02);
                         initLayers(style);
