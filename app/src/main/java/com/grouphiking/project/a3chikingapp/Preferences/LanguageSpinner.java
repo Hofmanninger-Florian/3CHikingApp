@@ -26,7 +26,7 @@ public class LanguageSpinner extends Preference {
 
     private List<String> languages = new ArrayList<String>();
     private Spinner spinner;
-    private LanguageListener listener;
+    public static LanguageListener listener;
 
     private final String GERMAN = getContext().getString(R.string.sprache_German);
     private final String ENGLISH = getContext().getString(R.string.sprache_English);
@@ -40,14 +40,19 @@ public class LanguageSpinner extends Preference {
         this(context, attrs, 0);
     }
 
-    public void setListener(LanguageListener listener) {
-        this.listener = listener;
-    }
-
     @Override
     public void onAttached() {
-        languages.addAll(Arrays.asList(GERMAN, ENGLISH));
+        languages.addAll(Arrays.asList(ENGLISH, GERMAN));
+
         super.onAttached();
+    }
+
+    public void setListener(LanguageListener listener) {
+        LanguageSpinner.listener = listener;
+    }
+
+    public LanguageListener getListener() {
+        return listener;
     }
 
     @Override
@@ -56,14 +61,27 @@ public class LanguageSpinner extends Preference {
         holder.itemView.setClickable(false);
         spinner = holder.itemView.findViewById(R.id.prefs_language_spinner);
         setAdapter();
+        setTheListener();
+    }
+
+    private void setAdapter() {
+        if(spinner != null) {
+            LanguageSpinnerAdapter adapter = new LanguageSpinnerAdapter(getContext(), R.layout.spinner_item, languages);
+            adapter.setDropDownViewResource(R.layout.spinner_item);
+            spinner.setAdapter(adapter);
+        }
+    }
+
+    private void setTheListener(){
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView text = (TextView) view.findViewById(R.id.LanguageView);
-                if(text.getText().equals(GERMAN) && !Constants.LANGUAGE.equals(Language.GERMAN)){
-                    listener.onLanguageChanges(Language.GERMAN);
-                }else if(!Constants.LANGUAGE.equals(Language.ENGLISH)){
-                    listener.onLanguageChanges(Language.ENGLISH);
+                if(Constants.SPINNER_CALLS >= languages.size() - 1){
+                    Constants.resetSpinnerCalls();
+                    setSelectedAction(position, view);
+                }else{
+                    Constants.PlusSpinnerCalls();
+                    setSelectedAction(position, view);
                 }
             }
 
@@ -74,11 +92,18 @@ public class LanguageSpinner extends Preference {
         });
     }
 
-    private void setAdapter() {
-        if(spinner != null) {
-            LanguageSpinnerAdapter adapter = new LanguageSpinnerAdapter(getContext(), R.layout.spinner_item, languages);
-            adapter.setDropDownViewResource(R.layout.spinner_item);
-            spinner.setAdapter(adapter);
+    private void setSelectedAction(int position, View view){
+        TextView text = (TextView) view.findViewById(R.id.LanguageView);
+        if(text.getText().equals(GERMAN) && !Constants.LANGUAGE.equals(Language.GERMAN) && position == 1){
+            if(listener != null){
+                listener.onLanguageChanges(Language.GERMAN);
+            }
+            Constants.setLANGUAGE(Language.GERMAN);
+        }else if(text.getText().equals(ENGLISH) && !Constants.LANGUAGE.equals(Language.ENGLISH) && position == 0){
+            if(listener != null){
+                listener.onLanguageChanges(Language.ENGLISH);
+            }
+            Constants.setLANGUAGE(Language.ENGLISH);
         }
     }
 
