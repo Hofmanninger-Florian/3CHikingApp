@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Green_Dark">#008E8A</color>
+    <color name="UI_Back">#006F7C</color>
+    <color name="Brown_Light">#B7A99A</color>
+    <color name="Button_Color">#504538</color>
+    <color name="Background_Color">#292014</color>
+    <color name="Yellow_Brown">#AF8F37</color>
+    <color name="black">#386C5F</color>
+</resources>
