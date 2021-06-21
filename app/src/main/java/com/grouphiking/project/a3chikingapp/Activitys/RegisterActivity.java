@@ -3,9 +3,12 @@ package com.grouphiking.project.a3chikingapp.Activitys;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.preference.PreferenceManager;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.User;
+import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.R;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -57,6 +61,12 @@ public class RegisterActivity extends AppCompatActivity {
             intentMain();
         }
         super.onResume();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(newBase);
+        super.attachBaseContext(MyContextWrapper.wrap(newBase,preferences.getString(newBase.getString(R.string.SpinnerKey), Constants.LANGUAGE.getLanguage())));
     }
 
     public void checkRegister(){

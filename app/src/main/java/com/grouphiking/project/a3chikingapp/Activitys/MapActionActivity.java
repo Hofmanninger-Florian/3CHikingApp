@@ -3,6 +3,8 @@ package com.grouphiking.project.a3chikingapp.Activitys;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -21,12 +23,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
+import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.R;
 import com.mapbox.api.directions.v5.DirectionsCriteria;
 import com.mapbox.api.directions.v5.MapboxDirections;
@@ -150,6 +154,12 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
             }
         });
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(newBase);
+        super.attachBaseContext(MyContextWrapper.wrap(newBase,preferences.getString(newBase.getString(R.string.SpinnerKey), Constants.LANGUAGE.getLanguage())));
     }
 
     private void initSource(@NonNull Style loadedMapStyle){

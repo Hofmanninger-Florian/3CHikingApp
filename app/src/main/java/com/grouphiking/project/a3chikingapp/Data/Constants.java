@@ -65,24 +65,17 @@ public class Constants{
     public LanguageSpinner SPINNER;
     private static onValueChange LISTENER;
 
-    public static int SPINNER_CALLS = 0;
+    public static boolean LANGUAGE_SET = false;
+    public static boolean SPINNER_ALREADY = false;
 
-    public static void resetSpinnerCalls() {
-        SPINNER_CALLS = 0;
+    public static void setSpinnerAlready(boolean spinnerAlready) {
+        SPINNER_ALREADY = spinnerAlready;
     }
-
-    public static void PlusSpinnerCalls() {
-        SPINNER_CALLS++;
-    }
-
-    public static final int SPINNER_COUNT = 1;
 
     public void setSPINNER(LanguageSpinner SPINNER) {
         this.SPINNER = SPINNER;
         if(LISTENER != null)LISTENER.valueChanged();
     }
-
-
 
     public LanguageSpinner getSPINNER() {
         return SPINNER;
@@ -95,7 +88,6 @@ public class Constants{
     public interface onValueChange{
         void valueChanged();
     }
-
 
     public static void setLANGUAGE(Language LANGUAGE) {
         Constants.LANGUAGE = LANGUAGE;
