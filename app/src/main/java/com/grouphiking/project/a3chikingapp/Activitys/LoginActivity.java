@@ -42,7 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         testLocation2.setLongitude(13.824666);
         testLocation2.setLatitude(48.305231);
         Trip t = new Trip(testLocation, testLocation2, "TestRoute");
-        Trip[] testTrips = {t};
+        ArrayList<Trip> testTrips = new ArrayList<>();
+        testTrips.add(t);
         userList.add(new User("testUser","test", testTrips));
 
 

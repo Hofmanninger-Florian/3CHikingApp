@@ -2,6 +2,7 @@ package com.grouphiking.project.a3chikingapp.Data;
 
 import android.location.Location;
 
+import androidx.annotation.FractionRes;
 import androidx.annotation.NonNull;
 
 import com.mapbox.geojson.Point;
@@ -41,5 +42,10 @@ public class Trip {
 
     public void setNAME(String NAME) {
         this.NAME = NAME;
+    }
+
+    @Override
+    public String toString() {
+        return FROM.toString() + "," + TO.toString() + "," + getNAME();
     }
 }
