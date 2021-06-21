@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fredoka_one"
-                    android:hint="@string/add_hint_to"
+                    android:hint="@string/add_hint_from"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/Brown_Light" />
@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fredoka_one"
-                    android:hint="@string/add_hint_from"
+                    android:hint="@string/add_hint_to"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/Brown_Light" />
@@ -149,7 +149,10 @@
                     android:clickable="false"
                     android:fontFamily="@font/fredoka_one"
                     android:text="@string/add_addButton"
+                    android:textColor="@color/Light"
                     app:icon="@drawable/ic_baseline_add_24"
+                    app:iconTint="@color/white"
+                    app:iconTintMode="multiply"
                     app:rippleColor="@color/Brown_Light_Dark" />
 
             </FrameLayout>

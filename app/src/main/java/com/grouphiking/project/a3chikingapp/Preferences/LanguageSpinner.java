@@ -42,8 +42,11 @@ public class LanguageSpinner extends Preference {
 
     @Override
     public void onAttached() {
-        languages.addAll(Arrays.asList(ENGLISH, GERMAN));
-
+        if(Constants.LANGUAGE == Language.GERMAN){
+            languages.addAll(Arrays.asList(GERMAN, ENGLISH));
+        }else{
+            languages.addAll(Arrays.asList(ENGLISH, GERMAN));
+        }
         super.onAttached();
     }
 
@@ -76,15 +79,12 @@ public class LanguageSpinner extends Preference {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(Constants.SPINNER_CALLS >= languages.size() - 1){
-                    Constants.resetSpinnerCalls();
+                if(Constants.SPINNER_ALREADY){
                     setSelectedAction(position, view);
                 }else{
-                    Constants.PlusSpinnerCalls();
-                    setSelectedAction(position, view);
+                    Constants.setSpinnerAlready(true);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 Log.d("Debug", "No Lanugage selected");
@@ -94,16 +94,14 @@ public class LanguageSpinner extends Preference {
 
     private void setSelectedAction(int position, View view){
         TextView text = (TextView) view.findViewById(R.id.LanguageView);
-        if(text.getText().equals(GERMAN) && !Constants.LANGUAGE.equals(Language.GERMAN) && position == 1){
+        if(text.getText().equals(GERMAN) && !Constants.LANGUAGE.equals(Language.GERMAN)){
             if(listener != null){
                 listener.onLanguageChanges(Language.GERMAN);
             }
-            Constants.setLANGUAGE(Language.GERMAN);
-        }else if(text.getText().equals(ENGLISH) && !Constants.LANGUAGE.equals(Language.ENGLISH) && position == 0){
+        }else if(text.getText().equals(ENGLISH) && !Constants.LANGUAGE.equals(Language.ENGLISH)){
             if(listener != null){
                 listener.onLanguageChanges(Language.ENGLISH);
             }
-            Constants.setLANGUAGE(Language.ENGLISH);
         }
     }
 

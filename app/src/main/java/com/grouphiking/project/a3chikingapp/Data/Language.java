@@ -3,7 +3,7 @@ package com.grouphiking.project.a3chikingapp.Data;
 import java.util.Locale;
 
 public enum Language {
-    GERMAN("de-rAT"),
+    GERMAN("de"),
     ENGLISH(Locale.ROOT.toString());
 
     private String Language;

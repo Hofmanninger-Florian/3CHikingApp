@@ -54,7 +54,7 @@
             android:layout_marginTop="100dp"
             android:fontFamily="@font/fredoka_one"
             android:text="@string/main_textview_Recent"
-            android:textColor="@color/brown4"
+            android:textColor="@color/Button_Color_Dark"
             android:textSize="20dp" />
     </FrameLayout>
 
