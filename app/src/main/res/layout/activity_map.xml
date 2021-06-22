@@ -42,71 +42,72 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
-            android:layout_marginTop="600dp"
+            android:layout_marginTop="620dp"
             android:fontFamily="@font/fredoka_one"
             android:text="@string/map_time"
             android:textColor="@color/Button_Color" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="290dp"
-            android:layout_marginTop="620dp"
-            android:fontFamily="@font/fredoka_one"
-            android:text="@string/map_defaultText"
-            android:textColor="@color/Button_Color" />
 
+        <!--
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="620dp"
+                android:fontFamily="@font/fredoka_one"
+                android:text="Altitude Start: "
+                android:textColor="@color/Button_Color" />
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="640dp"
+                    android:fontFamily="@font/fredoka_one"
+                    android:text="@string/map_Type"
+                    android:textColor="@color/Button_Color" />
 
-<!--
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="620dp"
-        android:fontFamily="@font/fredoka_one"
-        android:text="Altitude Start: "
-        android:textColor="@color/Button_Color" />
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="640dp"
-            android:fontFamily="@font/fredoka_one"
-            android:text="@string/map_Type"
-            android:textColor="@color/Button_Color" />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="640dp"
+                    android:fontFamily="@font/fredoka_one"
+                    android:text="@string/map_defaultText"
+                    android:textColor="@color/Button_Color" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="290dp"
-            android:layout_marginTop="640dp"
-            android:fontFamily="@font/fredoka_one"
-            android:text="@string/map_defaultText"
-            android:textColor="@color/Button_Color" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="640dp"
-        android:fontFamily="@font/fredoka_one"
-        android:text="Altitude End:"
-        android:textColor="@color/Button_Color" />
-!-->
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="640dp"
+                android:fontFamily="@font/fredoka_one"
+                android:text="Altitude End:"
+                android:textColor="@color/Button_Color" />
+        !-->
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="290dp"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="600dp"
         android:fontFamily="@font/fredoka_one"
         android:text="@string/map_defaultText"
         android:textColor="@color/Button_Color" />
+
+        <TextView
+            android:id="@+id/textViewcurrentLocData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="575dp"
+            android:fontFamily="@font/fredoka_one"
+            android:text="@string/map_defaultText"
+            android:textColor="@color/Button_Color" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -124,7 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="290dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="620dp"
         android:fontFamily="@font/fredoka_one"
         android:text="@string/map_defaultText"
         android:textColor="@color/Button_Color" />
@@ -175,7 +176,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="660dp"
+        android:layout_marginTop="640dp"
         android:fontFamily="@font/fredoka_one"
         android:text="Type:"
         android:textColor="@color/Button_Color" />
@@ -185,48 +186,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="290dp"
-        android:layout_marginTop="660dp"
+        android:layout_marginTop="640dp"
         android:fontFamily="@font/fredoka_one"
         android:text="@string/map_defaultText"
         android:textColor="@color/Button_Color" />
 
-    <Button
-        android:id="@+id/buttonLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:background="@drawable/roundstyle"
-        android:text="Dest. Loc."
-        android:textColor="@color/black"
-        android:backgroundTint="@color/Button_Color"/>
+        <Button
+            android:id="@+id/buttonLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:background="@drawable/roundstyle"
+            android:backgroundTint="@color/black"
+            android:text="Dest. Loc."
+            android:textColor="@color/Brown_Dark_Light" />
 
-    <Button
-        android:id="@+id/buttonLocationOrigin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:background="@drawable/roundstyle"
-        android:text="Origin Loc."
-        android:textColor="@color/black"
-        android:backgroundTint="@color/Button_Color"/>
+        <Button
+            android:id="@+id/buttonLocationOrigin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65dp"
+            android:background="@drawable/roundstyle"
+            android:backgroundTint="@color/Button_Color"
+            android:text="Origin Loc."
+            android:textColor="@color/Brown_Dark_Light" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
-            android:layout_marginTop="580dp"
+            android:layout_marginTop="600dp"
             android:fontFamily="@font/fredoka_one"
             android:text="@string/map_distance"
             android:textColor="@color/Button_Color" />
+
+        <TextView
+            android:id="@+id/textViewCurrentLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="575dp"
+            android:fontFamily="@font/fredoka_one"
+            android:text="Current Location:"
+            android:textColor="@color/Button_Color" />
+
+        <ImageButton
+            android:id="@+id/imageButtonLeaveActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            mapbox:srcCompat="@drawable/ic_baseline_close_24"
+            android:layout_marginLeft="370dp"
+            />
     </RelativeLayout>
 
-    <ImageButton
-        android:id="@+id/imageButtonSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="370dp"
-        android:background="@drawable/ic_action_settings1"
-        android:contentDescription="@string/main_settingsBut_desc"
-        app:srcCompat="@drawable/ic_action_settings1" />
+
 
 </RelativeLayout>
