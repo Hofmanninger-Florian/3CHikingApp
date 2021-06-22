@@ -30,17 +30,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="edb78af0-a500-4695-9e17-2b3fff7a9ee3" name="Default Changelist" comment="Login and Register Backend work">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+    <list default="true" id="edb78af0-a500-4695-9e17-2b3fff7a9ee3" name="Default Changelist" comment="start with adapter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Adapters/Main_listAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Adapters/Main_listAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624383842359</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="start with adapter">
+      <created>1624388778749</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1624388778749</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,13 +248,14 @@
     <MESSAGE value="local.properties" />
     <MESSAGE value="Start with MyService.java" />
     <MESSAGE value="Login and Register Backend work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login and Register Backend work" />
+    <MESSAGE value="start with adapter" />
+    <option name="LAST_COMMIT_MESSAGE" value="start with adapter" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1624387190261">
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1624389012363">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624374047446" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624389012363" />
     <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1624387190261" />
     <state x="577" y="274" key="AndroidCreateResourceDirectoryDialog" timestamp="1624369621041">
       <screen x="0" y="0" width="1920" height="1040" />
