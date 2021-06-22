@@ -24,6 +24,7 @@ import com.grouphiking.project.a3chikingapp.Adapters.Main_listAdapter;
 import com.grouphiking.project.a3chikingapp.Add_Dialog_frag;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
+import com.grouphiking.project.a3chikingapp.Data.Type;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
@@ -115,11 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAdapters(){
         User workingUser = Constants.getWorkingUser();
-        for (Trip trip : workingUser.getTrips()) {
-            if(trip.get)
-        }
+        Main_listAdapter listAdapter = new Main_listAdapter(this,R.layout.list_item_layout_bike,workingUser.getTrips());
+        list.setAdapter(listAdapter);
+
 
     }
-
 
 }
