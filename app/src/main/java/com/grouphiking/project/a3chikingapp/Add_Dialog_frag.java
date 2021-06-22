@@ -10,10 +10,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Parcel;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -26,13 +29,120 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.grouphiking.project.a3chikingapp.Activitys.MapActionActivity;
+import com.grouphiking.project.a3chikingapp.Activitys.PlacesGetActivity;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.Type;
+import com.mapbox.api.geocoding.v5.models.CarmenFeature;
+import com.mapbox.geojson.Point;
+import com.mapbox.mapboxsdk.plugins.places.autocomplete.PlaceAutocomplete;
+import com.mapbox.mapboxsdk.plugins.places.autocomplete.model.PlaceOptions;
+import com.mapbox.mapboxsdk.plugins.places.autocomplete.ui.PlaceAutocompleteFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Add_Dialog_frag extends BottomSheetDialogFragment {
+
+    PlaceOptions options = new PlaceOptions() {
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public Point proximity() {
+            return null;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public String language() {
+            return Constants.LANGUAGE.getLanguage();
+        }
+
+        @Override
+        public int limit() {
+            return Constants.LIMIT_OPTIONS;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public Integer historyCount() {
+            return Constants.HISTORY_COUNT;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public String bbox() {
+            return null;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public String geocodingTypes() {
+            return null;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public String country() {
+            return null;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public List<String> injectedPlaces() {
+            return null;
+        }
+
+        @Override
+        public int viewMode() {
+            return PlaceOptions.MODE_FULLSCREEN;
+        }
+
+        @Override
+        public int backgroundColor() {
+            return R.color.Brown_Light;
+        }
+
+        @Override
+        public int toolbarColor() {
+            return R.color.white;
+        }
+
+        @Override
+        public int statusbarColor() {
+            return 0;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public String hint() {
+            return getString(R.string.places_hint);
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public String baseUrl() {
+            return null;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+
+        }
+    };
 
     //Main-Layout
     private View layout;
@@ -97,18 +207,16 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     }
 
     public void setListeners(boolean executed){
-        mt_fromPlace.setOnKeyListener(new View.OnKeyListener() {
+        mt_fromPlace.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                reloadFrom(mt_fromPlace.getText().toString());
-                return true;
+            public void onClick(View v) {
+                startPlaces(false);
             }
         });
-        mt_toPlace.setOnKeyListener(new View.OnKeyListener(){
+        mt_toPlace.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                reloadto(mt_toPlace.getText().toString());
-                return true;
+            public void onClick(View v) {
+                startPlaces(true);
             }
         });
         mt_add_Button.setOnClickListener(new View.OnClickListener() {
@@ -131,13 +239,25 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
         });
     }
 
-    private void reloadto(String searchString) {
-        //API_Action
+    private void startPlaces(boolean to){
+        Intent places = new Intent(getActivity().getApplicationContext(), PlacesGetActivity.class);
+        startActivity(places);
+        Constants.setFEATURECHANGE_LISTENER(new Constants.onFeatureChange() {
+            @Override
+            public void onFeatureChanged(CarmenFeature feature) {
+                Point point = (Point)feature.geometry();
+                if(to){
+                    TO.setLongitude(point.longitude());
+                    TO.setLatitude(point.latitude());
+                }else{
+                    FROM.setLatitude(point.latitude());
+                    FROM.setLatitude(point.longitude());
+                }
+            }
+        });
     }
 
-    private void reloadFrom(String searchString) {
-        //API_Action
-    }
+
 
     //Adding
     private void add(boolean exe){
@@ -171,20 +291,5 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
 
     public void setLayout(View layout) {
         this.layout = layout;
-    }
-
-    public class AsyncGettingLocation extends AsyncTask<String, Integer, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String Response = "";
-            String url = strings[0];
-            return "";
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
     }
 }

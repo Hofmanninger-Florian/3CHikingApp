@@ -8,6 +8,7 @@
         <item name="boxStrokeWidthFocused">4dp</item>
         <item name="android:textColor">@color/Button_Color</item>
         <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
     </style>
 
     <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
