@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/Brown_Dark_Light</item>
         <item name="colorOnSecondary">@color/Yellow_Brown</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/Green_Dark</item>
         <!-- Customize your theme here. -->
         <!-- enable window content transitions -->
         <item name="android:windowActivityTransitions">true</item>

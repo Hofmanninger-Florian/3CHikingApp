@@ -3,9 +3,12 @@ package com.grouphiking.project.a3chikingapp.Activitys;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.preference.PreferenceManager;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
@@ -16,8 +19,12 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
+import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.User;
+import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.R;
+
+import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -59,6 +66,12 @@ public class RegisterActivity extends AppCompatActivity {
         super.onResume();
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(newBase);
+        super.attachBaseContext(MyContextWrapper.wrap(newBase,preferences.getString(newBase.getString(R.string.SpinnerKey), Constants.LANGUAGE.getLanguage())));
+    }
+
     public void checkRegister(){
         //Values
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.register_contextlayout);
@@ -73,7 +86,8 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             String username = editText_username_register.getText().toString();
             String password = editText_password_register.getText().toString();
-            //LoginActivity.userList.add(new User(username, password));
+            ArrayList<Trip> trips = new ArrayList<>();
+            LoginActivity.userList.add(new User(username, password, trips));
             intentMain();
         }
     }

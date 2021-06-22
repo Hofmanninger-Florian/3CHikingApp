@@ -12,16 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.3CHikingApp">
-        <activity android:name=".Activitys.MapActionActivity"></activity>
-        <activity android:name=".Activitys.RegisterActivity" />
+        <activity android:name=".Activitys.MapActionActivity"
+            android:configChanges="locale"/>
+        <activity android:name=".Activitys.RegisterActivity"
+            android:configChanges="locale"/>
         <activity
             android:name=".Activitys.MainActivity"
-            android:label="@string/title_activity_Main" />
+            android:label="@string/title_activity_Main"
+            android:configChanges="locale"/>
         <activity
             android:name=".Preferences.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:configChanges="locale|orientation"/>
-        <activity android:name=".Activitys.LoginActivity">
+            android:configChanges="locale"/>
+        <activity android:name=".Activitys.LoginActivity"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

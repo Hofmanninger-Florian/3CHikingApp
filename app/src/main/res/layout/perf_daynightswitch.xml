@@ -15,6 +15,7 @@
         app:icon="@drawable/ic_moon"
         app:iconGravity="textEnd"
         app:iconSize="30dp"
+        app:iconTint="@color/Light"
         app:iconTintMode="multiply"
         app:rippleColor="#FFFFFF" />
 
@@ -35,5 +36,6 @@
         app:icon="@drawable/ic_sun"
         app:iconGravity="textEnd"
         app:iconSize="30dp"
+        app:iconTint="@color/Light"
         app:iconTintMode="multiply" />
 </LinearLayout>

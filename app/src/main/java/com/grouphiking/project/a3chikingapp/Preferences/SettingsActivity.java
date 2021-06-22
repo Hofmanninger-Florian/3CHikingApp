@@ -2,6 +2,8 @@ package com.grouphiking.project.a3chikingapp.Preferences;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
+import com.grouphiking.project.a3chikingapp.Activitys.MainActivity;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Language;
 import com.grouphiking.project.a3chikingapp.R;
@@ -27,9 +31,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new LinearInterpolator());
-        if(Constants.SPINNER_COUNT >= Constants.SPINNER_CALLS){
-            setLocale(Constants.LANGUAGE.getLanguage());
-        }
         setContentView(R.layout.settings_activity);
         SettingsFragment fragment = null;
         if (savedInstanceState == null) {
@@ -54,7 +55,13 @@ public class SettingsActivity extends AppCompatActivity {
                         public void onLanguageChanges(Language language) {
                             if (language != null) {
                                 getPreferences(Context.MODE_PRIVATE).edit().putString(getString(R.string.SpinnerKey), language.toString()).apply();
-                                recreate();
+                                Constants.setLANGUAGE(language);
+                                Constants.setSpinnerAlready(false);
+                                Intent intent = new Intent(SettingsActivity.this, SettingsActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                finish();
+                                startActivity(intent);
+
                             }
                         }
                     };
@@ -66,22 +73,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(newBase);
+        super.attachBaseContext(MyContextWrapper.wrap(newBase,preferences.getString(newBase.getString(R.string.SpinnerKey), Constants.LANGUAGE.getLanguage())));
+        Constants.LANGUAGE_SET = true;
     }
 
-    public void setLocale(String locale){
-        Locale myLocal = new Locale(locale);
-        Locale.setDefault(myLocal);
-        Configuration config = new Configuration();
-        config.setLocale(myLocal);
-        getBaseContext().getResources().updateConfiguration(config,
-                getBaseContext().getResources().getDisplayMetrics());
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

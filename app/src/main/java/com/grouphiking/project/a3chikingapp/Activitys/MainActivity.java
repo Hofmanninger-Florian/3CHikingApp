@@ -2,9 +2,12 @@ package com.grouphiking.project.a3chikingapp.Activitys;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grouphiking.project.a3chikingapp.Adapters.Main_listAdapter;
 import com.grouphiking.project.a3chikingapp.Add_Dialog_frag;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
+import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
 import com.grouphiking.project.a3chikingapp.R;
 
@@ -46,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
         setViews();
         setListeners();
         setAdapters();
+    }
 
-
-
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(newBase);
+        super.attachBaseContext(MyContextWrapper.wrap(newBase,preferences.getString(newBase.getString(R.string.SpinnerKey), Constants.LANGUAGE.getLanguage())));
     }
 
     private void setViews() {
@@ -78,6 +84,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        if(Constants.LANGUAGE_SET){
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            Constants.LANGUAGE_SET = false;
+        }
+        super.onResume();
+    }
 
     //Settings start
     private void startSettings(){
