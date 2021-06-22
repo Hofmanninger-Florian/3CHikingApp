@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -98,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
     //Settings start
     private void startSettings(){
         Intent settings = new Intent(this, SettingsActivity.class);
-        startActivity(settings, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            startActivity(settings, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }
     }
 
     //Go To Add Dialog
