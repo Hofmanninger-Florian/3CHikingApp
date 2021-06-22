@@ -36,4 +36,5 @@
     <string name="firebase_user_Already">"Ehm... du hättest schon einen Account mit diesem Namen :) "</string>
     <string name="firebase_user_notAlready">Scheint so, als ob Sie der neue Typ sind. Gehen Sie vor und registrieren Sie sich bitte :)</string>
     <string name="firebase_update">Hmm irgendwas konnte nicht aktualisieren ._.</string>
+    <string name="add_item_NothingSelected">"Eines der Textfelder ist leer "</string>
 </resources>
