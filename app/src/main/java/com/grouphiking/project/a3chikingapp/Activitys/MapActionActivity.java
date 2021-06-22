@@ -33,8 +33,12 @@ import androidx.preference.PreferenceManager;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
+import com.grouphiking.project.a3chikingapp.Data.Mode;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
+import com.grouphiking.project.a3chikingapp.Data.Type;
+import com.grouphiking.project.a3chikingapp.Preferences.Daynightswitch;
 import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
+import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
 import com.grouphiking.project.a3chikingapp.R;
 import com.mapbox.api.directions.v5.DirectionsCriteria;
 import com.mapbox.api.directions.v5.MapboxDirections;
@@ -97,6 +101,8 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     private Button button;
     private Button buttonOrigin;
     private ImageButton leaveActivity;
+    private Type type;
+    private Button buttonNight;
     //Variables for Textview TextOutputs
     private int timeRoute;
     private int timeRouteHour;
@@ -124,8 +130,14 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         Constants.setTransition(this, new LinearInterpolator());
         Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
         setContentView(R.layout.activity_map);
+        buttonNight = (Button) findViewById(R.id.pref_button_night);
+
+
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        trip = new Trip();
+        trip.setType(Type.BIKE);
         layout = findViewById(R.id.layout_Map);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
@@ -133,7 +145,9 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
                 MapActionActivity.this.map = mapboxMap;
-                mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
+                //-------------------------------------------------- DARK MODE --------------------------------------------
+                if(Constants.MODE == Mode.NIGHT){
+                mapboxMap.setStyle(Style.DARK, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         origin = Point.fromLngLat(14.23333, 48.16667);
@@ -145,7 +159,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                                 .tilt(100)
                                 .build();
                         map.animateCamera(CameraUpdateFactory.newCameraPosition(position),200);
-                        getRoute(map, origin, destination);
+                        getRoute(map, origin, destination, type);
                         enableLocationComponent(style);
 
 
@@ -175,6 +189,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                                 map.animateCamera(CameraUpdateFactory.newCameraPosition(orig),200);
                             }
                         });
+
                         leaveActivity = findViewById(R.id.imageButtonLeaveActivity);
                         leaveActivity.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -198,7 +213,77 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                         ));*/
 
                     }
-                });
+                });}
+                //----------------------------------LIGHT MODE-------------------------------------------------------------
+                else{
+                    mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
+                        @Override
+                        public void onStyleLoaded(@NonNull Style style) {
+                            origin = Point.fromLngLat(14.23333, 48.16667);
+                            destination = Point.fromLngLat(14.23343,49.16687);
+
+                            @SuppressLint("Range") CameraPosition position = new CameraPosition.Builder()
+                                    .target(new LatLng(origin.latitude(),origin.longitude()))
+                                    .zoom(15)
+                                    .tilt(100)
+                                    .build();
+                            map.animateCamera(CameraUpdateFactory.newCameraPosition(position),200);
+                            getRoute(map, origin, destination, type);
+                            enableLocationComponent(style);
+
+
+
+                            //Buttons
+                            button = findViewById(R.id.buttonLocation);
+                            button.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    CameraPosition dest = new CameraPosition.Builder()
+                                            .target(new LatLng(destination.latitude(),destination.longitude()))
+                                            .zoom(13)
+                                            .tilt(50)
+                                            .build();
+                                    map.animateCamera(CameraUpdateFactory.newCameraPosition(dest),200);
+                                }
+                            });
+                            buttonOrigin = findViewById(R.id.buttonLocationOrigin);
+                            buttonOrigin.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    CameraPosition orig = new CameraPosition.Builder()
+                                            .target(new LatLng(origin.latitude(),origin.longitude()))
+                                            .zoom(13)
+                                            .tilt(50)
+                                            .build();
+                                    map.animateCamera(CameraUpdateFactory.newCameraPosition(orig),200);
+                                }
+                            });
+
+                            leaveActivity = findViewById(R.id.imageButtonLeaveActivity);
+                            leaveActivity.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    finish();
+                                }
+                            });
+
+
+
+                            initLayers(style);
+                            initSource(style);
+
+                        /*Gradient
+                        style.addLayer(new LineLayer("lineLayer", "line-source").withProperties(
+                                PropertyFactory.lineDasharray(new Float[]{0.01f,2f}),
+                                PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
+                                PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
+                                PropertyFactory.lineWidth(5f),
+                                PropertyFactory.lineColor(Color.parseColor("#e55e5e"))
+                        ));*/
+
+                        }
+                    });
+                }
                 map = mapboxMap;
             }
         });
@@ -218,8 +303,8 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     @SuppressLint("UseCompatLoadingForDrawables")
     private void initLayers(@NonNull Style loadedMapStyle){
         LineLayer routeLayer = new LineLayer(ROUTE_LAYER_ID, ROUTE_SOURCE_ID);
-
         routeLayer.setProperties(
+
                 PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
                 PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
                 PropertyFactory.lineWidth(8f),
@@ -237,16 +322,30 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                 PropertyFactory.iconOffset(new Float[]{0f,-9f})
         ));
     }
-    private void getRoute(MapboxMap mapboxMap, Point origin, Point destination){
-        client = MapboxDirections.builder()
-                .origin(origin)
-                .destination(destination)
-                .overview(DirectionsCriteria.OVERVIEW_FULL)
-                .profile(DirectionsCriteria.PROFILE_WALKING)
-                .accessToken(getString(R.string.mapbox_access_token))
-                .build();
-        client.enqueueCall(this);
+    private void getRoute(MapboxMap mapboxMap, Point origin, Point destination, Type type){
+        if(trip.getType().equals(Type.HIKE)) {
+            client = MapboxDirections.builder()
+                    .origin(origin)
+                    .destination(destination)
+                    .overview(DirectionsCriteria.OVERVIEW_FULL)
+                    .profile(DirectionsCriteria.PROFILE_WALKING)
+                    .accessToken(getString(R.string.mapbox_access_token))
+                    .build();
+            client.enqueueCall(this);
+        } else if(trip.getType().equals(Type.BIKE)) {
+            client = MapboxDirections.builder()
+                    .origin(origin)
+                    .destination(destination)
+                    .overview(DirectionsCriteria.OVERVIEW_FULL)
+                    .profile(DirectionsCriteria.PROFILE_CYCLING)
+                    .accessToken(getString(R.string.mapbox_access_token))
+                    .build();
+            client.enqueueCall(this);
+        }
     }
+
+
+
 
     @Override
     public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
