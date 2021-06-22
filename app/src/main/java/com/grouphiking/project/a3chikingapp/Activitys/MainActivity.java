@@ -118,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
         User workingUser = Constants.getWorkingUser();
         Main_listAdapter listAdapter = new Main_listAdapter(this,R.layout.list_item_layout_bike,workingUser.getTrips());
         list.setAdapter(listAdapter);
-
-
     }
 
 }
