@@ -33,11 +33,13 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static ArrayList<User> userList = new ArrayList<User>();
+    public static final String CHANNEL_ID = "exampleServiceChannel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //TestUser
-       /* Location testLocation = new Location(LocationManager.GPS_PROVIDER);
+        Location testLocation = new Location(LocationManager.GPS_PROVIDER);
         testLocation.setLongitude(13.830268);
         testLocation.setLatitude(48.230236);
         Location testLocation2 = new Location(LocationManager.GPS_PROVIDER);
@@ -46,15 +48,17 @@ public class LoginActivity extends AppCompatActivity {
         Trip t = new Trip(testLocation, testLocation2, "TestRoute");
         ArrayList<Trip> testTrips = new ArrayList<>();
         testTrips.add(t);
-        userList.add(new User("testUser","test", testTrips));*/
-
+        userList.add(new User("testUser","test", testTrips));
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new AccelerateInterpolator());
         setContentView(R.layout.login_layout);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         TextView textView = (TextView) findViewById(R.id.no_account);
+        createNotificationChannel();
         LoginActivity act = this;
+        startService();
+
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,5 +137,11 @@ public class LoginActivity extends AppCompatActivity {
         return result;
     }
 
+    public void startService(){
+        Intent intent = new Intent(this, MyService.class);
+        String msg = "App läuft gerade";
+        intent.putExtra("msg", msg);
+        startService(intent);
+    }
 
 }

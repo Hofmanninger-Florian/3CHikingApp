@@ -3,6 +3,7 @@ package com.grouphiking.project.a3chikingapp.Activitys;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -17,6 +18,7 @@ import android.text.Layout;
 import android.util.Log;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -69,24 +71,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.graphics.Color.parseColor;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.color;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.interpolate;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.lineProgress;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.linear;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.match;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.stop;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacement;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineCap;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineColor;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineGradient;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineJoin;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.lineWidth;
 
 public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback, Callback<DirectionsResponse> {
 
@@ -133,11 +117,11 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
                 MapActionActivity.this.map = mapboxMap;
-                mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/florian-hofmanninger/ckq6wrych2gzz17rrrqiai4j3"), new Style.OnStyleLoaded() {
+                mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
-                        origin = Point.fromLngLat(50,50.1);
-                        destination = Point.fromLngLat(50.01,50.02);
+                        origin = Point.fromLngLat(14.03333, 53.16667);
+                        destination = Point.fromLngLat(14.28611,48.16667);
                         initLayers(style);
                         initSource(style);
                         @SuppressLint("Range") CameraPosition position = new CameraPosition.Builder()
@@ -147,6 +131,8 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                                 .build();
                         map.animateCamera(CameraUpdateFactory.newCameraPosition(position),1000);
                         getRoute(map, origin, destination);
+                        enableLocationComponent(style);
+
 
                     }
                 });
@@ -173,7 +159,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         routeLayer.setProperties(
                 PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
                 PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
-                PropertyFactory.lineWidth(5f),
+                PropertyFactory.lineWidth(8f),
                 PropertyFactory.lineColor(Color.parseColor("#009688"))
         );
         loadedMapStyle.addLayer(routeLayer);
@@ -212,6 +198,15 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
 
 
         DirectionsRoute currentRoute = response.body().routes().get(0);
+        SharedPreferences time = getSharedPreferences("Time", 0);
+        SharedPreferences.Editor editor = time.edit();
+        TextView timeView = (TextView) findViewById(R.id.textView7);
+        if((Math.round(response.body().routes().get(0).duration())/60) < 300){
+            timeView.setText((Math.round(response.body().routes().get(0).duration())/60)+"Min.");
+        } else{
+            timeView.setText(((Math.round(response.body().routes().get(0).duration())/60))/24+"Std.");
+        }
+
 
         if(map!=null){
             map.getStyle(new Style.OnStyleLoaded() {

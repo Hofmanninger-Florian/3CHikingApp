@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.mapbox.navigation:base:1.5.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/43519d7917d54f40db17d9c726548c35/jetified-base-1.5.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/43519d7917d54f40db17d9c726548c35/jetified-base-1.5.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/43519d7917d54f40db17d9c726548c35/jetified-base-1.5.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acd2f3fdf854bee647bbf71fa3c4d502/jetified-base-1.5.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acd2f3fdf854bee647bbf71fa3c4d502/jetified-base-1.5.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acd2f3fdf854bee647bbf71fa3c4d502/jetified-base-1.5.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mapbox.navigation/base/1.5.1/eb5ce7c441bea1f4b17449819fe3136faeede5d3/base-1.5.1-javadoc.jar!/" />

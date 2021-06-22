@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grouphiking.project.a3chikingapp">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,19 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.3CHikingApp">
-        <activity android:name=".Activitys.MapActionActivity"
-            android:configChanges="locale"/>
-        <activity android:name=".Activitys.RegisterActivity"
-            android:configChanges="locale"/>
+
+        <activity
+            android:name=".Activitys.MapActionActivity"
+            android:configChanges="locale" />
+        <activity
+            android:name=".Activitys.RegisterActivity"
+            android:configChanges="locale" />
         <activity
             android:name=".Activitys.MainActivity"
-            android:label="@string/title_activity_Main"
-            android:configChanges="locale"/>
+            android:configChanges="locale"
+            android:label="@string/title_activity_Main" />
         <activity
             android:name=".Preferences.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:configChanges="locale"/>
-        <activity android:name=".Activitys.LoginActivity"
+            android:configChanges="locale"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".Activitys.LoginActivity"
             android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".Services.MyService" android:stopWithTask="true"/>
 
         <meta-data
             android:name="preloaded_fonts"
