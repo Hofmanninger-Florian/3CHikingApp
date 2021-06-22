@@ -43,14 +43,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/MapActionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/MapActionActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Data/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Data/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Preferences/daynightswitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Preferences/Daynightswitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_map.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/root_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/root_preferences.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Preferences/Daynightswitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Preferences/Daynightswitch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,30 +281,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="821" y="432" key="Github.Dialog.Accounts.Choose/0.0.1920.1040@0.0.1920.1040" timestamp="1624383920487" />
-    <state width="1482" height="408" key="GridCell.Tab.0.bottom" timestamp="1624396888909">
+    <state width="1550" height="399" key="GridCell.Tab.0.bottom" timestamp="1624402715777">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624375436077" />
     <state width="914" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624387348521" />
-    <state width="1482" height="408" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624396888909" />
-    <state width="1482" height="408" key="GridCell.Tab.0.center" timestamp="1624396888909">
+    <state width="1550" height="399" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624402715777" />
+    <state width="1550" height="399" key="GridCell.Tab.0.center" timestamp="1624402715777">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624375436077" />
     <state width="914" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624387348521" />
-    <state width="1482" height="408" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624396888909" />
-    <state width="1482" height="408" key="GridCell.Tab.0.left" timestamp="1624396888908">
+    <state width="1550" height="399" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624402715777" />
+    <state width="1550" height="399" key="GridCell.Tab.0.left" timestamp="1624402715777">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624375436076" />
     <state width="914" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624387348521" />
-    <state width="1482" height="408" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624396888908" />
-    <state width="1482" height="408" key="GridCell.Tab.0.right" timestamp="1624396888909">
+    <state width="1550" height="399" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624402715777" />
+    <state width="1550" height="399" key="GridCell.Tab.0.right" timestamp="1624402715777">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624375436077" />
     <state width="914" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624387348521" />
-    <state width="1482" height="408" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624396888909" />
+    <state width="1550" height="399" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624402715777" />
     <state width="1877" height="276" key="GridCell.Tab.1.bottom" timestamp="1624383207356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -356,9 +352,10 @@
     </state>
     <state x="1382" y="978" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624391823726" />
     <state x="521" y="352" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1440.819@0.25.1440.819" timestamp="1624378283525" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1624382706820">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="831" y="303" width="896" height="913" key="search.everywhere.popup" timestamp="1624401710627">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624382706820" />
+    <state x="831" y="303" width="896" height="913" key="search.everywhere.popup/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1624401710627" />
   </component>
 </project>

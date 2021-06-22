@@ -33,6 +33,7 @@ public class Daynightswitch extends Preference {
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
+
         super.onBindViewHolder(holder);
         button_day = (Button) holder.findViewById(R.id.pref_button_day);
         button_night = (Button) holder.findViewById(R.id.pref_button_night);

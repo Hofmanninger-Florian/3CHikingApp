@@ -236,4 +236,7 @@ public class Constants{
 
     public static final String USER_ID = "users";
 
+
+    public static final String TRIP = "trip";
+
 }
