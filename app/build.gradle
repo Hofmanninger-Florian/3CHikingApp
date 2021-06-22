@@ -38,6 +38,7 @@ dependencies {
     implementation "com.mapbox.navigation:ui:1.5.1"
     implementation "com.mapbox.navigation:core:1.5.1"
     implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.42.6'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-places-v9:0.12.0'
 
 
     implementation 'androidx.preference:preference:1.1.1'

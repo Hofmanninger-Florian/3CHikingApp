@@ -11,6 +11,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import android.widget.RadioButton;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.grouphiking.project.a3chikingapp.Activitys.MapActionActivity;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
@@ -139,15 +142,26 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     //Adding
     private void add(boolean exe){
         Trip t = null;
-        if(exe){
+        if(exe && canGoON()){
             t = new Trip(type, FROM, TO, mt_tripName.getText().toString());
             Constants.getWorkingUser().getTrips().add(t);
             Constants.updateUser(layout);
+            Constants.setLISTENERPOST(new Constants.postExecuteListner() {
+                @Override
+                public void onpostExecute() {
+                    Log.d("Debug", "It is Updated");
+                    launchNewAct();
+                }
+            });
+        }else if(!canGoON()){
+            Snackbar.make(layout, R.string.add_item_NothingSelected, BaseTransientBottomBar.LENGTH_SHORT).show();
         }
-        launchNewAct();
 
     }
 
+    private boolean canGoON(){
+        return (mt_Bike.isChecked() || mt_Hike.isChecked()) && !mt_fromPlace.getText().equals("") && !mt_tripName.getText().equals("") && !mt_toPlace.getText().equals("");
+    }
 
     private void launchNewAct(){
         this.dismiss();
@@ -163,7 +177,9 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
 
         @Override
         protected String doInBackground(String... strings) {
-            return null;
+            String Response = "";
+            String url = strings[0];
+            return "";
         }
 
         @Override

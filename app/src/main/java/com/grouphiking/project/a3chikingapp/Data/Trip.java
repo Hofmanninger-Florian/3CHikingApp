@@ -46,6 +46,7 @@ public class Trip {
         this.NAME = NAME;
     }
 
+
     @Override
     public String toString() {
         return FROM.toString() + "," + TO.toString() + "," + getNAME();
