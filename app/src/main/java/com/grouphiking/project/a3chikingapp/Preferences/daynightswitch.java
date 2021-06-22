@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -48,6 +49,7 @@ public class daynightswitch extends Preference {
             SharedPreferences.Editor editor = getSharedPreferences().edit();
             editor.putBoolean(getContext().getString(R.string.SwitchKey),Constants.MODE.isValue()).apply();
         }
+        //Updating
         setButtons();
     }
 
@@ -60,6 +62,14 @@ public class daynightswitch extends Preference {
                 SharedPreferences.Editor editor = getSharedPreferences().edit();
                 editor.putString(getContext().getString(R.string.SwitchKey), Mode.NIGHT.toString());
                 editor.apply();
+                Constants.getWorkingUser().setMode(Mode.NIGHT);
+                Constants.updateUser(Constants.getView());
+                Constants.setLISTENERPOST(new Constants.postExecuteListner() {
+                    @Override
+                    public void onpostExecute() {
+                        Log.d("Debug", "Updated everything");
+                    }
+                });
             }
         });
         button_day.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +80,14 @@ public class daynightswitch extends Preference {
                 SharedPreferences.Editor editor = getSharedPreferences().edit();
                 editor.putString(getContext().getString(R.string.SwitchKey), Mode.DAY.toString());
                 editor.apply();
+                Constants.getWorkingUser().setMode(Mode.DAY);
+                Constants.updateUser(Constants.getView());
+                Constants.setLISTENERPOST(new Constants.postExecuteListner() {
+                    @Override
+                    public void onpostExecute() {
+                        Log.d("Debug", "Updated everything");
+                    }
+                });
             }
         });
 

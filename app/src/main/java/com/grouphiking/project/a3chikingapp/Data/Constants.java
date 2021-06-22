@@ -18,6 +18,7 @@ import android.view.animation.OvershootInterpolator;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.google.android.gms.tasks.OnCanceledListener;
@@ -40,8 +41,9 @@ import com.grouphiking.project.a3chikingapp.R;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
-
+import java.util.Map;
 
 
 public class Constants{
@@ -119,6 +121,17 @@ public class Constants{
         Constants.LANGUAGE = LANGUAGE;
     }
 
+    //For Day/Night Button (Cheat)
+    public static View view;
+
+    public static View getView() {
+        return view;
+    }
+
+    public static void setView(View view) {
+        Constants.view = view;
+    }
+
     //=====Firebase=====
     public static User WORKING_USER;
 
@@ -141,6 +154,13 @@ public class Constants{
                 assert snap != null;
                 Constants.WORKING_USER = (User)snap.toObject(User.class);
                 if(register == null){
+                    Constants.setLANGUAGE(getWorkingUser().getLanguage());
+                    Constants.setMODE(getWorkingUser().getMode());
+                    if(getWorkingUser().getMode().isValue()){
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    }else{
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    }
                     login.proofResults();
                 }else if(login == null){
                     register.proofResults();
@@ -166,7 +186,36 @@ public class Constants{
         });
     }
 
+    public static void updateUser(View view){
+        User user = getWorkingUser();
+        DocumentReference reference = firestore.collection(USER_ID).document(user.username);
+        Map<String, Object> userMap = new HashMap<>();
+        userMap.put("username", user.username);
+        userMap.put("password", user.password);
+        userMap.put("trips", user.trips);
+        userMap.put("language", user.language.name());
+        userMap.put("mode", user.mode.name());
 
+        reference.update(userMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        LISTENERPOST.onpostExecute();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Snackbar.make(view, R.string.firebase_update, BaseTransientBottomBar.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    public static postExecuteListner LISTENERPOST;
+
+    public static void setLISTENERPOST(postExecuteListner LISTENERPOST) {
+        Constants.LISTENERPOST = LISTENERPOST;
+    }
 
     public interface postExecuteListner{
         public void onpostExecute();

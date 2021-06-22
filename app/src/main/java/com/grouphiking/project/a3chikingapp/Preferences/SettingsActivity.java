@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.animation.LinearInterpolator;
 
@@ -32,6 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new LinearInterpolator());
         setContentView(R.layout.settings_activity);
+        Constants.setView(findViewById(R.id.settings_act));
         SettingsFragment fragment = null;
         if (savedInstanceState == null) {
             fragment = new SettingsFragment();
@@ -56,6 +58,15 @@ public class SettingsActivity extends AppCompatActivity {
                             if (language != null) {
                                 getPreferences(Context.MODE_PRIVATE).edit().putString(getString(R.string.SpinnerKey), language.toString()).apply();
                                 Constants.setLANGUAGE(language);
+                                //For Updating
+                                Constants.getWorkingUser().setLanguage(language);
+                                Constants.updateUser(Constants.getView());
+                                Constants.setLISTENERPOST(new Constants.postExecuteListner() {
+                                    @Override
+                                    public void onpostExecute() {
+                                        Log.d("Debug", "Everything Up to Date");
+                                    }
+                                });
                                 Constants.setSpinnerAlready(false);
                                 Intent intent = new Intent(SettingsActivity.this, SettingsActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

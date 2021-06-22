@@ -19,6 +19,11 @@ public class User {
     }
 
     public User() {
+        this.username = "";
+        this.password = "";
+        this.trips = new ArrayList<>();
+        this.mode = Mode.DAY;
+        this.language = Language.ENGLISH;
     }
 
     public String getUsername() {
@@ -43,5 +48,21 @@ public class User {
 
     public void setTrips(ArrayList<Trip> trips) {
         this.trips = trips;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public Mode getMode() {
+        return mode;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
     }
 }

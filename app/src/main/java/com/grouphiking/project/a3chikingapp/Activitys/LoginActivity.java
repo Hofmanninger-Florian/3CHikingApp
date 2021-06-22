@@ -42,17 +42,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //TestUser
-      /*  Location testLocation = new Location(LocationManager.GPS_PROVIDER);
-        testLocation.setLongitude(13.830268);
-        testLocation.setLatitude(48.230236);
-        Location testLocation2 = new Location(LocationManager.GPS_PROVIDER);
-        testLocation2.setLongitude(13.824666);
-        testLocation2.setLatitude(48.305231);
-        Trip t = new Trip(testLocation, testLocation2, "TestRoute");
-        ArrayList<Trip> testTrips = new ArrayList<>();
-        testTrips.add(t);
-        userList.add(new User("testUser","test", testTrips));*/
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new AccelerateInterpolator());
         setContentView(R.layout.login_layout);

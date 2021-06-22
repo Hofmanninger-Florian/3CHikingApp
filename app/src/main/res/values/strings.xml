@@ -71,5 +71,6 @@
     <string name="firebase_add_Error">Could not add Data. Please check your Internet Connection</string>
     <string name="firebase_user_Already">Ehm... you already have a Account like this one :)</string>
     <string name="firebase_user_notAlready">Seems like your the new Guy. Go ahead and register please :)</string>
+    <string name="firebase_update">Hmm something could not update ._.</string>
 
 </resources>
