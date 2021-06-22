@@ -36,7 +36,6 @@
     <string name="login_snackbarLabel">Invalid Password or Username</string>
     <string name="title_activity_Main" translatable="false">Main</string>
     <string name="register_snackbarLabel">Wrong password</string>
-    <string name="login_snackbarLabel_noUser">User not yet created</string>
     <string name="location_explain">We want to get your location in order to make your App-Experience much better</string>
 
     <!--Mapbox Stuff-->
@@ -70,5 +69,7 @@
     <string name="prefs_title_Mode">Mode</string>
     <string name="firebase_get_Error">Could not get Data. Please check your Connection</string>
     <string name="firebase_add_Error">Could not add Data. Please check your Internet Connection</string>
+    <string name="firebase_user_Already">Ehm... you already have a Account like this one :)</string>
+    <string name="firebase_user_notAlready">Seems like your the new Guy. Go ahead and register please :)</string>
 
 </resources>
