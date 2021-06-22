@@ -28,6 +28,7 @@ import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.R;
+import com.grouphiking.project.a3chikingapp.Services.MyService;
 
 import java.util.ArrayList;
 
@@ -49,8 +50,6 @@ public class LoginActivity extends AppCompatActivity {
         ArrayList<Trip> testTrips = new ArrayList<>();
         testTrips.add(t);
         userList.add(new User("testUser","test", testTrips));
-
-
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new AccelerateInterpolator());
         setContentView(R.layout.login_layout);
@@ -58,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.hide();
         TextView textView = (TextView) findViewById(R.id.no_account);
         LoginActivity act = this;
+        startService();
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,5 +136,17 @@ public class LoginActivity extends AppCompatActivity {
         return result;
     }
 
+    public void startService(){
+        Intent intent = new Intent(this, MyService.class);
+        String msg = "Lust zu wandern?";
+        intent.putExtra("msg", msg);
+        startService(intent);
+
+    }
+
+    public void stopService(){
+        Intent intent = new Intent(this, MyService.class);
+        stopService(intent);
+    }
 
 }
