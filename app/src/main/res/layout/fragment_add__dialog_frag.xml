@@ -120,7 +120,7 @@
                     android:textSize="16sp" />
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/add_radioHike"
                     style="@style/Widget.App.RadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

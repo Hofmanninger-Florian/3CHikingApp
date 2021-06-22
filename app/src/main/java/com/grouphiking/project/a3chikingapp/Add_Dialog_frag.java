@@ -5,27 +5,29 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+import android.widget.RadioButton;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.grouphiking.project.a3chikingapp.Activitys.MapActionActivity;
+import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
+import com.grouphiking.project.a3chikingapp.Data.Type;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
 
 public class Add_Dialog_frag extends BottomSheetDialogFragment {
 
@@ -37,10 +39,13 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private TextInputEditText mt_fromPlace;
     private TextInputEditText mt_toPlace;
     private FrameLayout mt_add_Button;
+    private RadioButton mt_Hike;
+    private RadioButton mt_Bike;
 
     //Values
     private Location FROM = new Location(LocationManager.GPS_PROVIDER);
     private Location TO = new Location(LocationManager.GPS_PROVIDER);
+    private Type type;
 
     public Add_Dialog_frag() {
         // Required empty public constructor
@@ -80,6 +85,8 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
             mt_tripName = (TextInputEditText) layout.findViewById(R.id.add_edit_tripname);
             mt_fromPlace = (TextInputEditText) layout.findViewById(R.id.add_edit_fromtrip);
             mt_toPlace = (TextInputEditText) layout.findViewById(R.id.add_edit_tripto);
+            mt_Bike = (RadioButton) layout.findViewById(R.id.add_radioBike);
+            mt_Hike = (RadioButton) layout.findViewById(R.id.add_radioHike);
             return true;
         }else{
             throw new NullPointerException("View not loaded");
@@ -107,6 +114,18 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
                 add(executed);
             }
         });
+        mt_Hike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type = Type.HIKE;
+            }
+        });
+        mt_Bike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type = Type.BIKE;
+            }
+        });
     }
 
     private void reloadto(String searchString) {
@@ -121,12 +140,14 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private void add(boolean exe){
         Trip t = null;
         if(exe){
-            //t = new Trip(FROM, TO, mt_tripName.getText().toString());
-            //Store internal and on Firebase
+            t = new Trip(type, FROM, TO, mt_tripName.getText().toString());
+            Constants.getWorkingUser().getTrips().add(t);
+            Constants.updateUser(layout);
         }
         launchNewAct();
 
     }
+
 
     private void launchNewAct(){
         this.dismiss();
@@ -136,5 +157,18 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
 
     public void setLayout(View layout) {
         this.layout = layout;
+    }
+
+    public class AsyncGettingLocation extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 }

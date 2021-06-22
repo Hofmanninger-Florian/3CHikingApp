@@ -2,12 +2,11 @@ package com.grouphiking.project.a3chikingapp.Data;
 
 import android.location.Location;
 
-import androidx.annotation.FractionRes;
 import androidx.annotation.NonNull;
 
-import com.mapbox.geojson.Point;
-
 public class Trip {
+    //Type
+    private Type type;
 
     //Location
     private final Location FROM;
@@ -16,7 +15,9 @@ public class Trip {
     //Strings
     @NonNull  private String NAME;
 
-    public Trip(Location FROM, Location TO, @NonNull String NAME) {
+
+    public Trip(Type type, Location FROM, Location TO, @NonNull String NAME) {
+        this.type = type;
         this.FROM = FROM;
         this.TO = TO;
         this.NAME = NAME;
@@ -26,6 +27,7 @@ public class Trip {
         this.FROM = null;
         this.TO = null;
         this.NAME = "";
+        this.type = null;
     }
 
     public Location getFROM() {
