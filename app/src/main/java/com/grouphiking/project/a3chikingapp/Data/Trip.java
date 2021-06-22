@@ -5,9 +5,10 @@ import android.location.LocationManager;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class Trip {
+public class Trip implements Serializable {
     //Type
     private Type type;
 

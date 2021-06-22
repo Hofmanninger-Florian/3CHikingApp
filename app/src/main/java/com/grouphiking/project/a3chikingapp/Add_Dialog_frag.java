@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,8 @@ import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.Type;
 import com.mapbox.api.geocoding.v5.models.CarmenFeature;
 import com.mapbox.geojson.Point;
+
+import java.io.Serializable;
 
 public class Add_Dialog_frag extends BottomSheetDialogFragment {
 
@@ -169,7 +172,7 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
                 @Override
                 public void onpostExecute() {
                     Log.d("Debug", "It is Updated");
-                    launchNewAct();
+                    launchNewAct(trip);
                 }
             });
         }else if(!canGoON()){
@@ -182,10 +185,10 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
         return (mt_Bike.isChecked() || mt_Hike.isChecked()) && !mt_fromPlace.getText().equals("") && !mt_tripName.getText().equals("") && !mt_toPlace.getText().equals("");
     }
 
-    private void launchNewAct(){
+    private void launchNewAct(Trip t){
         this.dismiss();
         Intent actionAct = new Intent(getActivity().getApplicationContext(), MapActionActivity.class);
-
+        actionAct.putExtra(Constants.TRIP, (Serializable) t);
         startActivity(actionAct);
     }
     public void setLayout(View layout) {
