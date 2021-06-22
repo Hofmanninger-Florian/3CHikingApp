@@ -23,6 +23,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grouphiking.project.a3chikingapp.Adapters.Main_listAdapter;
 import com.grouphiking.project.a3chikingapp.Add_Dialog_frag;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
+import com.grouphiking.project.a3chikingapp.Data.Trip;
+import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
 import com.grouphiking.project.a3chikingapp.R;
@@ -112,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setAdapters(){
+        User workingUser = Constants.getWorkingUser();
+        for (Trip trip : workingUser.getTrips()) {
+            if(trip.get)
+        }
 
     }
 
