@@ -86,9 +86,9 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             String username = editText_username_register.getText().toString();
             String password = editText_password_register.getText().toString();
-            ArrayList<Trip> trips = new ArrayList<>();
-            LoginActivity.userList.add(new User(username, password, trips));
-            intentMain();
+            if(Constants.getUsersGet(username, layout) != null){
+                Constants.addUser(new User(username, password, new ArrayList<Trip>(), Constants.LANGUAGE, Constants.MODE), layout);
+            }
         }
     }
 

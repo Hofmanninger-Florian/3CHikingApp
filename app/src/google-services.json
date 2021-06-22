@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "12343823184",
+    "project_id": "noted-slice-312007",
+    "storage_bucket": "noted-slice-312007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12343823184:android:3c22565e4db48c13befa55",
+        "android_client_info": {
+          "package_name": "com.grouphiking.project.a3chikingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12343823184-bfl1lp07cflc13i1ane9ao5nsructgvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grouphiking.project.a3chikingapp",
+            "certificate_hash": "b2b65b35a51d2e24f43aec3fd3a2d9d67b4e1c59"
+          }
+        },
+        {
+          "client_id": "12343823184-k22a56udp770norqr0l8d801bpc81lk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwoIjLpJuNf2gYzSrI-ino6K3O2aysues"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12343823184-k22a56udp770norqr0l8d801bpc81lk8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

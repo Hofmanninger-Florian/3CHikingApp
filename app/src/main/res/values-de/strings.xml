@@ -32,4 +32,6 @@
     <string name="register_toLogin">Du hast schon einen Account? login.</string>
     <string name="prefs_title_language">Sprache</string>
     <string name="prefs_title_Mode">Modus</string>
+    <string name="firebase_get_Error">Konnte Daten nicht einsehen. Bitte überprüfen Sie ihre Internetverbindung</string>
+    <string name="firebase_add_Error">Konnte die Daten nicht hinzufügen. Bitte überprüfen Sie Ihre Internetverbindung</string>
 </resources>

@@ -6,15 +6,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 
 import android.app.ActivityOptions;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -31,7 +28,6 @@ import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.R;
-import com.grouphiking.project.a3chikingapp.Services.MyService;
 
 import java.util.ArrayList;
 
@@ -110,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
             Snackbar.make(layout, R.string.login_snackbarLabel_noUser, Snackbar.LENGTH_SHORT).show();
         }else {
             boolean b = false;
-            for(User u : userList){
+            for(User u : Constants.userList){
                 if(editText_username.getText().toString().equals(u.getUsername()) && editText_password.getText().toString().equals(u.getPassword())){
                     b = true;
                 }
@@ -131,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean wrongUser(String name, String pwd){
         boolean result = false;
-        for(User u : userList){
+        for(User u : Constants.userList){
             if(name.equals(u.getUsername()) && pwd.equals(u.getPassword())){
                 result = false;
             } else{
@@ -148,16 +144,4 @@ public class LoginActivity extends AppCompatActivity {
         startService(intent);
     }
 
-    public void stopService(){
-        Intent intent = new Intent(this, MyService.class);
-        stopService(intent);
-    }
-
-    public void createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel serviceChannel = new NotificationChannel(CHANNEL_ID,"Example Service Channel", NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(serviceChannel);
-        }
-    }
 }
