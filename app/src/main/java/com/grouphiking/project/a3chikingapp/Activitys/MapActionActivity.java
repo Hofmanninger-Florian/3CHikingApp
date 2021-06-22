@@ -5,7 +5,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -14,9 +13,11 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.text.Layout;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -58,13 +60,12 @@ import com.mapbox.mapboxsdk.style.layers.LineLayer;
 import com.mapbox.mapboxsdk.style.layers.Property;
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
-import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.utils.BitmapUtils;
-import com.mapbox.navigation.core.MapboxNavigation;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -98,7 +99,26 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     private static final String ORIGIN_ICON_ID = "origin-icon-id";
     private static final String DESTINATION_ICON_ID = "destination-icon-id";
     private static final String RED_PIN_ICON_ID = "red-pin-icon-id";
+    private Button button;
+    private Button buttonOrigin;
+    //Variables for Textview TextOutputs
+    private int timeRoute;
+    private int timeRouteHour;
+    private int distanceRoute;
+    private int distanceRouteKm;
+    private int altimeterRoute;
+    private int altimeterRouteKm;
+    private String TypeWalking;
+    private String TypeCycling;
+    //TextViews for TextOutputs
+    private TextView timeViewRoute;
+    private TextView distanceViewRoute;
+    private TextView altimeterViewRoute;
+    private TextView altimeterViewRouteEnd;
+    private TextView typeViewRoute;
 
+    private RadioButton radioButtonBike;
+    private RadioButton radioButtonWalking;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -120,20 +140,43 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                 mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
-                        origin = Point.fromLngLat(14.03333, 53.16667);
-                        destination = Point.fromLngLat(14.28611,48.16667);
+                        origin = Point.fromLngLat(14.23333, 48.16677);
+                        destination = Point.fromLngLat(14.28611,49.16667);
                         initLayers(style);
                         initSource(style);
                         @SuppressLint("Range") CameraPosition position = new CameraPosition.Builder()
                                 .target(new LatLng(origin.latitude(),origin.longitude()))
-                                .zoom(18)
+                                .zoom(15)
                                 .tilt(100)
                                 .build();
-                        map.animateCamera(CameraUpdateFactory.newCameraPosition(position),1000);
+                        map.animateCamera(CameraUpdateFactory.newCameraPosition(position),200);
                         getRoute(map, origin, destination);
                         enableLocationComponent(style);
 
-
+                        button = findViewById(R.id.buttonLocation);
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                CameraPosition dest = new CameraPosition.Builder()
+                                        .target(new LatLng(destination.latitude(),destination.longitude()))
+                                        .zoom(13)
+                                        .tilt(50)
+                                        .build();
+                                map.animateCamera(CameraUpdateFactory.newCameraPosition(dest),200);
+                            }
+                        });
+                        buttonOrigin = findViewById(R.id.buttonLocationOrigin);
+                        buttonOrigin.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                CameraPosition orig = new CameraPosition.Builder()
+                                        .target(new LatLng(origin.latitude(),origin.longitude()))
+                                        .zoom(13)
+                                        .tilt(50)
+                                        .build();
+                                map.animateCamera(CameraUpdateFactory.newCameraPosition(orig),200);
+                            }
+                        });
                     }
                 });
                 map = mapboxMap;
@@ -200,12 +243,37 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         DirectionsRoute currentRoute = response.body().routes().get(0);
         SharedPreferences time = getSharedPreferences("Time", 0);
         SharedPreferences.Editor editor = time.edit();
-        TextView timeView = (TextView) findViewById(R.id.textView7);
-        if((Math.round(response.body().routes().get(0).duration())/60) < 300){
-            timeView.setText((Math.round(response.body().routes().get(0).duration())/60)+"Min.");
-        } else{
-            timeView.setText(((Math.round(response.body().routes().get(0).duration())/60))/24+"Std.");
+
+
+
+
+        //The Distance
+        distanceViewRoute = (TextView) findViewById(R.id.textView6);
+        distanceRoute = (int) Math.round(response.body().routes().get(0).distance());
+        distanceRouteKm = (int) Math.round((response.body().routes().get(0).distance())/1000);
+
+        if(distanceRoute < 900){
+            distanceViewRoute.setText(distanceRoute+ " M.");
         }
+        else if(distanceRoute >= 900){
+            distanceViewRoute.setText(distanceRouteKm +" Km.");
+        }
+
+        //The Time
+        timeViewRoute = (TextView) findViewById(R.id.textView7);
+        timeRoute = (int) Math.round(response.body().routes().get(0).duration()/60);
+        timeRouteHour = (int) Math.round((response.body().routes().get(0).duration()/60)/24);
+        if(timeRoute < 300){
+            timeViewRoute.setText(timeRoute +" Min.");
+        } else if(timeRoute >= 300){
+            timeViewRoute.setText(timeRouteHour+" Std.");
+        }
+
+        //The Type
+
+        //The Altimeter
+        //altimeterViewRoute = (TextView) findViewById(R.id.textView8);
+        //altimeterViewRouteEnd = (TextView) findViewById(R.id.textview9);
 
 
         if(map!=null){
@@ -226,6 +294,36 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         Toast.makeText(this,t.getMessage(),Toast.LENGTH_SHORT);
     }
 
+
+/*
+    private void makeElevationRequest(@NonNull final Style style, @NonNull LatLng point){
+        MapboxTilequery elevationQuery = MapboxTilequery.builder().accessToken(getString(R.string.mapbox_access_token))
+                .tilesetIds("mapbox.mapbox-terrain-v2")
+                .query(Point.fromLngLat(point.getLongitude(), point.getLatitude()))
+                .geometry("polygon")
+                .layers("contour")
+                .build();
+
+        elevationQuery.enqueueCall(new Callback<FeatureCollection>() {
+            @Override
+            public void onResponse(Call<FeatureCollection> call, Response<FeatureCollection> response) {
+                if(response.body().features() != null){
+                    List<Feature> featureList = response.body().features();
+                    String listOfElevations = "";
+
+                    for(Feature singleFeature : featureList){
+                        listOfElevations = listOfElevations + singleFeature.getStringProperty("ele")+", ";
+                    }
+                    altimeterViewRoute.setText(String.format("yes");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FeatureCollection> call, Throwable t) {
+
+            }
+        });
+    }*/
     //Mapbox Navigation
 
 
@@ -413,7 +511,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Constants.TIME_REQUEST_UPDATE, Constants.DIST_REQUEST_UPDATE, listener);
     }
 
-    //------------------------- "on..." Standard Methods --------------------------------------
+    //------------------------- "on..." Methods --------------------------------------
     protected void onStart(){
         super.onStart();
         mapView.onStart();
