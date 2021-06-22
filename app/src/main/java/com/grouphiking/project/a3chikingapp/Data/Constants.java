@@ -154,13 +154,16 @@ public class Constants{
                 assert snap != null;
                 Constants.WORKING_USER = (User)snap.toObject(User.class);
                 if(register == null){
-                    Constants.setLANGUAGE(getWorkingUser().getLanguage());
-                    Constants.setMODE(getWorkingUser().getMode());
-                    if(getWorkingUser().getMode().isValue()){
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    }else{
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    if(getWorkingUser() != null){
+                        Constants.setLANGUAGE(getWorkingUser().getLanguage());
+                        Constants.setMODE(getWorkingUser().getMode());
+                        if(getWorkingUser().getMode().isValue()){
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        }else{
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        }
                     }
+
                     login.proofResults();
                 }else if(login == null){
                     register.proofResults();
