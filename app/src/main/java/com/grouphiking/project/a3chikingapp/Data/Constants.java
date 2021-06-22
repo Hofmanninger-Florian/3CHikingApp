@@ -166,6 +166,12 @@ public class Constants{
         });
     }
 
+
+
+    public interface postExecuteListner{
+        public void onpostExecute();
+    }
+
     public static User getWorkingUser() {
         return WORKING_USER;
     }
