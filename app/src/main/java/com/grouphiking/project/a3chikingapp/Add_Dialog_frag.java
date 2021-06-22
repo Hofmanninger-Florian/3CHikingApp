@@ -5,14 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +23,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.grouphiking.project.a3chikingapp.Activitys.MapActionActivity;
+import com.grouphiking.project.a3chikingapp.Activitys.PlacesGetActivity;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.Type;
-
-import java.util.ArrayList;
+import com.mapbox.api.geocoding.v5.models.CarmenFeature;
+import com.mapbox.geojson.Point;
 
 public class Add_Dialog_frag extends BottomSheetDialogFragment {
 
@@ -41,14 +41,18 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private TextInputEditText mt_tripName;
     private TextInputEditText mt_fromPlace;
     private TextInputEditText mt_toPlace;
+    private TextInputLayout mt_fromPlaceLayout;
+    private TextInputLayout mt_toPlaceLayout;
     private FrameLayout mt_add_Button;
     private RadioButton mt_Hike;
     private RadioButton mt_Bike;
+
 
     //Values
     private Location FROM = new Location(LocationManager.GPS_PROVIDER);
     private Location TO = new Location(LocationManager.GPS_PROVIDER);
     private Type type;
+    private Trip trip;
 
     public Add_Dialog_frag() {
         // Required empty public constructor
@@ -88,6 +92,8 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
             mt_tripName = (TextInputEditText) layout.findViewById(R.id.add_edit_tripname);
             mt_fromPlace = (TextInputEditText) layout.findViewById(R.id.add_edit_fromtrip);
             mt_toPlace = (TextInputEditText) layout.findViewById(R.id.add_edit_tripto);
+            mt_fromPlaceLayout = (TextInputLayout) layout.findViewById(R.id.add_from_layout);
+            mt_toPlaceLayout = (TextInputLayout) layout.findViewById(R.id.add_to_layout);
             mt_Bike = (RadioButton) layout.findViewById(R.id.add_radioBike);
             mt_Hike = (RadioButton) layout.findViewById(R.id.add_radioHike);
             return true;
@@ -97,18 +103,16 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     }
 
     public void setListeners(boolean executed){
-        mt_fromPlace.setOnKeyListener(new View.OnKeyListener() {
+        mt_toPlaceLayout.setStartIconOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                reloadFrom(mt_fromPlace.getText().toString());
-                return true;
+            public void onClick(View v) {
+                startPlaces(true);
             }
         });
-        mt_toPlace.setOnKeyListener(new View.OnKeyListener(){
+        mt_fromPlaceLayout.setStartIconOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                reloadto(mt_toPlace.getText().toString());
-                return true;
+            public void onClick(View v) {
+                startPlaces(false);
             }
         });
         mt_add_Button.setOnClickListener(new View.OnClickListener() {
@@ -131,19 +135,34 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
         });
     }
 
-    private void reloadto(String searchString) {
-        //API_Action
+    private void startPlaces(boolean to){
+        Constants.setFEATURECHANGE_LISTENER(new Constants.onFeatureChange() {
+            @Override
+            public void onFeatureChanged(CarmenFeature feature) {
+                Point point = (Point)feature.geometry();
+                if(to){
+                    TO.setLongitude(point.longitude());
+                    TO.setLatitude(point.latitude());
+                    mt_toPlace.setText(feature.placeName());
+                }else{
+                    FROM.setLatitude(point.latitude());
+                    FROM.setLatitude(point.longitude());
+                    mt_fromPlace.setText(feature.placeName());
+                }
+            }
+        });
+        Intent places = new Intent(getActivity().getApplicationContext(), PlacesGetActivity.class);
+        startActivity(places);
     }
 
-    private void reloadFrom(String searchString) {
-        //API_Action
-    }
+
 
     //Adding
     private void add(boolean exe){
         Trip t = null;
         if(exe && canGoON()){
             t = new Trip(type, FROM, TO, mt_tripName.getText().toString());
+            trip = t;
             Constants.getWorkingUser().getTrips().add(t);
             Constants.updateUser(layout);
             Constants.setLISTENERPOST(new Constants.postExecuteListner() {
@@ -166,25 +185,10 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private void launchNewAct(){
         this.dismiss();
         Intent actionAct = new Intent(getActivity().getApplicationContext(), MapActionActivity.class);
+
         startActivity(actionAct);
     }
-
     public void setLayout(View layout) {
         this.layout = layout;
-    }
-
-    public class AsyncGettingLocation extends AsyncTask<String, Integer, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String Response = "";
-            String url = strings[0];
-            return "";
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
     }
 }

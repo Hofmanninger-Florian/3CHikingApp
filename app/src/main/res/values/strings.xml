@@ -74,5 +74,9 @@
     <string name="firebase_update">Hmm something could not update ._.</string>
     <string name="add_item_NothingSelected">One of the Textfields is empty</string>
     <string name="Location_Key" translatable="false">pk.9b7239060a6ad9755fbea4a783ab6473</string>
+    <string name="places_hint">Please Enter Location</string>
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
+    <string name="places_tag" translatable="false">Tag_places</string>
 
 </resources>

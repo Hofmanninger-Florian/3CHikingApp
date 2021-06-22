@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.3CHikingApp">
-
+        <activity android:name=".Activitys.PlacesGetActivity"></activity>
         <activity
             android:name=".Activitys.MapActionActivity"
             android:configChanges="locale" />
@@ -36,7 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".Services.MyService" android:stopWithTask="true"/>
+
+        <service
+            android:name=".Services.MyService"
+            android:stopWithTask="true" />
 
         <meta-data
             android:name="preloaded_fonts"

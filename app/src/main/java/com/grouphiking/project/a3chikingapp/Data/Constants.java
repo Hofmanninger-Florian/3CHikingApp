@@ -33,10 +33,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.grouphiking.project.a3chikingapp.Activitys.LoginActivity;
+import com.grouphiking.project.a3chikingapp.Activitys.MainActivity;
 import com.grouphiking.project.a3chikingapp.Activitys.RegisterActivity;
 import com.grouphiking.project.a3chikingapp.Preferences.LanguageSpinner;
 import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
 import com.grouphiking.project.a3chikingapp.R;
+import com.mapbox.api.geocoding.v5.models.CarmenFeature;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -236,6 +238,38 @@ public class Constants{
 
     public static final String USER_ID = "users";
 
+    public static final String LAT = "latitude";
+    public static final String LONGD = "longitude";
+
+    //Places-MapboxSDK
+    public static final int LIMIT_OPTIONS = 5;
+    public static final Integer HISTORY_COUNT = 3;
+
+    public static final int ID_FROM_RESULT = 50;
+    public static final int ID_TO_RESULT = 100;
+
+    //For Places Fragment
+    public static CarmenFeature feature;
+
+    public static CarmenFeature getFeature() {
+        return feature;
+    }
+
+    public static void setFeature(CarmenFeature feature) {
+        Constants.feature = feature;
+        if(FEATURECHANGE_LISTENER != null)FEATURECHANGE_LISTENER.onFeatureChanged(feature);
+    }
+
+    public static onFeatureChange FEATURECHANGE_LISTENER;
+
+    public static void setFEATURECHANGE_LISTENER(onFeatureChange FEATURECHANGE_LISTENER) {
+        Constants.FEATURECHANGE_LISTENER = FEATURECHANGE_LISTENER;
+    }
+
+
+    public interface onFeatureChange{
+        public void onFeatureChanged(CarmenFeature feature);
+    }
 
     public static final String TRIP = "trip";
 

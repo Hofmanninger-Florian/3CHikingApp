@@ -133,7 +133,6 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         buttonNight = (Button) findViewById(R.id.pref_button_night);
 
 
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         trip = new Trip();
