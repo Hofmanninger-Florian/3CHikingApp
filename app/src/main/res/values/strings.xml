@@ -68,5 +68,7 @@
     <string name="languageSpinner_Default" translatable="false">Default Language</string>
     <string name="prefs_title_language">Language</string>
     <string name="prefs_title_Mode">Mode</string>
+    <string name="firebase_get_Error">Could not get Data. Please check your Connection</string>
+    <string name="firebase_add_Error">Could not add Data. Please check your Internet Connection</string>
 
 </resources>

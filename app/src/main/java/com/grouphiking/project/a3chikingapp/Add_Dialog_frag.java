@@ -90,14 +90,14 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
         mt_fromPlace.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                reloadFrom();
+                reloadFrom(mt_fromPlace.getText().toString());
                 return true;
             }
         });
         mt_toPlace.setOnKeyListener(new View.OnKeyListener(){
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                reloadto();
+                reloadto(mt_toPlace.getText().toString());
                 return true;
             }
         });
@@ -109,11 +109,11 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
         });
     }
 
-    private void reloadto() {
+    private void reloadto(String searchString) {
         //API_Action
     }
 
-    private void reloadFrom() {
+    private void reloadFrom(String searchString) {
         //API_Action
     }
 

@@ -7,10 +7,15 @@ public class User {
     String username;
     String password;
     ArrayList<Trip> trips;
-    public User(String username, String password, ArrayList<Trip> trips) {
+    Language language;
+    Mode mode;
+
+    public User(String username, String password, ArrayList<Trip> trips, Language language, Mode mode) {
         this.username = username;
         this.password = password;
         this.trips = trips;
+        this.mode = mode;
+        this.language = language;
     }
 
     public String getUsername() {

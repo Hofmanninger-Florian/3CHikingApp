@@ -19,9 +19,12 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.grouphiking.project.a3chikingapp.Data.Constants;
+import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.R;
+
+import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -83,8 +86,9 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             String username = editText_username_register.getText().toString();
             String password = editText_password_register.getText().toString();
-            //LoginActivity.userList.add(new User(username, password));
-            intentMain();
+            if(Constants.getUsersGet(username, layout) != null){
+                Constants.addUser(new User(username, password, new ArrayList<Trip>(), Constants.LANGUAGE, Constants.MODE), layout);
+            }
         }
     }
 

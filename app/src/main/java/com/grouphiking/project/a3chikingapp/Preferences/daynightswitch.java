@@ -38,9 +38,15 @@ public class daynightswitch extends Preference {
 
         //set default "Selected" button
         if (Constants.DEF_MODE) {
+            Constants.setMODE(Mode.NIGHT);
             button_night.setBackgroundColor(Color.parseColor(Constants.NIGHT_COLOR));
+            SharedPreferences.Editor editor = getSharedPreferences().edit();
+            editor.putBoolean(getContext().getString(R.string.SwitchKey),Constants.MODE.isValue()).apply();
         } else {
+            Constants.setMODE(Mode.DAY);
             button_day.setBackgroundColor(Color.parseColor(Constants.DAY_COLOR));
+            SharedPreferences.Editor editor = getSharedPreferences().edit();
+            editor.putBoolean(getContext().getString(R.string.SwitchKey),Constants.MODE.isValue()).apply();
         }
         setButtons();
     }

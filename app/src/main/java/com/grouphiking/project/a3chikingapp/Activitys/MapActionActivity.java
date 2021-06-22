@@ -178,7 +178,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         );
         loadedMapStyle.addLayer(routeLayer);
         loadedMapStyle.addImage(RED_PIN_ICON_ID, Objects.requireNonNull(BitmapUtils.getBitmapFromDrawable(
-                getResources().getDrawable(R.drawable.marker)
+                getDrawable(R.drawable.marker)
         )));
 
         loadedMapStyle.addLayer(new SymbolLayer(ICON_LAYER_ID, ICON_SOURCE_ID).withProperties(

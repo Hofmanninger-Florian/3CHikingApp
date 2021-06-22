@@ -33,13 +33,11 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static ArrayList<User> userList = new ArrayList<User>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //TestUser
-        Location testLocation = new Location(LocationManager.GPS_PROVIDER);
+       /* Location testLocation = new Location(LocationManager.GPS_PROVIDER);
         testLocation.setLongitude(13.830268);
         testLocation.setLatitude(48.230236);
         Location testLocation2 = new Location(LocationManager.GPS_PROVIDER);
@@ -48,8 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         Trip t = new Trip(testLocation, testLocation2, "TestRoute");
         ArrayList<Trip> testTrips = new ArrayList<>();
         testTrips.add(t);
-        userList.add(new User("testUser","test", testTrips));
-
+        userList.add(new User("testUser","test", testTrips));*/
 
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new AccelerateInterpolator());
@@ -105,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
             Snackbar.make(layout, R.string.login_snackbarLabel_noUser, Snackbar.LENGTH_SHORT).show();
         }else {
             boolean b = false;
-            for(User u : userList){
+            for(User u : Constants.userList){
                 if(editText_username.getText().toString().equals(u.getUsername()) && editText_password.getText().toString().equals(u.getPassword())){
                     b = true;
                 }
@@ -126,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean wrongUser(String name, String pwd){
         boolean result = false;
-        for(User u : userList){
+        for(User u : Constants.userList){
             if(name.equals(u.getUsername()) && pwd.equals(u.getPassword())){
                 result = false;
             } else{
