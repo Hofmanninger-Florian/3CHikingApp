@@ -6,12 +6,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 
 import android.app.ActivityOptions;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -28,6 +31,7 @@ import com.grouphiking.project.a3chikingapp.Data.Trip;
 import com.grouphiking.project.a3chikingapp.Data.User;
 import com.grouphiking.project.a3chikingapp.Preferences.MyContextWrapper;
 import com.grouphiking.project.a3chikingapp.R;
+import com.grouphiking.project.a3chikingapp.Services.MyService;
 
 import java.util.ArrayList;
 
@@ -39,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //TestUser
-        Location testLocation = new Location(LocationManager.GPS_PROVIDER);
+      /*  Location testLocation = new Location(LocationManager.GPS_PROVIDER);
         testLocation.setLongitude(13.830268);
         testLocation.setLatitude(48.230236);
         Location testLocation2 = new Location(LocationManager.GPS_PROVIDER);
@@ -48,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         Trip t = new Trip(testLocation, testLocation2, "TestRoute");
         ArrayList<Trip> testTrips = new ArrayList<>();
         testTrips.add(t);
-        userList.add(new User("testUser","test", testTrips));
+        userList.add(new User("testUser","test", testTrips));*/
         super.onCreate(savedInstanceState);
         Constants.setTransition(this, new AccelerateInterpolator());
         setContentView(R.layout.login_layout);
@@ -135,6 +139,19 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         return result;
+    }
+
+    public void stopService(){
+        Intent intent = new Intent(this, MyService.class);
+        stopService(intent);
+    }
+
+    public void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel serviceChannel = new NotificationChannel(CHANNEL_ID,"Example Service Channel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(serviceChannel);
+        }
     }
 
     public void startService(){
