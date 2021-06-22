@@ -42,7 +42,7 @@ public class Main_listAdapter extends ArrayAdapter<Trip> {
         if(trip.getType().equals(Type.BIKE)){
             resource = R.layout.list_item_layout_bike;
         } else {
-            resource = R.layout.list_item_layout_bike;
+            resource = R.layout.list_item_layout_walk;
         }
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(resource, parent, false);

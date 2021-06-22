@@ -161,8 +161,11 @@ public class Constants{
                         Constants.setMODE(getWorkingUser().getMode());
                         if(getWorkingUser().getMode().isValue()){
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        }else{
+                        }else {
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        }
+                        for(Trip t : Constants.getWorkingUser().getTrips()){
+
                         }
                     }
 
@@ -238,6 +241,9 @@ public class Constants{
 
     public static final String USER_ID = "users";
 
+    public static final String LAT = "latitude";
+    public static final String LONGD = "longitude";
+
     //Places-MapboxSDK
     public static final int LIMIT_OPTIONS = 5;
     public static final Integer HISTORY_COUNT = 3;
@@ -262,6 +268,7 @@ public class Constants{
     public static void setFEATURECHANGE_LISTENER(onFeatureChange FEATURECHANGE_LISTENER) {
         Constants.FEATURECHANGE_LISTENER = FEATURECHANGE_LISTENER;
     }
+
 
     public interface onFeatureChange{
         public void onFeatureChanged(CarmenFeature feature);

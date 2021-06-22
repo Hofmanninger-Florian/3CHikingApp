@@ -1,16 +1,19 @@
 package com.grouphiking.project.a3chikingapp.Data;
 
 import android.location.Location;
+import android.location.LocationManager;
 
 import androidx.annotation.NonNull;
+
+import java.util.Map;
 
 public class Trip {
     //Type
     private Type type;
 
     //Location
-    private final Location FROM;
-    private final Location TO;
+    private Location FROM;
+    private Location TO;
 
     //Strings
     @NonNull  private String NAME;
@@ -28,6 +31,20 @@ public class Trip {
         this.TO = null;
         this.NAME = "";
         this.type = null;
+    }
+
+    public void setFROM(Map<String, Object> map){
+        Location location = new Location(LocationManager.GPS_PROVIDER);
+        location.setLatitude((Double) map.get(Constants.LAT));
+        location.setLongitude((Double) map.get(Constants.LONGD));
+        TO = location;
+    }
+
+    public void setTO(Map<String, Object> map){
+        Location location = new Location(LocationManager.GPS_PROVIDER);
+        location.setLatitude((Double) map.get(Constants.LAT));
+        location.setLongitude((Double) map.get(Constants.LONGD));
+        TO = location;
     }
 
     public Location getFROM() {

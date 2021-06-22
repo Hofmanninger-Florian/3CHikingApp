@@ -52,6 +52,7 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private Location FROM = new Location(LocationManager.GPS_PROVIDER);
     private Location TO = new Location(LocationManager.GPS_PROVIDER);
     private Type type;
+    private Trip trip;
 
     public Add_Dialog_frag() {
         // Required empty public constructor
@@ -161,6 +162,7 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
         Trip t = null;
         if(exe && canGoON()){
             t = new Trip(type, FROM, TO, mt_tripName.getText().toString());
+            trip = t;
             Constants.getWorkingUser().getTrips().add(t);
             Constants.updateUser(layout);
             Constants.setLISTENERPOST(new Constants.postExecuteListner() {
@@ -183,9 +185,9 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private void launchNewAct(){
         this.dismiss();
         Intent actionAct = new Intent(getActivity().getApplicationContext(), MapActionActivity.class);
+
         startActivity(actionAct);
     }
-
     public void setLayout(View layout) {
         this.layout = layout;
     }
