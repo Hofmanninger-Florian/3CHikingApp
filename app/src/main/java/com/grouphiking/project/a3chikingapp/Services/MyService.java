@@ -1,50 +1,33 @@
 package com.grouphiking.project.a3chikingapp.Services;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 
-public class MyService extends IntentService {
+import com.grouphiking.project.a3chikingapp.Activitys.LoginActivity;
+import com.grouphiking.project.a3chikingapp.R;
+
+import static com.grouphiking.project.a3chikingapp.Activitys.LoginActivity.CHANNEL_ID;
+
+
+public class MyService extends Service {
 
     String TAG = MyService.class.getSimpleName();
-
-    public MyService() {
-        super("MyService");
-    }
-
-
-    @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
-        //Hintergrundaktivität
-        Log.d(TAG, "onHandleIntent: entered");
-        Log.d(TAG, "onHandleIntent: Thread: " + Thread.currentThread().getName());
-        if(intent.hasExtra("msg")) {
-            for (int i = 1; i <= 3; i++) {
-                Log.d(TAG, "onHandleIntent: ....working");
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    Log.e(TAG, "onHandleIntent: " + e.getMessage());
-                }
-            }
-            Log.d(TAG, "onHandleIntent: finished");
-        }
-    }
-
 
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
-
-
-
     @Override
     public void onCreate() {
 
@@ -53,12 +36,19 @@ public class MyService extends IntentService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        String input = intent.getStringExtra("msg");
 
-        if(intent.hasExtra("msg")){
-            //Do something (Notification)
-        }
+        Intent notificationIntent = new Intent(this, LoginActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0, notificationIntent, 0);
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle("Hiking-App")
+                .setContentText(input)
+                .setSmallIcon(R.drawable.ic_android)
+                .setContentIntent(pendingIntent)
+                .build();
 
-        return START_STICKY;
+        startForeground(1, notification);
+        return START_NOT_STICKY;
     }
 
     @Override

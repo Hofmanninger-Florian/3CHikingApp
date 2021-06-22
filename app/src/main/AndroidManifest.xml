@@ -36,7 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".Services.MyService"/>
+        <service android:name=".Services.MyService" android:stopWithTask="true"/>
 
         <meta-data
             android:name="preloaded_fonts"

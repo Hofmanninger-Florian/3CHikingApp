@@ -6,12 +6,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 
 import android.app.ActivityOptions;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -35,7 +38,7 @@ import java.util.ArrayList;
 public class LoginActivity extends AppCompatActivity {
 
     public static ArrayList<User> userList = new ArrayList<User>();
-
+    public static final String CHANNEL_ID = "exampleServiceChannel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +59,10 @@ public class LoginActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         TextView textView = (TextView) findViewById(R.id.no_account);
+        createNotificationChannel();
         LoginActivity act = this;
         startService();
+
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,10 +143,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void startService(){
         Intent intent = new Intent(this, MyService.class);
-        String msg = "Lust zu wandern?";
+        String msg = "App läuft gerade";
         intent.putExtra("msg", msg);
         startService(intent);
-
     }
 
     public void stopService(){
@@ -149,4 +153,11 @@ public class LoginActivity extends AppCompatActivity {
         stopService(intent);
     }
 
+    public void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel serviceChannel = new NotificationChannel(CHANNEL_ID,"Example Service Channel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(serviceChannel);
+        }
+    }
 }
