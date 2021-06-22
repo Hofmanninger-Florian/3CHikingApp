@@ -300,8 +300,9 @@
                       <PersistentState>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_android" />
-                            <entry key="sourceFile" value="D:\Schulsachen\SachenFuerSchule\POS\3Klasse\3CHikingApppp" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_handylogofortnite" />
+                            <entry key="sourceFile" value="D:\Paintings\Illustrations\HandyLogoFortnite.svg" />
                           </map>
                         </option>
                       </PersistentState>

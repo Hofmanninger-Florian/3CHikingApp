@@ -43,7 +43,7 @@ public class MyService extends Service {
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Hiking-App")
                 .setContentText(input)
-                .setSmallIcon(R.drawable.ic_android)
+                .setSmallIcon(R.drawable.ic_handylogofortnite)
                 .setContentIntent(pendingIntent)
                 .build();
 
