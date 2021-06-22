@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -39,12 +40,10 @@ import com.mapbox.api.directions.v5.DirectionsCriteria;
 import com.mapbox.api.directions.v5.MapboxDirections;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
-import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.FeatureCollection;
+
 import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -52,6 +51,7 @@ import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.location.modes.CameraMode;
 import com.mapbox.mapboxsdk.location.modes.RenderMode;
+import com.mapbox.mapboxsdk.maps.Image;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -65,7 +65,6 @@ import com.mapbox.mapboxsdk.utils.BitmapUtils;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -74,19 +73,15 @@ import retrofit2.Response;
 
 
 public class MapActionActivity extends AppCompatActivity implements OnMapReadyCallback, Callback<DirectionsResponse> {
-
+    private Trip trip;
     private MapView mapView;
     private MapboxMap map;
     private LocationManager manager;
     private LocationListener listener;
     private LocationComponent locationComponent;
-    private Location originLocation;
     private RelativeLayout layout;
     private Point origin;
     private Point destination;
-    private DirectionsRoute currentRoute;
-    private Trip trip;
-    private Feature directionsRouteFeature;
     private MapboxDirections client;
     private static final String ROUTE_SOURCE_ID = "rout-source-id";
     private static final String ROUTE_LINE_SOURCE_ID = "route-source-id";
@@ -101,6 +96,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
     private static final String RED_PIN_ICON_ID = "red-pin-icon-id";
     private Button button;
     private Button buttonOrigin;
+    private ImageButton leaveActivity;
     //Variables for Textview TextOutputs
     private int timeRoute;
     private int timeRouteHour;
@@ -140,10 +136,9 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                 mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
-                        origin = Point.fromLngLat(14.23333, 48.16677);
-                        destination = Point.fromLngLat(14.28611,49.16667);
-                        initLayers(style);
-                        initSource(style);
+                        origin = Point.fromLngLat(14.23333, 48.16667);
+                        destination = Point.fromLngLat(14.23343,49.16687);
+
                         @SuppressLint("Range") CameraPosition position = new CameraPosition.Builder()
                                 .target(new LatLng(origin.latitude(),origin.longitude()))
                                 .zoom(15)
@@ -153,6 +148,9 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                         getRoute(map, origin, destination);
                         enableLocationComponent(style);
 
+
+
+                        //Buttons
                         button = findViewById(R.id.buttonLocation);
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -177,6 +175,28 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                                 map.animateCamera(CameraUpdateFactory.newCameraPosition(orig),200);
                             }
                         });
+                        leaveActivity = findViewById(R.id.imageButtonLeaveActivity);
+                        leaveActivity.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                finish();
+                            }
+                        });
+
+
+
+                        initLayers(style);
+                        initSource(style);
+
+                        /*Gradient
+                        style.addLayer(new LineLayer("lineLayer", "line-source").withProperties(
+                                PropertyFactory.lineDasharray(new Float[]{0.01f,2f}),
+                                PropertyFactory.lineCap(Property.LINE_CAP_ROUND),
+                                PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND),
+                                PropertyFactory.lineWidth(5f),
+                                PropertyFactory.lineColor(Color.parseColor("#e55e5e"))
+                        ));*/
+
                     }
                 });
                 map = mapboxMap;
@@ -216,7 +236,6 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                 PropertyFactory.iconAllowOverlap(true),
                 PropertyFactory.iconOffset(new Float[]{0f,-9f})
         ));
-
     }
     private void getRoute(MapboxMap mapboxMap, Point origin, Point destination){
         client = MapboxDirections.builder()
