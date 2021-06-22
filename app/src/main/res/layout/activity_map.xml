@@ -97,12 +97,23 @@
         android:fontFamily="@font/fredoka_one"
         android:text="@string/map_defaultText"
         android:textColor="@color/Button_Color" />
+
+        <TextView
+            android:id="@+id/textViewcurrentLocData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="575dp"
+            android:fontFamily="@font/fredoka_one"
+            android:text="@string/map_defaultText"
+            android:textColor="@color/Button_Color" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
-            android:layout_marginTop="555dp"
+            android:layout_marginTop="540dp"
             android:fontFamily="@font/fredoka_one"
             android:text="@string/map_tripText"
             android:textColor="@color/Button_Color"
@@ -180,25 +191,26 @@
         android:text="@string/map_defaultText"
         android:textColor="@color/Button_Color" />
 
-    <Button
-        android:id="@+id/buttonLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:background="@drawable/roundstyle"
-        android:text="Dest. Loc."
-        android:textColor="@color/black"
-        android:backgroundTint="@color/Button_Color"/>
+        <Button
+            android:id="@+id/buttonLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:background="@drawable/roundstyle"
+            android:backgroundTint="@color/black"
+            android:text="Dest. Loc."
+            android:textColor="@color/Brown_Dark_Light" />
 
-    <Button
-        android:id="@+id/buttonLocationOrigin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:background="@drawable/roundstyle"
-        android:text="Origin Loc."
-        android:textColor="@color/black"
-        android:backgroundTint="@color/Button_Color"/>
+        <Button
+            android:id="@+id/buttonLocationOrigin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65dp"
+            android:background="@drawable/roundstyle"
+            android:backgroundTint="@color/Button_Color"
+            android:text="Origin Loc."
+            android:textColor="@color/Brown_Dark_Light" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -209,12 +221,23 @@
             android:text="@string/map_distance"
             android:textColor="@color/Button_Color" />
 
+        <TextView
+            android:id="@+id/textViewCurrentLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="575dp"
+            android:fontFamily="@font/fredoka_one"
+            android:text="Current Location:"
+            android:textColor="@color/Button_Color" />
+
         <ImageButton
             android:id="@+id/imageButtonLeaveActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             mapbox:srcCompat="@drawable/ic_baseline_close_24"
-            android:layout_marginLeft="370dp"/>
+            android:layout_marginLeft="370dp"
+            />
     </RelativeLayout>
 
 

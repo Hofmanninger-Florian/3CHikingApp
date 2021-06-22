@@ -60,7 +60,7 @@ public class Constants{
     }
 
     //Set to false for day and true for night
-    public static boolean DEF_MODE = false;
+    public static boolean DEF_MODE = true;
     public static final String DAY_COLOR = "#CAA407";
     public static final String NIGHT_COLOR = "#2F4858";
 

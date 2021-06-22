@@ -16,17 +16,17 @@ import com.grouphiking.project.a3chikingapp.Data.Constants;
 import com.grouphiking.project.a3chikingapp.Data.Mode;
 import com.grouphiking.project.a3chikingapp.R;
 
-public class daynightswitch extends Preference {
+public class Daynightswitch extends Preference {
 
     private Button button_night;
     private Button button_day;
 
-    public daynightswitch(Context context, AttributeSet attrs, int defStyleAttr) {
+    public Daynightswitch(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setWidgetLayoutResource(R.layout.perf_daynightswitch);
     }
 
-    public daynightswitch(Context context, AttributeSet attrs) {
+    public Daynightswitch(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
