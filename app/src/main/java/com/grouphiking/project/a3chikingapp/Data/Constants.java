@@ -254,13 +254,13 @@ public class Constants{
 
     public static void setFeature(CarmenFeature feature) {
         Constants.feature = feature;
-        FEATURECHANGE_LISTENER.onFeatureChanged(feature);
+        if(FEATURECHANGE_LISTENER != null)FEATURECHANGE_LISTENER.onFeatureChanged(feature);
     }
 
     public static onFeatureChange FEATURECHANGE_LISTENER;
 
     public static void setFEATURECHANGE_LISTENER(onFeatureChange FEATURECHANGE_LISTENER) {
-        FEATURECHANGE_LISTENER = FEATURECHANGE_LISTENER;
+        Constants.FEATURECHANGE_LISTENER = FEATURECHANGE_LISTENER;
     }
 
     public interface onFeatureChange{

@@ -1,6 +1,7 @@
 package com.grouphiking.project.a3chikingapp.Activitys;
 
 import androidx.annotation.ColorInt;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,16 +23,14 @@ public class PlacesGetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_get);
-        getActionBar().hide();
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         PlaceOptions placeOptions = PlaceOptions.builder()
                 .backgroundColor(ContextCompat.getColor(this, R.color.Brown_Light))
                 .hint(getString(R.string.places_hint))
                 .language(Constants.LANGUAGE.getLanguage())
                 .limit(Constants.LIMIT_OPTIONS)
-                .historyCount(Constants.HISTORY_COUNT)
                 .build();
-
 
         if (savedInstanceState == null) {
             autocompleteFragment = PlaceAutocompleteFragment.newInstance(getString(R.string.mapbox_access_token), placeOptions);

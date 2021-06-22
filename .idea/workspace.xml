@@ -30,23 +30,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="edb78af0-a500-4695-9e17-2b3fff7a9ee3" name="Default Changelist" comment="Login and Register Backend work">
+    <list default="true" id="edb78af0-a500-4695-9e17-2b3fff7a9ee3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/PlacesGetActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/PlacesGetActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Add_Dialog_frag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Add_Dialog_frag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Data/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Data/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Data/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Preferences/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Preferences/SettingsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Preferences/daynightswitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Preferences/daynightswitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/settings_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/settings_activity.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add__dialog_frag.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add__dialog_frag.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +105,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="android.template.555564586">
+      <recent name="com.grouphiking.project.a3chikingapp.Activitys" />
+      <recent name="com.grouphiking.project.a3chikingapp" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -221,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624383842359</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Trip Commit">
+      <created>1624391913907</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1624391913907</updated>
+    </task>
+    <task id="LOCAL-00007" summary="I think places work">
+      <created>1624400375074</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1624400375074</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,14 +267,20 @@
     <MESSAGE value="local.properties" />
     <MESSAGE value="Start with MyService.java" />
     <MESSAGE value="Login and Register Backend work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login and Register Backend work" />
+    <MESSAGE value="Trip Commit" />
+    <MESSAGE value="I think places work" />
+    <option name="LAST_COMMIT_MESSAGE" value="I think places work" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1624387190261">
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1624398248553">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624374047446" />
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1624387190261" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1624398248553" />
+    <state x="210" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1624393941627">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="210" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624393941627" />
     <state x="577" y="274" key="AndroidCreateResourceDirectoryDialog" timestamp="1624369621041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -269,46 +289,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="821" y="432" key="Github.Dialog.Accounts.Choose/0.0.1920.1040@0.0.1920.1040" timestamp="1624383920487" />
-    <state width="914" height="281" key="GridCell.Tab.0.bottom" timestamp="1624387348521">
+    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1624402366889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624375436077" />
-    <state width="914" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624387348521" />
-    <state width="914" height="281" key="GridCell.Tab.0.center" timestamp="1624387348521">
+    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624402366889" />
+    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1624402366889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624375436077" />
-    <state width="914" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624387348521" />
-    <state width="914" height="281" key="GridCell.Tab.0.left" timestamp="1624387348521">
+    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624402366889" />
+    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1624402366889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624375436076" />
-    <state width="914" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624387348521" />
-    <state width="914" height="281" key="GridCell.Tab.0.right" timestamp="1624387348521">
+    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624402366889" />
+    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1624402366889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624375436077" />
-    <state width="914" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624387348521" />
-    <state width="1877" height="276" key="GridCell.Tab.1.bottom" timestamp="1624383207356">
+    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624402366889" />
+    <state width="1877" height="277" key="GridCell.Tab.1.bottom" timestamp="1624402366889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624372733450" />
-    <state width="1877" height="276" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624383207356" />
-    <state width="1877" height="276" key="GridCell.Tab.1.center" timestamp="1624383207356">
+    <state width="1877" height="277" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624402366889" />
+    <state width="1877" height="277" key="GridCell.Tab.1.center" timestamp="1624402366889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624372733449" />
-    <state width="1877" height="276" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624383207356" />
-    <state width="1877" height="276" key="GridCell.Tab.1.left" timestamp="1624383207356">
+    <state width="1877" height="277" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624402366889" />
+    <state width="1877" height="277" key="GridCell.Tab.1.left" timestamp="1624402366889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624372733449" />
-    <state width="1877" height="276" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624383207356" />
-    <state width="1877" height="276" key="GridCell.Tab.1.right" timestamp="1624383207356">
+    <state width="1877" height="277" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624402366889" />
+    <state width="1877" height="277" key="GridCell.Tab.1.right" timestamp="1624402366889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624372733449" />
-    <state width="1877" height="276" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624383207356" />
+    <state width="1877" height="277" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624402366889" />
     <state x="37" y="129" width="1661" height="868" key="MergeDialog" timestamp="1624367721206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -322,11 +342,11 @@
     </state>
     <state x="641" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624369554685" />
     <state x="481" y="200" key="RollbackChangesDialog/0.25.1440.819@0.25.1440.819" timestamp="1624378304682" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1624383873055">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1624391916874">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1624372548188" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1624383873055" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1624391916874" />
     <state x="414" y="224" key="Vcs.Push.Dialog.v2/0.25.1440.819@0.25.1440.819" timestamp="1624376929115" />
     <state x="521" y="352" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624378283526">
       <screen x="0" y="25" width="1440" height="819" />
@@ -336,5 +356,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1624382706820" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/grouphiking/project/a3chikingapp/Activitys/PlacesGetActivity.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
