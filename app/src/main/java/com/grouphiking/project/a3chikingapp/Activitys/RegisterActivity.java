@@ -29,6 +29,9 @@ import java.util.ArrayList;
 public class RegisterActivity extends AppCompatActivity {
 
 
+    private String username;
+    private String password;
+    private RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void checkRegister(){
         //Values
-        RelativeLayout layout = (RelativeLayout)findViewById(R.id.register_contextlayout);
+        layout = (RelativeLayout)findViewById(R.id.register_contextlayout);
         EditText editText_username_register = (EditText) findViewById(R.id.username_textField_register);
         EditText editText_password_register = (EditText) findViewById(R.id.password_textField_register);
         EditText editText_reenter_password = (EditText) findViewById(R.id.reenter_password_textField);
@@ -84,11 +87,19 @@ public class RegisterActivity extends AppCompatActivity {
         } else if(!editText_password_register.getText().toString().equals(editText_reenter_password.getText().toString())){
             Snackbar.make(layout, R.string.register_snackbarLabel, Snackbar.LENGTH_SHORT).show();
         } else {
-            String username = editText_username_register.getText().toString();
-            String password = editText_password_register.getText().toString();
-            if(Constants.getUsersGet(username, layout) != null){
-                Constants.addUser(new User(username, password, new ArrayList<Trip>(), Constants.LANGUAGE, Constants.MODE), layout);
-            }
+            username = editText_username_register.getText().toString();
+            password = editText_password_register.getText().toString();
+            Constants.getUsersGet(username, layout, this, null);
+        }
+    }
+
+    public void proofResults(){
+        if(Constants.getWorkingUser() == null){
+            Constants.WORKING_USER = new User(username, password, new ArrayList<Trip>(), Constants.LANGUAGE, Constants.MODE);
+            Constants.addUser(Constants.WORKING_USER, layout);
+            intentMain();
+        }else{
+            Snackbar.make(layout, R.string.firebase_user_Already, Snackbar.LENGTH_SHORT).show();
         }
     }
 

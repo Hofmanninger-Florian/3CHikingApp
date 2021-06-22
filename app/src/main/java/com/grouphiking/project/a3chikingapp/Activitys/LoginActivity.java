@@ -104,20 +104,20 @@ public class LoginActivity extends AppCompatActivity {
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.login_contextlayout);
         EditText editText_username = (EditText) findViewById(R.id.username_textField);
         EditText editText_password = (EditText) findViewById(R.id.password_textField);
+        String username = editText_username.getText().toString();
         if(editText_username.getText().toString().equals("") || editText_password.getText().toString().equals("")){
             Snackbar.make(layout, R.string.login_snackbarLabel, Snackbar.LENGTH_SHORT).show();
-        }else if(wrongUser(editText_username.getText().toString(), editText_password.getText().toString())){
-            Snackbar.make(layout, R.string.login_snackbarLabel_noUser, Snackbar.LENGTH_SHORT).show();
         }else {
-            boolean b = false;
-            for(User u : Constants.userList){
-                if(editText_username.getText().toString().equals(u.getUsername()) && editText_password.getText().toString().equals(u.getPassword())){
-                    b = true;
-                }
-            }
-            if(b){
-                intentMain();
-            }
+            Constants.getUsersGet(username, layout, null, this);
+        }
+    }
+
+    public void proofResults(){
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.login_contextlayout);
+        if(Constants.getWorkingUser() != null){
+            intentMain();
+        }else{
+            Snackbar.make(layout, R.string.firebase_user_notAlready, Snackbar.LENGTH_SHORT).show();
         }
     }
 
@@ -127,18 +127,6 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         ActivityCompat.finishAffinity(this);
         Constants.setLoggedIn(true);
-    }
-
-    public boolean wrongUser(String name, String pwd){
-        boolean result = false;
-        for(User u : Constants.userList){
-            if(name.equals(u.getUsername()) && pwd.equals(u.getPassword())){
-                result = false;
-            } else{
-                result = true;
-            }
-        }
-        return result;
     }
 
     public void stopService(){

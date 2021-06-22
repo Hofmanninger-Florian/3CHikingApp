@@ -23,6 +23,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -30,6 +31,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.grouphiking.project.a3chikingapp.Activitys.LoginActivity;
+import com.grouphiking.project.a3chikingapp.Activitys.RegisterActivity;
 import com.grouphiking.project.a3chikingapp.Preferences.LanguageSpinner;
 import com.grouphiking.project.a3chikingapp.Preferences.SettingsActivity;
 import com.grouphiking.project.a3chikingapp.R;
@@ -119,28 +122,31 @@ public class Constants{
     //=====Firebase=====
     public static User WORKING_USER;
 
-    public static ArrayList<User> userList = new ArrayList<User>();
-
-
-    public static User getUsersGet(String username, View view){
-        final User[] user = {null};
+    public static void getUsersGet(String username, View view, RegisterActivity register, LoginActivity login){
         DocumentReference docRef = firestore.collection(USER_ID).document(username);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot snap = task.getResult();
-                    assert snap != null;
-                    user[0] = (User)snap.toObject(User.class);
-                }
-            }
-        }).addOnCanceledListener(new OnCanceledListener() {
+        docRef.get().addOnCanceledListener(new OnCanceledListener() {
             @Override
             public void onCanceled() {
                 Snackbar.make(view, R.string.firebase_get_Error, BaseTransientBottomBar.LENGTH_SHORT).show();
             }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Snackbar.make(view, R.string.firebase_get_Error, BaseTransientBottomBar.LENGTH_SHORT).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                DocumentSnapshot snap = documentSnapshot;
+                assert snap != null;
+                Constants.WORKING_USER = (User)snap.toObject(User.class);
+                if(register == null){
+                    login.proofResults();
+                }else if(login == null){
+                    register.proofResults();
+                }
+            }
         });
-        return user[0];
     }
 
     public static void addUser(User user, View view){
