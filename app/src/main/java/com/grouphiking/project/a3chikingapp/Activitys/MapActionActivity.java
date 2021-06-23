@@ -131,12 +131,11 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
         setContentView(R.layout.activity_map);
         buttonNight = (Button) findViewById(R.id.pref_button_night);
-
-
+        typeViewRoute = (TextView) findViewById(R.id.textView11);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        trip = new Trip();
-        trip.setType(Type.BIKE);
+        trip = Constants.getTrip();
+        type = trip.getType();
         layout = findViewById(R.id.layout_Map);
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
@@ -149,8 +148,8 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                 mapboxMap.setStyle(Style.DARK, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
-                        origin = Point.fromLngLat(14.23333, 48.16667);
-                        destination = Point.fromLngLat(14.23343,49.16687);
+                        origin = Point.fromLngLat(trip.getFROM().getLongitude(), trip.getFROM().getLatitude());
+                        destination = Point.fromLngLat(trip.getTO().getLongitude(),trip.getTO().getLatitude());
 
                         @SuppressLint("Range") CameraPosition position = new CameraPosition.Builder()
                                 .target(new LatLng(origin.latitude(),origin.longitude()))
@@ -193,6 +192,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                         leaveActivity.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                onBackPressed();
                                 finish();
                             }
                         });
@@ -218,9 +218,8 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                     mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
-                            origin = Point.fromLngLat(14.23333, 48.16667);
-                            destination = Point.fromLngLat(14.23343,49.16687);
-
+                            origin = Point.fromLngLat(trip.getFROM().getLongitude(), trip.getFROM().getLatitude());
+                            destination = Point.fromLngLat(trip.getTO().getLongitude(),trip.getTO().getLatitude());
                             @SuppressLint("Range") CameraPosition position = new CameraPosition.Builder()
                                     .target(new LatLng(origin.latitude(),origin.longitude()))
                                     .zoom(15)
@@ -262,6 +261,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
                             leaveActivity.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
+                                    onBackPressed();
                                     finish();
                                 }
                             });
@@ -387,7 +387,7 @@ public class MapActionActivity extends AppCompatActivity implements OnMapReadyCa
         }
 
         //The Type
-
+        typeViewRoute.setText(trip.getType().name());
         //The Altimeter
         //altimeterViewRoute = (TextView) findViewById(R.id.textView8);
         //altimeterViewRouteEnd = (TextView) findViewById(R.id.textview9);

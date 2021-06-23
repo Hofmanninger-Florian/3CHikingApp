@@ -271,6 +271,13 @@ public class Constants{
         public void onFeatureChanged(CarmenFeature feature);
     }
 
-    public static final String TRIP = "trip";
+    public static Trip trip;
 
+    public static Trip getTrip() {
+        return trip;
+    }
+
+    public static void setTrip(Trip trip) {
+        Constants.trip = trip;
+    }
 }

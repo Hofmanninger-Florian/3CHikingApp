@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 import java.util.Map;
 
-public class Trip implements Serializable {
+public class Trip{
     //Type
     private Type type;
 
@@ -35,10 +35,10 @@ public class Trip implements Serializable {
     }
 
     public void setFROM(Map<String, Object> map){
-        Location location = new Location(LocationManager.GPS_PROVIDER);
-        location.setLatitude((Double) map.get(Constants.LAT));
-        location.setLongitude((Double) map.get(Constants.LONGD));
-        TO = location;
+            Location location = new Location(LocationManager.GPS_PROVIDER);
+            location.setLatitude((Double) map.get(Constants.LAT));
+            location.setLongitude((Double) map.get(Constants.LONGD));
+            FROM = location;
     }
 
     public void setTO(Map<String, Object> map){

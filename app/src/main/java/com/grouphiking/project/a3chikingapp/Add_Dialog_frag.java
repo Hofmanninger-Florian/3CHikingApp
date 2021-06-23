@@ -149,7 +149,7 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
                     mt_toPlace.setText(feature.placeName());
                 }else{
                     FROM.setLatitude(point.latitude());
-                    FROM.setLatitude(point.longitude());
+                    FROM.setLongitude(point.longitude());
                     mt_fromPlace.setText(feature.placeName());
                 }
             }
@@ -188,7 +188,7 @@ public class Add_Dialog_frag extends BottomSheetDialogFragment {
     private void launchNewAct(Trip t){
         this.dismiss();
         Intent actionAct = new Intent(getActivity().getApplicationContext(), MapActionActivity.class);
-        actionAct.putExtra(Constants.TRIP, (Serializable) t);
+        Constants.setTrip(t);
         startActivity(actionAct);
     }
     public void setLayout(View layout) {
